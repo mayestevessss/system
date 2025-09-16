@@ -14,7 +14,8 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        //
+        $profiles = Profile::all();
+        return response()->json($profiles);
     }
 
     /**
@@ -25,7 +26,16 @@ class ProfileController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|string',
+            'lastname' => 'required|string|unique:profiles',
+            'address' => 'required|string',
+            'phone' => 'nullable|string',
+            'email' => 'required|email|unique:profiles'
+        ]);
+
+        $profile = Profile::create($request->all());
+        return response()->json($profile, 201);
     }
 
     /**
@@ -36,7 +46,7 @@ class ProfileController extends Controller
      */
     public function show(Profile $profile)
     {
-        //
+        return response()->json($profile);
     }
 
     /**
@@ -48,7 +58,16 @@ class ProfileController extends Controller
      */
     public function update(Request $request, Profile $profile)
     {
-        //
+        $request->validate([
+            'name' => 'sometimes|required|string',
+            'lastname' => 'sometimes|required|string|unique:profiles,lastname,' . $profile->id,
+            'address' => 'sometimes|required|string',
+            'phone' => 'nullable|string',
+            'email' => 'sometimes|required|email|unique:profiles,email,' . $profile->id
+        ]);
+
+        $profile->update($request->all());
+        return response()->json($profile);
     }
 
     /**
@@ -59,6 +78,7 @@ class ProfileController extends Controller
      */
     public function destroy(Profile $profile)
     {
-        //
+        $profile->delete();
+        return response()->json(null, 204);
     }
 }
