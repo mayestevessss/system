@@ -1,0 +1,239 @@
+.dashboard-page {
+  display: flex;
+  height: 100vh;
+  background-color: #48c6d4;
+  font-family: "Segoe UI", sans-serif;
+
+  /* SIDEBAR */
+  .sidebar {
+    width: 180px;
+    background-color: #205a5a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    position: relative;
+
+    .sidebar-logo {
+      width: 90px;
+      margin-bottom: 15px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      width: 100%;
+      flex-grow: 1;
+
+      li {
+        width: 90%;
+        margin: 8px auto;
+        padding: 8px;
+        background-color: white;
+        color: black;
+        text-align: center;
+        font-weight: 500;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+
+        &:hover {
+          background-color: #c7f1f1;
+        }
+
+        &.active {
+          background-color: #48c6d4;
+          color: white;
+        }
+
+        &.logout {
+          position: absolute;
+          bottom: 20px;
+          left: 0;
+          right: 0;
+          width: 90%;
+        }
+      }
+    }
+  }
+
+  /* MAIN CONTENT */
+  .main-content {
+    flex: 1;
+    padding: 20px 30px;
+    display: flex;
+    flex-direction: column;
+
+    /* HEADER */
+    .header {
+      display: flex;
+      align-items: center;
+      background: linear-gradient(to right, #87e0dd, #48c6d4);
+      padding: 10px 15px;
+      border-radius: 8px;
+      margin-bottom: 30px;
+
+      .header-left {
+        display: flex;
+        align-items: center;
+
+        .header-logo {
+          width: 70px;
+          margin-right: 15px;
+        }
+
+        .header-text {
+          h1 {
+            margin: 0;
+            font-size: 1.5rem;
+            color: #222;
+          }
+
+          h3 {
+            margin: 0;
+            font-size: 1rem;
+            color: #333;
+            font-weight: normal;
+          }
+        }
+      }
+    }
+
+    /* INFO CARDS */
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-bottom: 30px;
+
+      .card {
+        flex: 1;
+        min-width: 220px;
+        color: white;
+        padding: 20px;
+        border-radius: 8px;
+        text-align: center;
+        position: relative;
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease;
+
+        &:hover {
+          transform: translateY(-5px);
+        }
+
+        .card-icon {
+          font-size: 2.2rem;
+          margin-bottom: 10px;
+        }
+
+        h2 {
+          font-size: 2rem;
+          margin: 0;
+        }
+
+        p {
+          margin: 5px 0 10px;
+        }
+
+        .info {
+          background: rgba(0, 0, 0, 0.15);
+          padding: 6px;
+          border-radius: 4px;
+          cursor: pointer;
+        }
+      }
+
+      .blue {
+        background-color: #1e73be;
+      }
+
+      .red {
+        background-color: #d95f5f;
+      }
+
+      .green {
+        background-color: #44b55b;
+      }
+
+      .purple {
+        background-color: #7e57c2;
+      }
+    }
+
+    /* CHARTS */
+    .chart-section {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin-top: 30px;
+
+      .chart-box {
+        background: white;
+        border-radius: 16px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+        padding: 25px;
+        width: 45%;
+        text-align: center;
+        transition: transform 0.3s ease;
+
+        &:hover {
+          transform: translateY(-5px);
+        }
+
+        h3 {
+          color: #00363a;
+          margin-bottom: 15px;
+          font-size: 18px;
+          font-weight: 600;
+        }
+
+        .chart-container {
+          width: 100%;
+          max-width: 320px;
+          margin: 0 auto;
+        }
+
+        /* Legend below the chart */
+        .chart-legend {
+          margin-top: 20px;
+          text-align: left;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 8px;
+
+          .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            color: #333;
+
+            .legend-color {
+              width: 16px;
+              height: 16px;
+              border-radius: 4px;
+              display: inline-block;
+            }
+
+            .legend-text {
+              font-weight: 500;
+            }
+          }
+        }
+
+        /* Label for chart type (bottom note) */
+        .chart-type {
+          margin-top: 15px;
+          font-size: 13px;
+          color: #555;
+          font-style: italic;
+          border-top: 1px solid #eee;
+          padding-top: 8px;
+          text-align: center;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,101 @@
+.add-faculty-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #b2ebf2;
+  position: relative;
+
+  .add-container {
+    background: #ffffff;
+    width: 450px;
+    padding: 40px 50px;
+    border-radius: 16px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    animation: fadeIn 0.3s ease-in-out;
+
+    h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #00363a;
+      font-size: 26px;
+      font-weight: 700;
+    }
+
+    .add-form {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+
+      label {
+        display: flex;
+        flex-direction: column;
+        font-weight: 600;
+        color: #004d40;
+        font-size: 15px;
+
+        input,
+        select {
+          margin-top: 6px;
+          padding: 10px 12px;
+          border: 1px solid #ccc;
+          border-radius: 8px;
+          font-size: 14px;
+          transition: all 0.3s ease;
+
+          &:focus {
+            border-color: #42a5f5;
+            box-shadow: 0 0 6px rgba(66, 165, 245, 0.4);
+            outline: none;
+          }
+        }
+      }
+
+      .add-buttons {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 15px;
+
+        button {
+          padding: 10px 25px;
+          border: none;
+          border-radius: 8px;
+          font-size: 15px;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          min-width: 100px;
+        }
+
+        .save-btn {
+          background-color: #1565c0;
+          color: white;
+
+          &:hover {
+            background-color: #0d47a1;
+            transform: scale(1.05);
+          }
+        }
+
+        .cancel-btn {
+          background-color: #e53935;
+          color: white;
+
+          &:hover {
+            background-color: #c62828;
+            transform: scale(1.05);
+          }
+        }
+      }
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}

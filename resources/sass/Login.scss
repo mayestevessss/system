@@ -1,0 +1,141 @@
+.login-page {
+  font-family: 'Arial', sans-serif;
+  background-color: #1c7070;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header {
+  width: 100%;
+  background-color: #8de0d0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+
+  .logo img {
+    width: 90px;
+  }
+
+  .header-info {
+    text-align: right;
+
+    h3 {
+      margin: 0;
+      font-weight: bold;
+    }
+
+    .contact {
+      p {
+        margin: 3px 0;
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+.login-container {
+  background-color: #2890e3;
+  width: 80%;
+  max-width: 500px;
+  margin-top: 40px;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  color: white;
+}
+
+.login-box {
+  text-align: center;
+
+  h2 {
+    margin-bottom: 5px;
+    font-size: 28px;
+    letter-spacing: 1px;
+  }
+
+  .subtitle {
+    font-size: 13px;
+    margin-bottom: 20px;
+    color: #dfe8f1;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+
+    label {
+      font-size: 14px;
+      margin: 8px 0 4px;
+    }
+
+    input {
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      font-size: 14px;
+      outline: none;
+    }
+
+    .forgot {
+      color: #e8f3ff;
+      font-size: 13px;
+      text-align: right;
+      margin-bottom: 15px;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    .error {
+      background-color: rgba(255, 0, 0, 0.2);
+      border: 1px solid #ff7070;
+      color: #ffe0e0;
+      padding: 8px;
+      border-radius: 5px;
+      font-size: 13px;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .login-btn {
+      background-color: #1f61d1;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 15px;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+
+      &:hover {
+        background-color: #1549a3;
+        transform: scale(1.02);
+      }
+    }
+  }
+}
+
+/* Responsive fix */
+@media (max-width: 600px) {
+  .login-container {
+    width: 90%;
+    padding: 20px;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .header-info {
+    margin-top: 10px;
+  }
+}

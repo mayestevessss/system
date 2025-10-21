@@ -1,0 +1,24 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+@import '../sass/Login.scss';
+@import '../sass/Home.scss';
+@import '../sass/Dashboard.scss';
+@import '../sass/ProfileManagement.scss';
+@import '../sass/ViewEditProfile.scss';
+@import '../sass/Students.scss';
+@import '../sass/EditStudent.scss';
+@import '../sass/Addstudents.scss';
+@import '../sass/Archivestu.scss';
+@import '../sass/Faculty.scss';
+@import '../sass/AddFac.scss';
+@import '../sass/Edit-Faculties.scss';
+@import '../sass/ArchiveFaculty.scss';
+@import '../sass/Report.scss';
+@import '../sass/Settings.scss';

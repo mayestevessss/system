@@ -1,0 +1,420 @@
+.students-page {
+  display: flex;
+  height: 100vh;
+  background-color: #b2ebf2;
+
+  /* ✅ Sidebar */
+  .sidebar {
+    width: 220px;
+    background-color: #1e656d;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+
+    .sidebar-logo {
+      width: 90px;
+      margin-bottom: 20px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+
+      li {
+        padding: 12px 20px;
+        cursor: pointer;
+        text-align: center;
+        font-weight: 500;
+        transition: 0.3s;
+
+        &:hover,
+        &.active {
+          background-color: #0f4c55;
+        }
+      }
+
+      .profile-management {
+        background-color: #1b777f;
+        font-weight: bold;
+
+        &:hover {
+          background-color: #0f4c55;
+        }
+      }
+
+      .logout {
+        margin-top: auto;
+        background-color: #f3f3f3;
+        color: #1e656d;
+        font-weight: bold;
+        border-top: 2px solid rgba(255, 255, 255, 0.1);
+
+        &:hover {
+          background-color: #e0e0e0;
+        }
+      }
+    }
+  }
+
+  /* ✅ Main Section */
+  .students-main {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+
+    /* ===== Header ===== */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #5fdde5;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+
+      .header-left {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+
+        .header-logo {
+          width: 60px;
+        }
+
+        .header-text {
+          h1 {
+            margin: 0;
+            color: #00363a;
+            font-size: 24px;
+          }
+
+          h3 {
+            margin: 0;
+            font-size: 14px;
+            color: #004d40;
+          }
+        }
+      }
+
+      .add-btn {
+        background-color: #f4a261;
+        border: none;
+        padding: 8px 15px;
+        border-radius: 6px;
+        cursor: pointer;
+        color: white;
+        font-weight: bold;
+        transition: 0.3s;
+
+        &:hover {
+          background-color: #e76f51;
+        }
+      }
+    }
+
+    /* ===== Search Bar ===== */
+    .search-bar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 15px 0;
+
+      input {
+        flex: 1;
+        padding: 8px 12px;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+        outline: none;
+        font-size: 14px;
+        transition: 0.3s;
+
+        &:focus {
+          border-color: #4a90e2;
+          box-shadow: 0 0 5px rgba(74, 144, 226, 0.5);
+        }
+      }
+
+      .filter-btn,
+      .archive-view-btn {
+        padding: 8px 14px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        color: white;
+        font-weight: 500;
+        transition: 0.3s;
+      }
+
+      .filter-btn {
+        background-color: #1abc9c;
+
+        &:hover {
+          background-color: #16a085;
+        }
+      }
+
+      .archive-view-btn {
+        background-color: #3498db;
+
+        &:hover {
+          background-color: #2980b9;
+        }
+      }
+    }
+
+    /* ===== Table ===== */
+    .students-table {
+      width: 100%;
+      border-collapse: collapse;
+      border-radius: 10px;
+      overflow: hidden;
+
+      th,
+      td {
+        text-align: center;
+        padding: 10px;
+        font-size: 14px;
+        vertical-align: middle;
+      }
+
+      th {
+        background-color: #1e88e5;
+        color: white;
+        font-size: 15px;
+      }
+
+      tr:nth-child(even) {
+        background-color: #64b5f6;
+      }
+
+      tr:nth-child(odd) {
+        background-color: #42a5f5;
+      }
+
+      /* ✅ Combine Edit + Archive neatly side by side */
+      td.actions {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+
+        .edit-btn,
+        .archive-btn {
+          border: none;
+          padding: 6px 12px;
+          border-radius: 4px;
+          color: white;
+          cursor: pointer;
+          font-weight: 500;
+          transition: all 0.3s;
+        }
+
+        .edit-btn {
+          background-color: #f4b400;
+
+          &:hover {
+            background-color: #c49000;
+            transform: scale(1.05);
+          }
+        }
+
+        .archive-btn {
+          background-color: #e53935;
+
+          &:hover {
+            background-color: #c62828;
+            transform: scale(1.05);
+          }
+        }
+      }
+    }
+  }
+
+  /* ===== Edit/Add Student Page ===== */
+  .edit-student-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #b2ebf2;
+
+    .edit-container {
+      background: white;
+      padding: 40px 60px;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      width: 420px;
+      text-align: left;
+      animation: popIn 0.3s ease;
+
+      h2 {
+        text-align: center;
+        margin-bottom: 25px;
+        color: #00363a;
+      }
+
+      .edit-form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+
+        label {
+          font-weight: 600;
+          color: #004d40;
+          display: flex;
+          flex-direction: column;
+          font-size: 15px;
+
+          input,
+          select {
+            margin-top: 6px;
+            padding: 8px 10px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            outline: none;
+            font-size: 14px;
+            transition: 0.3s;
+
+            &:focus {
+              border-color: #1565c0;
+              box-shadow: 0 0 5px rgba(21, 101, 192, 0.5);
+            }
+          }
+        }
+
+        .edit-buttons {
+          display: flex;
+          justify-content: space-between;
+          margin-top: 20px;
+
+          .save-btn {
+            background-color: #1565c0;
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+
+            &:hover {
+              background-color: #0d47a1;
+              transform: scale(1.05);
+            }
+          }
+
+          .cancel-btn {
+            background-color: #e53935;
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+
+            &:hover {
+              background-color: #c62828;
+              transform: scale(1.05);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  /* ===== Confirmation Modal ===== */
+  .confirm-box {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.55);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 3000;
+    animation: fadeIn 0.25s ease-in;
+
+    .confirm-content {
+      background: #ffffff;
+      padding: 40px 60px;
+      border-radius: 16px;
+      text-align: center;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      animation: popIn 0.3s ease;
+
+      p {
+        font-size: 19px;
+        font-weight: 600;
+        margin-bottom: 25px;
+        color: #2c2c2c;
+      }
+
+      .confirm-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 25px;
+
+        .yes,
+        .no {
+          padding: 10px 22px;
+          border: none;
+          border-radius: 8px;
+          font-size: 15px;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          min-width: 90px;
+        }
+
+        .yes {
+          background-color: #1565c0;
+          color: white;
+
+          &:hover {
+            background-color: #0d47a1;
+            transform: scale(1.05);
+          }
+        }
+
+        .no {
+          background-color: #e53935;
+          color: white;
+
+          &:hover {
+            background-color: #c62828;
+            transform: scale(1.05);
+          }
+        }
+      }
+    }
+  }
+
+  /* ===== Animations ===== */
+  @keyframes popIn {
+    from {
+      transform: scale(0.85);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}

@@ -1,0 +1,116 @@
+.add-student-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f6f9fc;
+
+  .add-container {
+    background: #ffffff;
+    width: 480px;
+    padding: 40px 45px;
+    border-radius: 16px;
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.3s ease-in-out;
+
+    h2 {
+      text-align: center;
+      font-size: 24px;
+      font-weight: 700;
+      color: #1976d2;
+      margin-bottom: 25px;
+    }
+
+    .add-form {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+
+      label {
+        display: flex;
+        flex-direction: column;
+        font-weight: 600;
+        color: #333;
+        font-size: 15px;
+
+        input,
+        select {
+          margin-top: 6px;
+          padding: 10px 12px;
+          border: 1px solid #ccc;
+          border-radius: 8px;
+          font-size: 14px;
+          transition: all 0.3s ease;
+          background-color: #fafafa;
+
+          &:focus {
+            border-color: #42a5f5;
+            box-shadow: 0 0 5px rgba(66, 165, 245, 0.4);
+            background-color: #fff;
+            outline: none;
+          }
+        }
+      }
+
+      .add-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-top: 20px;
+
+        button {
+          padding: 10px 25px;
+          border: none;
+          border-radius: 8px;
+          font-size: 15px;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          min-width: 120px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+        }
+
+        .save-btn {
+          background-color: #1976d2;
+          color: #fff;
+
+          &:hover {
+            background-color: #0d47a1;
+            transform: scale(1.05);
+          }
+        }
+
+        .cancel-btn {
+          background-color: #e53935;
+          color: #fff;
+
+          &:hover {
+            background-color: #c62828;
+            transform: scale(1.05);
+          }
+        }
+      }
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .add-container {
+      width: 90%;
+      padding: 30px;
+    }
+  }
+}

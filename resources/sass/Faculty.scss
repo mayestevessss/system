@@ -1,0 +1,224 @@
+.faculty-page {
+  display: flex;
+  height: 100vh;
+  background-color: #80deea; // light sky blue background
+
+  .sidebar {
+    width: 220px;
+    background-color: #4a148c;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+
+    .sidebar-logo {
+      width: 90px;
+      margin-bottom: 20px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+
+      li {
+        padding: 12px 20px;
+        cursor: pointer;
+        text-align: center;
+        font-weight: 500;
+        transition: 0.3s;
+
+        &:hover,
+        &.active {
+          background-color: #6a1b9a;
+        }
+      }
+
+      .logout {
+        margin-top: auto;
+        background-color: #f3f3f3;
+        color: #4a148c;
+        font-weight: bold;
+
+        &:hover {
+          background-color: #e0e0e0;
+        }
+      }
+    }
+  }
+
+  .faculty-main {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #7e57c2;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+
+      .header-left {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+
+        .header-logo {
+          width: 60px;
+        }
+
+        .header-text {
+          h1 {
+            margin: 0;
+            color: white;
+            font-size: 24px;
+          }
+
+          h3 {
+            margin: 0;
+            font-size: 14px;
+            color: #ede7f6;
+          }
+        }
+      }
+    }
+
+    .search-section {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 15px 0;
+
+      input {
+        width: 300px;
+        padding: 8px 12px;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+        outline: none;
+        transition: 0.3s;
+
+        &:focus {
+          border-color: #7e57c2;
+          box-shadow: 0 0 5px rgba(126, 87, 194, 0.5);
+        }
+      }
+
+      .search-buttons {
+        display: flex;
+        gap: 10px;
+
+        .add-btn,
+        .filter-btn,
+        .archive-view-btn {
+          border: none;
+          border-radius: 6px;
+          color: white;
+          padding: 8px 14px;
+          cursor: pointer;
+          transition: 0.3s;
+        }
+
+        .add-btn {
+          background-color: #ffca28;
+          color: #4a148c;
+          font-weight: bold;
+
+          &:hover {
+            background-color: #ffb300;
+            transform: scale(1.05);
+          }
+        }
+
+        .filter-btn {
+          background-color: #8e24aa;
+
+          &:hover {
+            background-color: #6a1b9a;
+          }
+        }
+
+        .archive-view-btn {
+          background-color: #5e35b1;
+
+          &:hover {
+            background-color: #4527a0;
+          }
+        }
+      }
+    }
+
+    .faculty-table {
+      width: 100%;
+      border-collapse: collapse;
+      border-radius: 10px;
+      overflow: hidden;
+
+      th {
+        background-color: #0277bd;
+        color: white;
+        padding: 10px;
+        text-align: center;
+      }
+
+      td {
+        background-color: #42a5f5;
+        color: black;
+        text-align: center;
+        padding: 10px;
+        font-weight: 500;
+      }
+
+      tr {
+        border-bottom: 8px solid #80deea;
+        transition: background-color 0.3s;
+
+        &:hover {
+          background-color: #64b5f6;
+        }
+      }
+
+      .actions {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+
+        .edit-btn {
+          background-color: #ffca28;
+          border: none;
+          border-radius: 4px;
+          padding: 6px 12px;
+          font-weight: bold;
+          color: #4a148c;
+          cursor: pointer;
+
+          &:hover {
+            background-color: #ffb300;
+            transform: scale(1.05);
+          }
+        }
+
+        .archive-btn {
+          background-color: #d32f2f;
+          border: none;
+          border-radius: 4px;
+          padding: 6px 12px;
+          color: white;
+          font-weight: bold;
+          cursor: pointer;
+
+          &:hover {
+            background-color: #b71c1c;
+            transform: scale(1.05);
+          }
+        }
+      }
+    }
+  }
+}
