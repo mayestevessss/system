@@ -9,14 +9,15 @@ class Student extends Model
 {
     use HasFactory;
 
+    /**
+     * ✅ Columns that can be mass-assigned (fillable)
+     */
     protected $fillable = [
         'student_id',
         'fullname',
         'email',
-        'department',
-        'department_id',
-        'course',
-        'course_id',
+        'department', // Department name as text
+        'course',     // Course name as text
         'year_level',
         'contact_number',
         'adviser',
@@ -24,23 +25,18 @@ class Student extends Model
         'is_archived',
     ];
 
+    /**
+     * ✅ Automatically cast specific attributes
+     */
     protected $casts = [
         'is_archived' => 'boolean',
     ];
 
     /**
-     * ✅ Relationship: Student belongs to a Department
+     * 🧹 Helper to check archive status
      */
-    public function department()
+    public function isArchived()
     {
-        return $this->belongsTo(Department::class, 'department_id');
-    }
-
-    /**
-     * ✅ Relationship: Student belongs to a Course
-     */
-    public function course()
-    {
-        return $this->belongsTo(Course::class, 'course_id');
+        return $this->is_archived === true;
     }
 }

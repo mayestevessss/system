@@ -14,7 +14,9 @@ class FacultySeeder extends Seeder
             'email' => 'maria.santos@school.edu',
             'department' => 'College of Education',
             'position' => 'Instructor',
-            'gender' => 'F', // ✅ fixed
+            'gender' => 'F',
+            'employee_id' => 'EMP-' . rand(10000, 99999), // ✅ random employee ID
+            'contact_number' => '09' . rand(100000000, 999999999), // ✅ random contact number
         ]);
 
         Faculty::create([
@@ -22,7 +24,9 @@ class FacultySeeder extends Seeder
             'email' => 'john.delacruz@school.edu',
             'department' => 'College of Engineering',
             'position' => 'Dean',
-            'gender' => 'M', // ✅ fixed
+            'gender' => 'M',
+            'employee_id' => 'EMP-' . rand(10000, 99999), // ✅ random employee ID
+            'contact_number' => '09' . rand(100000000, 999999999), // ✅ random contact number
         ]);
     }
 }

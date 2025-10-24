@@ -20,13 +20,13 @@ const Settings = () => {
         <ul>
           <li onClick={() => navigate("/home")}>Home</li>
           <li onClick={() => navigate("/dashboard")}>Dashboard</li>
+          <li onClick={() => navigate("/profile-management")}>My Profile</li>
           <li onClick={() => navigate("/students")}>Students</li>
           <li onClick={() => navigate("/faculty")}>Faculty</li>
           <li onClick={() => navigate("/reports")}>Reports</li>
           <li className="active" onClick={() => navigate("/settings")}>
             Settings
           </li>
-          <li onClick={() => navigate("/profile-management")}>Profile Management</li>
           <li className="logout" onClick={() => navigate("/")}>Logout</li>
         </ul>
       </aside>

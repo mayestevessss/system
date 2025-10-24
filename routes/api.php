@@ -10,21 +10,7 @@ use App\Http\Controllers\{
     FacultyController
 };
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Organized backend routes by feature group:
-| - Dashboard
-| - Profile Management
-| - Student Management
-| - Archived Students
-| - Faculty Management
-|
-*/
-
-// ✅ Default Authenticated User (for Laravel Sanctum)
+// ✅ Authenticated User
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
@@ -41,13 +27,13 @@ Route::prefix('profile')->group(function () {
 
 // 🎓 STUDENT MANAGEMENT
 Route::prefix('students')->group(function () {
-    Route::get('/', [StudentController::class, 'index'])->name('students.index');          // GET all students
-    Route::post('/', [StudentController::class, 'store'])->name('students.store');         // POST create student
-    Route::get('/{id}', [StudentController::class, 'show'])->name('students.show');        // GET single student
-    Route::put('/{id}', [StudentController::class, 'update'])->name('students.update');    // PUT update student
-    Route::patch('/{id}', [StudentController::class, 'update'])->name('students.patch');   // PATCH update student
-    Route::patch('/{id}/archive', [StudentController::class, 'toggleArchive'])->name('students.archive'); // Archive/unarchive
-    Route::delete('/{id}', [StudentController::class, 'destroy'])->name('students.destroy'); // DELETE student
+    Route::get('/', [StudentController::class, 'index'])->name('students.index');
+    Route::post('/', [StudentController::class, 'store'])->name('students.store');
+    Route::get('/{id}', [StudentController::class, 'show'])->name('students.show');
+    Route::put('/{id}', [StudentController::class, 'update'])->name('students.update');
+    Route::patch('/{id}', [StudentController::class, 'update'])->name('students.patch');
+    Route::patch('/{id}/archive', [StudentController::class, 'toggleArchive'])->name('students.archive');
+    Route::delete('/{id}', [StudentController::class, 'destroy'])->name('students.destroy');
 });
 
 // 🗃️ ARCHIVED STUDENTS

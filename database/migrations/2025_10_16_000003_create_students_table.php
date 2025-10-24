@@ -17,26 +17,17 @@ return new class extends Migration
             $table->string('fullname');
             $table->string('email')->unique();
 
-            // ✅ Legacy / compatibility columns (can be removed later)
+            // ✅ Department and Course as plain text only (no IDs)
             $table->string('department')->nullable();
             $table->string('course')->nullable();
 
-            // ✅ Relational columns
-            $table->foreignId('department_id')
-                  ->nullable()
-                  ->constrained('departments')
-                  ->nullOnDelete();
-
-            $table->foreignId('course_id')
-                  ->nullable()
-                  ->constrained('courses')
-                  ->nullOnDelete();
-
-            // ✅ Additional details
+            // ✅ Extra info fields
             $table->string('year_level')->nullable();
             $table->string('contact_number')->nullable();
             $table->string('adviser')->nullable();
             $table->enum('gender', ['M', 'F', 'O'])->nullable();
+
+            // ✅ Archive status
             $table->boolean('is_archived')->default(false);
 
             $table->timestamps();

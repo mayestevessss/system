@@ -7,29 +7,45 @@ use Illuminate\Http\Request;
 
 class ArchiveStudentController extends Controller
 {
-    // 🟢 Fetch all archived students
+    /**
+     * 🟢 Get all archived students
+     */
     public function index()
     {
         $students = Student::where('is_archived', true)->get();
-        return response()->json($students);
+        return response()->json($students, 200);
     }
 
-    // 🟡 Restore student (unarchive)
+    /**
+     * 🟡 Restore (unarchive) student
+     */
     public function restore($id)
     {
-        $student = Student::findOrFail($id);
+        $student = Student::find($id);
+
+        if (!$student) {
+            return response()->json(['message' => 'Student not found.'], 404);
+        }
+
         $student->is_archived = false;
         $student->save();
 
-        return response()->json(['message' => 'Student restored successfully!']);
+        return response()->json(['message' => 'Student restored successfully!'], 200);
     }
 
-    // 🔴 Permanently delete student
+    /**
+     * 🔴 Permanently delete student
+     */
     public function destroy($id)
     {
-        $student = Student::findOrFail($id);
+        $student = Student::find($id);
+
+        if (!$student) {
+            return response()->json(['message' => 'Student not found.'], 404);
+        }
+
         $student->delete();
 
-        return response()->json(['message' => 'Student permanently deleted!']);
+        return response()->json(['message' => 'Student permanently deleted!'], 200);
     }
 }

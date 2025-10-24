@@ -3,66 +3,65 @@
   height: 100vh;
   background-color: #b2ebf2;
 
-  /* ✅ Sidebar */
+  /* ✅ SIDEBAR (Updated to match Home Page Design) */
   .sidebar {
-    width: 220px;
-    background-color: #1e656d;
-    color: white;
+    width: 200px;
+    background-color: #265e5d;
+    color: rgb(0, 0, 0);
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 20px;
+    padding-top: 15px;
+    box-shadow: 3px 0 6px rgba(0, 0, 0, 0.2);
 
     .sidebar-logo {
-      width: 90px;
-      margin-bottom: 20px;
+      width: 80px;
+      margin-bottom: 15px;
     }
 
     ul {
       list-style: none;
       padding: 0;
       width: 100%;
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
 
       li {
-        padding: 12px 20px;
-        cursor: pointer;
+        padding: 8px;
         text-align: center;
+        margin: 5px 10px;
+        border: 1px solid rgb(0, 0, 0);
+        border-radius: 3px;
+        cursor: pointer;
+        background-color: #ffffff;
+        font-size: 14px;
         font-weight: 500;
-        transition: 0.3s;
+        transition: 0.2s;
 
-        &:hover,
+        &:hover {
+          background-color: #5ed2c8;
+          transform: scale(1.03);
+        }
+
         &.active {
-          background-color: #0f4c55;
+          background-color: #43a4a3;
+          color: #ffffff;
+          font-weight: bold;
         }
-      }
 
-      .profile-management {
-        background-color: #1b777f;
-        font-weight: bold;
+        &.logout {
+          margin-top: auto;
+          background-color: #1b4c4c;
+          color: #ffffff;
 
-        &:hover {
-          background-color: #0f4c55;
-        }
-      }
-
-      .logout {
-        margin-top: auto;
-        background-color: #f3f3f3;
-        color: #1e656d;
-        font-weight: bold;
-        border-top: 2px solid rgba(255, 255, 255, 0.1);
-
-        &:hover {
-          background-color: #e0e0e0;
+          &:hover {
+            background-color: #ff6961;
+            color: rgb(0, 0, 0);
+          }
         }
       }
     }
   }
 
-  /* ✅ Main Section */
+  /* ✅ MAIN SECTION */
   .students-main {
     flex: 1;
     padding: 20px;
@@ -197,7 +196,7 @@
         background-color: #42a5f5;
       }
 
-      /* ✅ Combine Edit + Archive neatly side by side */
+      /* ✅ Edit + Archive buttons side by side */
       td.actions {
         display: flex;
         justify-content: center;

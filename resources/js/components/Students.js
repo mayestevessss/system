@@ -1,45 +1,61 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import "../../sass/Students.scss";
 
 const Students = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [students, setStudents] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [filterMode, setFilterMode] = useState("none");
 
-  // ✅ Fetch real students from Laravel API
+  // ✅ Fetch all active (non-archived) students
   const fetchStudents = async () => {
     try {
       const res = await fetch("http://127.0.0.1:8000/api/students");
       if (!res.ok) throw new Error("Failed to fetch students");
       const data = await res.json();
-      setStudents(data);
+      setStudents(data.filter((s) => !s.is_archived));
     } catch (error) {
       console.error("⚠️ Error fetching students:", error);
       alert("Cannot connect to backend. Please make sure Laravel server is running (php artisan serve).");
     }
   };
 
+  // ✅ Fetch once on mount, and refetch if redirected after adding student
   useEffect(() => {
     fetchStudents();
   }, []);
 
-  // ✅ Archive Student
-  const handleArchive = (id) => {
+  // ✅ Detect redirect after AddStudent
+  useEffect(() => {
+    if (location.state?.added) {
+      fetchStudents(); // re-fetch list
+      // ✅ clear state para hindi infinite loop
+      navigate(location.pathname, { replace: true });
+    }
+  }, [location.state, navigate, location.pathname]);
+
+  // ✅ Archive student
+  const handleArchive = async (id) => {
     if (window.confirm("Are you sure you want to archive this student?")) {
-      const selected = students.find((s) => s.id === id);
-      const updatedList = students.filter((s) => s.id !== id);
+      try {
+        const res = await fetch(`http://127.0.0.1:8000/api/students/${id}/archive`, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+        });
 
-      const archivedList = JSON.parse(localStorage.getItem("archivedStudents")) || [];
-      localStorage.setItem("archivedStudents", JSON.stringify([...archivedList, selected]));
-      setStudents(updatedList);
-
-      alert("📦 Student archived successfully!");
+        if (!res.ok) throw new Error("Failed to archive student");
+        setStudents((prev) => prev.filter((s) => s.id !== id));
+        alert("📦 Student archived successfully!");
+      } catch (error) {
+        console.error("⚠️ Error archiving student:", error);
+        alert("Failed to archive student. Please try again.");
+      }
     }
   };
 
-  // ✅ Search filter
+  // ✅ Search
   const handleSearch = (e) => setSearchTerm(e.target.value);
 
   const filtered = students.filter(
@@ -49,14 +65,14 @@ const Students = () => {
       s.student_id?.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  // ✅ Sort A→Z toggle
+  // ✅ Sort A–Z toggle
   const handleFilter = () => {
     if (filterMode === "none") {
       const sorted = [...students].sort((a, b) => a.fullname.localeCompare(b.fullname));
       setStudents(sorted);
       setFilterMode("az");
     } else {
-      fetchStudents(); // reset to original order
+      fetchStudents();
       setFilterMode("none");
     }
   };
@@ -68,23 +84,24 @@ const Students = () => {
 
   return (
     <div className="students-page">
+      {/* ✅ Sidebar */}
       <aside className="sidebar">
         <img src="/logo.png" alt="Logo" className="sidebar-logo" />
         <ul>
           <li onClick={() => navigate("/home")}>Home</li>
           <li onClick={() => navigate("/dashboard")}>Dashboard</li>
-          <li onClick={() => navigate("/profile-management")}>Profile Management</li>
-          <li onClick={() => navigate("/students")} className="active">
-            Student
+          <li onClick={() => navigate("/profile-management")}>My Profile</li>
+          <li className="active" onClick={() => navigate("/students")}>
+            Students
           </li>
-          <li onClick={() => navigate("/faculty")}>Faculty Management</li>
-           <li onClick={() => navigate("/reports")}>Report</li>
-          <li onClick={() => navigate("/archivestu")}>Archived Students</li>
+          <li onClick={() => navigate("/faculty")}>Faculty</li>
+          <li onClick={() => navigate("/reports")}>Reports</li>
           <li onClick={() => navigate("/settings")}>Settings</li>
           <li className="logout" onClick={() => navigate("/")}>Logout</li>
         </ul>
       </aside>
 
+      {/* ✅ Main Content */}
       <main className="students-main">
         <header className="header">
           <div className="header-left">
@@ -101,6 +118,7 @@ const Students = () => {
           </div>
         </header>
 
+        {/* ✅ Search & Filter */}
         <div className="search-bar">
           <input
             type="text"
@@ -116,6 +134,7 @@ const Students = () => {
           </button>
         </div>
 
+        {/* ✅ Table */}
         <table className="students-table">
           <thead>
             <tr>
@@ -139,9 +158,9 @@ const Students = () => {
                   <td>{idx + 1}</td>
                   <td>{student.fullname}</td>
                   <td>{student.email}</td>
-                  <td>{student.course}</td>
+                  <td>{student.course || "N/A"}</td>
                   <td>{student.student_id}</td>
-                  <td>{student.department}</td>
+                  <td>{student.department || "N/A"}</td>
                   <td>{student.year_level}</td>
                   <td>{student.gender}</td>
                   <td>{student.contact_number}</td>
@@ -154,7 +173,9 @@ const Students = () => {
               ))
             ) : (
               <tr>
-                <td colSpan="11" style={{ textAlign: "center", padding: 20 }}>No students found.</td>
+                <td colSpan="11" style={{ textAlign: "center", padding: 20 }}>
+                  No students found.
+                </td>
               </tr>
             )}
           </tbody>

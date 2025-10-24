@@ -37,14 +37,12 @@ const Dashboard = () => {
       const storedCourses = JSON.parse(localStorage.getItem("courses")) || [];
       const storedDepartments = JSON.parse(localStorage.getItem("departments")) || [];
 
-      // 🔹 Count students per course
       const courseCount = {};
       storedStudents.forEach((s) => {
         const course = s.course || "Unassigned";
         courseCount[course] = (courseCount[course] || 0) + 1;
       });
 
-      // 🔹 Count faculty per department
       const deptCount = {};
       storedFaculty.forEach((f) => {
         const dept = f.department || "Unassigned";
@@ -67,7 +65,6 @@ const Dashboard = () => {
     return () => clearInterval(interval);
   }, []);
 
-  // 🔸 Chart setup for Students per Course
   const studentCourseChart = {
     labels: Object.keys(studentPerCourse),
     datasets: [
@@ -85,7 +82,6 @@ const Dashboard = () => {
     ],
   };
 
-  // 🔸 Chart setup for Faculty per Department
   const facultyDepartmentChart = {
     labels: Object.keys(facultyPerDepartment),
     datasets: [
@@ -111,12 +107,13 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard-page">
-      {/* Sidebar */}
+      {/* SIDEBAR */}
       <aside className="sidebar">
         <img src="/logo.png" alt="School Logo" className="sidebar-logo" />
         <ul>
           <li onClick={() => navigate("/home")}>Home</li>
           <li className="active" onClick={() => navigate("/dashboard")}>Dashboard</li>
+          <li onClick={() => navigate("/profile-management")}>My Profile</li>
           <li onClick={() => navigate("/students")}>Students</li>
           <li onClick={() => navigate("/faculty")}>Faculty</li>
           <li onClick={() => navigate("/course")}>Courses</li>
@@ -127,7 +124,7 @@ const Dashboard = () => {
         </ul>
       </aside>
 
-      {/* Main Content */}
+      {/* MAIN CONTENT */}
       <main className="main-content">
         <header className="header">
           <div className="header-left">
@@ -139,7 +136,6 @@ const Dashboard = () => {
           </div>
         </header>
 
-        {/* Cards */}
         <section className="cards">
           <div className="card blue">
             <FaUserGraduate className="card-icon" />
@@ -170,9 +166,7 @@ const Dashboard = () => {
           </div>
         </section>
 
-        {/* Charts */}
         <section className="chart-section">
-          {/* Students per Course */}
           <div className="chart-box">
             <h3>Students per Course</h3>
             <div className="chart-container">
@@ -193,7 +187,6 @@ const Dashboard = () => {
             </div>
           </div>
 
-          {/* Faculty per Department */}
           <div className="chart-box">
             <h3>Faculty per Department</h3>
             <div className="chart-container">

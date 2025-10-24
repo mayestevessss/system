@@ -25,7 +25,7 @@ const Faculty = () => {
     fetchFaculty();
   }, []);
 
-  // ✅ Archive Faculty
+  // ✅ Archive Faculty (temporary via localStorage)
   const handleArchive = (id) => {
     if (window.confirm("Archive this faculty member?")) {
       const selected = faculty.find((f) => f.id === id);
@@ -70,15 +70,15 @@ const Faculty = () => {
     <div className="faculty-page">
       {/* ===== Sidebar ===== */}
       <aside className="sidebar">
-        <img src="/logo.png" alt="Logo" className="sidebar-logo" />
+        <img src="/image/fsuu logo.png" alt="FSUU Logo" className="sidebar-logo" />
         <ul>
           <li onClick={() => navigate("/home")}>Home</li>
           <li onClick={() => navigate("/dashboard")}>Dashboard</li>
+          <li onClick={() => navigate("/profile")}>My Profile</li>
           <li onClick={() => navigate("/students")}>Students</li>
           <li className="active" onClick={() => navigate("/faculty")}>Faculty</li>
           <li onClick={() => navigate("/reports")}>Reports</li>
           <li onClick={() => navigate("/settings")}>Settings</li>
-          <li onClick={() => navigate("/profile")}>My Profile</li>
           <li className="logout" onClick={() => navigate("/")}>Logout</li>
         </ul>
       </aside>
@@ -87,7 +87,7 @@ const Faculty = () => {
       <main className="faculty-main">
         <header className="header">
           <div className="header-left">
-            <img src="/logo.png" alt="logo" className="header-logo" />
+            <img src="/image/fsuu logo.png" alt="logo" className="header-logo" />
             <div className="header-text">
               <h1>Faculty</h1>
               <h3><em>Manage Faculty Information</em></h3>
@@ -134,13 +134,13 @@ const Faculty = () => {
               filtered.map((f, idx) => (
                 <tr key={f.id}>
                   <td>{idx + 1}</td>
-                  <td className="fullname-cell">{f.fullname}</td>
-                  <td>{f.email}</td>
-                  <td>{f.employee_id || "—"}</td>
-                  <td>{f.department}</td>
-                  <td>{f.position}</td>
-                  <td>{f.gender}</td>
-                  <td>{f.contact_number}</td>
+                  <td className="fullname-cell">{f.fullname || "—"}</td>
+                  <td>{f.email || "—"}</td>
+                  <td>{f.employee_id || `EMP-${1000 + f.id}`}</td>
+                  <td>{f.department || "General Education"}</td>
+                  <td>{f.position || "Instructor"}</td>
+                  <td>{f.gender || "N/A"}</td>
+                  <td>{f.contact_number || "09XXXXXXXXX"}</td>
                   <td className="actions">
                     <button className="edit-btn" onClick={() => handleEdit(f.id)}>Edit</button>
                     <button className="archive-btn" onClick={() => handleArchive(f.id)}>Archive</button>

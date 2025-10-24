@@ -10,34 +10,27 @@ const EditStudent = () => {
     fullname: "",
     email: "",
     student_id: "",
+    course: "",
     department: "",
     year_level: "",
+    gender: "",
+    contact_number: "",
+    adviser: "",
   });
 
   const [loading, setLoading] = useState(true);
 
+  // ✅ Fetch student info
   useEffect(() => {
     const fetchStudent = async () => {
       try {
-        // Try fetching from API
         const res = await fetch(`http://127.0.0.1:8000/api/students/${id}`);
-        if (!res.ok) throw new Error("No API response");
+        if (!res.ok) throw new Error("Failed to fetch student");
         const data = await res.json();
-
-        setForm({
-          fullname: data.fullname,
-          email: data.email,
-          student_id: data.student_id,
-          department: data.department,
-          year_level: data.year_level,
-        });
+        setForm(data);
       } catch (error) {
-        console.warn("⚠️ API failed, loading from localStorage instead");
-        // Fallback: get data from localStorage
-        const stored = JSON.parse(localStorage.getItem("students")) || [];
-        const student = stored.find((s) => String(s.id) === String(id));
-        if (student) setForm(student);
-        else alert("⚠️ Student not found in localStorage.");
+        console.error("⚠️ Error loading student:", error);
+        alert("Failed to load student info from backend.");
       } finally {
         setLoading(false);
       }
@@ -45,55 +38,43 @@ const EditStudent = () => {
     fetchStudent();
   }, [id]);
 
+  // ✅ Handle input changes
   const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setForm((prev) => ({ ...prev, [name]: value }));
   };
 
+  // ✅ Submit updated data
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
-      // Try updating through API
       const res = await fetch(`http://127.0.0.1:8000/api/students/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
       });
 
-      let updated;
-      if (res.ok) {
-        updated = await res.json();
-      } else {
-        // Fallback if no backend
-        updated = { id, ...form };
+      if (!res.ok) {
+        const errData = await res.json().catch(() => ({}));
+        throw new Error(errData.message || "Failed to update student");
       }
 
-      // Update in localStorage
-      const stored = JSON.parse(localStorage.getItem("students")) || [];
-      const updatedList = stored.map((s) =>
-        String(s.id) === String(id) ? updated : s
-      );
-      localStorage.setItem("students", JSON.stringify(updatedList));
-
       alert("✅ Student updated successfully!");
-      navigate("/students", { state: { updatedStudent: updated } });
+      navigate("/students");
     } catch (error) {
-      console.error(error);
-      alert("⚠️ Failed to update student.");
+      console.error("⚠️ Update error:", error);
+      alert("⚠️ Failed to update student. Please try again.");
     }
   };
 
   if (loading)
-    return (
-      <div className="edit-student-page">
-        <p className="loading-text">Loading student data...</p>
-      </div>
-    );
+    return <p className="loading-text">Loading student data...</p>;
 
   return (
     <div className="edit-student-page">
       <div className="edit-card">
         <h2>Edit Student Information</h2>
+
         <form onSubmit={handleSubmit} className="edit-form">
           <label>
             Full Name:
@@ -129,22 +110,88 @@ const EditStudent = () => {
           </label>
 
           <label>
+            Course:
+            <select
+              name="course"
+              value={form.course}
+              onChange={handleChange}
+              required
+            >
+              <option value="">Select Course</option>
+              <option value="CS">Computer Science</option>
+              <option value="IT">Information Technology</option>
+              <option value="ACC">Accountancy</option>
+              <option value="ENG">Engineering</option>
+              <option value="BA">Business Administration</option>
+            </select>
+          </label>
+
+          <label>
             Department:
-            <input
-              type="text"
+            <select
               name="department"
               value={form.department}
               onChange={handleChange}
+              required
+            >
+              <option value="">Select Department</option>
+              <option value="Computer Science">Computer Science</option>
+              <option value="Accountancy">Accountancy</option>
+              <option value="Psychology">Psychology</option>
+              <option value="Engineering">Engineering</option>
+              <option value="Business Administration">Business Administration</option>
+            </select>
+          </label>
+
+          <label>
+            Year Level:
+            <select
+              name="year_level"
+              value={form.year_level}
+              onChange={handleChange}
+              required
+            >
+              <option value="">Select Year</option>
+              <option value="1st Year">1st Year</option>
+              <option value="2nd Year">2nd Year</option>
+              <option value="3rd Year">3rd Year</option>
+              <option value="4th Year">4th Year</option>
+            </select>
+          </label>
+
+          <label>
+            Gender:
+            <select
+              name="gender"
+              value={form.gender}
+              onChange={handleChange}
+              required
+            >
+              <option value="">Select Gender</option>
+              <option value="M">Male</option>
+              <option value="F">Female</option>
+              <option value="O">Other</option>
+            </select>
+          </label>
+
+          <label>
+            Contact Number:
+            <input
+              type="text"
+              name="contact_number"
+              value={form.contact_number}
+              onChange={handleChange}
+              maxLength="11"
               required
             />
           </label>
 
           <label>
-            Year Level:
+            Adviser:
             <input
               type="text"
-              name="year_level"
-              value={form.year_level}
+              name="adviser"
+              value={form.adviser}
               onChange={handleChange}
               required
             />

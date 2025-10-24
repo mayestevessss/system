@@ -30041,7 +30041,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".faculty-page {\n  display: flex;\n  height: 100vh;\n  background-color: #80deea;\n}\n.faculty-page .sidebar {\n  width: 220px;\n  background-color: #4a148c;\n  color: white;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  padding-top: 20px;\n}\n.faculty-page .sidebar .sidebar-logo {\n  width: 90px;\n  margin-bottom: 20px;\n}\n.faculty-page .sidebar ul {\n  list-style: none;\n  padding: 0;\n  width: 100%;\n  display: flex;\n  flex-direction: column;\n  gap: 5px;\n}\n.faculty-page .sidebar ul li {\n  padding: 12px 20px;\n  cursor: pointer;\n  text-align: center;\n  font-weight: 500;\n  transition: 0.3s;\n}\n.faculty-page .sidebar ul li:hover, .faculty-page .sidebar ul li.active {\n  background-color: #6a1b9a;\n}\n.faculty-page .sidebar ul .logout {\n  margin-top: auto;\n  background-color: #f3f3f3;\n  color: #4a148c;\n  font-weight: bold;\n}\n.faculty-page .sidebar ul .logout:hover {\n  background-color: #e0e0e0;\n}\n.faculty-page .faculty-main {\n  flex: 1;\n  padding: 20px;\n  overflow-y: auto;\n}\n.faculty-page .faculty-main .header {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  background-color: #7e57c2;\n  padding: 15px;\n  border-radius: 10px;\n  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);\n}\n.faculty-page .faculty-main .header .header-left {\n  display: flex;\n  align-items: center;\n  gap: 15px;\n}\n.faculty-page .faculty-main .header .header-left .header-logo {\n  width: 60px;\n}\n.faculty-page .faculty-main .header .header-left .header-text h1 {\n  margin: 0;\n  color: white;\n  font-size: 24px;\n}\n.faculty-page .faculty-main .header .header-left .header-text h3 {\n  margin: 0;\n  font-size: 14px;\n  color: #ede7f6;\n}\n.faculty-page .faculty-main .search-section {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  margin: 15px 0;\n}\n.faculty-page .faculty-main .search-section input {\n  width: 300px;\n  padding: 8px 12px;\n  border-radius: 6px;\n  border: 1px solid #ccc;\n  outline: none;\n  transition: 0.3s;\n}\n.faculty-page .faculty-main .search-section input:focus {\n  border-color: #7e57c2;\n  box-shadow: 0 0 5px rgba(126, 87, 194, 0.5);\n}\n.faculty-page .faculty-main .search-section .search-buttons {\n  display: flex;\n  gap: 10px;\n}\n.faculty-page .faculty-main .search-section .search-buttons .add-btn,\n.faculty-page .faculty-main .search-section .search-buttons .filter-btn,\n.faculty-page .faculty-main .search-section .search-buttons .archive-view-btn {\n  border: none;\n  border-radius: 6px;\n  color: white;\n  padding: 8px 14px;\n  cursor: pointer;\n  transition: 0.3s;\n}\n.faculty-page .faculty-main .search-section .search-buttons .add-btn {\n  background-color: #ffca28;\n  color: #4a148c;\n  font-weight: bold;\n}\n.faculty-page .faculty-main .search-section .search-buttons .add-btn:hover {\n  background-color: #ffb300;\n  transform: scale(1.05);\n}\n.faculty-page .faculty-main .search-section .search-buttons .filter-btn {\n  background-color: #8e24aa;\n}\n.faculty-page .faculty-main .search-section .search-buttons .filter-btn:hover {\n  background-color: #6a1b9a;\n}\n.faculty-page .faculty-main .search-section .search-buttons .archive-view-btn {\n  background-color: #5e35b1;\n}\n.faculty-page .faculty-main .search-section .search-buttons .archive-view-btn:hover {\n  background-color: #4527a0;\n}\n.faculty-page .faculty-main .faculty-table {\n  width: 100%;\n  border-collapse: collapse;\n  border-radius: 10px;\n  overflow: hidden;\n}\n.faculty-page .faculty-main .faculty-table th {\n  background-color: #0277bd;\n  color: white;\n  padding: 10px;\n  text-align: center;\n}\n.faculty-page .faculty-main .faculty-table td {\n  background-color: #42a5f5;\n  color: black;\n  text-align: center;\n  padding: 10px;\n  font-weight: 500;\n}\n.faculty-page .faculty-main .faculty-table tr {\n  border-bottom: 8px solid #80deea;\n  transition: background-color 0.3s;\n}\n.faculty-page .faculty-main .faculty-table tr:hover {\n  background-color: #64b5f6;\n}\n.faculty-page .faculty-main .faculty-table .actions {\n  display: flex;\n  justify-content: center;\n  gap: 8px;\n}\n.faculty-page .faculty-main .faculty-table .actions .edit-btn {\n  background-color: #ffca28;\n  border: none;\n  border-radius: 4px;\n  padding: 6px 12px;\n  font-weight: bold;\n  color: #4a148c;\n  cursor: pointer;\n}\n.faculty-page .faculty-main .faculty-table .actions .edit-btn:hover {\n  background-color: #ffb300;\n  transform: scale(1.05);\n}\n.faculty-page .faculty-main .faculty-table .actions .archive-btn {\n  background-color: #d32f2f;\n  border: none;\n  border-radius: 4px;\n  padding: 6px 12px;\n  color: white;\n  font-weight: bold;\n  cursor: pointer;\n}\n.faculty-page .faculty-main .faculty-table .actions .archive-btn:hover {\n  background-color: #b71c1c;\n  transform: scale(1.05);\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "@charset \"UTF-8\";\n.faculty-page {\n  display: flex;\n  height: 100vh;\n  background-color: #80deea;\n  /* ✅ SIDEBAR (updated color scheme) */\n}\n.faculty-page .sidebar {\n  width: 200px;\n  background-color: #ffffff; /* sidebar background changed to white */\n  color: #000000; /* text color black */\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  padding-top: 15px;\n}\n.faculty-page .sidebar .sidebar-logo {\n  width: 80px;\n  margin-bottom: 15px;\n}\n.faculty-page .sidebar ul {\n  list-style: none;\n  padding: 0;\n  width: 100%;\n}\n.faculty-page .sidebar ul li {\n  padding: 8px;\n  text-align: center;\n  margin: 5px 10px;\n  border: 1px solid #000000;\n  border-radius: 3px;\n  cursor: pointer;\n  background-color: #ffffff; /* white button background */\n  color: #000000; /* black text */\n  font-size: 14px;\n  transition: 0.2s;\n}\n.faculty-page .sidebar ul li:hover {\n  background-color: #5ed2c8; /* teal hover */\n  color: #000000;\n}\n.faculty-page .sidebar ul li.active {\n  background-color: #43a4a3;\n  font-weight: bold;\n  color: #000000;\n}\n.faculty-page .sidebar ul li.logout {\n  margin-top: auto;\n  background-color: #ffffff;\n  color: #000000;\n}\n.faculty-page .sidebar ul li.logout:hover {\n  background-color: #ff6961;\n  color: #000000;\n}\n.faculty-page {\n  /* ✅ MAIN CONTENT (unchanged) */\n}\n.faculty-page .faculty-main {\n  flex: 1;\n  padding: 20px;\n  overflow-y: auto;\n}\n.faculty-page .faculty-main .header {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  background-color: #7e57c2;\n  padding: 15px;\n  border-radius: 10px;\n  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);\n}\n.faculty-page .faculty-main .header .header-left {\n  display: flex;\n  align-items: center;\n  gap: 15px;\n}\n.faculty-page .faculty-main .header .header-left .header-logo {\n  width: 60px;\n}\n.faculty-page .faculty-main .header .header-left .header-text h1 {\n  margin: 0;\n  color: rgb(0, 0, 0);\n  font-size: 24px;\n}\n.faculty-page .faculty-main .header .header-left .header-text h3 {\n  margin: 0;\n  font-size: 14px;\n  color: #0d0d0e;\n}\n.faculty-page .faculty-main .search-section {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  margin: 15px 0;\n}\n.faculty-page .faculty-main .search-section input {\n  width: 300px;\n  padding: 8px 12px;\n  border-radius: 6px;\n  border: 1px solid #000000;\n  outline: none;\n  transition: 0.3s;\n}\n.faculty-page .faculty-main .search-section input:focus {\n  border-color: #7e57c2;\n  box-shadow: 0 0 5px rgba(126, 87, 194, 0.5);\n}\n.faculty-page .faculty-main .search-section .search-buttons {\n  display: flex;\n  gap: 10px;\n}\n.faculty-page .faculty-main .search-section .search-buttons .add-btn,\n.faculty-page .faculty-main .search-section .search-buttons .filter-btn,\n.faculty-page .faculty-main .search-section .search-buttons .archive-view-btn {\n  border: none;\n  border-radius: 6px;\n  color: rgb(0, 0, 0);\n  padding: 8px 14px;\n  cursor: pointer;\n  transition: 0.3s;\n}\n.faculty-page .faculty-main .search-section .search-buttons .add-btn {\n  background-color: #ffca28;\n  color: #4a148c;\n  font-weight: bold;\n}\n.faculty-page .faculty-main .search-section .search-buttons .add-btn:hover {\n  background-color: #ffb300;\n  transform: scale(1.05);\n}\n.faculty-page .faculty-main .search-section .search-buttons .filter-btn {\n  background-color: #8e24aa;\n}\n.faculty-page .faculty-main .search-section .search-buttons .filter-btn:hover {\n  background-color: #6a1b9a;\n}\n.faculty-page .faculty-main .search-section .search-buttons .archive-view-btn {\n  background-color: #5e35b1;\n}\n.faculty-page .faculty-main .search-section .search-buttons .archive-view-btn:hover {\n  background-color: #4527a0;\n}\n.faculty-page .faculty-main .faculty-table {\n  width: 100%;\n  border-collapse: collapse;\n  border-radius: 10px;\n  overflow: hidden;\n}\n.faculty-page .faculty-main .faculty-table th {\n  background-color: #265e5d;\n  color: rgb(0, 0, 0);\n  padding: 10px;\n  text-align: center;\n}\n.faculty-page .faculty-main .faculty-table td {\n  background-color: #42a5f5;\n  color: black;\n  text-align: center;\n  padding: 10px;\n  font-weight: 500;\n}\n.faculty-page .faculty-main .faculty-table tr {\n  border-bottom: 8px solid #80deea;\n  transition: background-color 0.3s;\n}\n.faculty-page .faculty-main .faculty-table tr:hover {\n  background-color: #64b5f6;\n}\n.faculty-page .faculty-main .faculty-table .actions {\n  display: flex;\n  justify-content: center;\n  gap: 8px;\n}\n.faculty-page .faculty-main .faculty-table .actions .edit-btn {\n  background-color: #ffca28;\n  border: none;\n  border-radius: 4px;\n  padding: 6px 12px;\n  font-weight: bold;\n  color: #4a148c;\n  cursor: pointer;\n}\n.faculty-page .faculty-main .faculty-table .actions .edit-btn:hover {\n  background-color: #ffb300;\n  transform: scale(1.05);\n}\n.faculty-page .faculty-main .faculty-table .actions .archive-btn {\n  background-color: #d32f2f;\n  border: none;\n  border-radius: 4px;\n  padding: 6px 12px;\n  color: rgb(0, 0, 0);\n  font-weight: bold;\n  cursor: pointer;\n}\n.faculty-page .faculty-main .faculty-table .actions .archive-btn:hover {\n  background-color: #b71c1c;\n  transform: scale(1.05);\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -30065,7 +30065,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".home-page {\n  display: flex;\n  font-family: \"Arial\", sans-serif;\n  min-height: 100vh;\n  background-color: #57d6cf;\n}\n\n/* Sidebar */\n.sidebar {\n  width: 170px;\n  background-color: #215b5b;\n  color: white;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  padding-top: 20px;\n  box-shadow: 2px 0 0 rgba(0, 0, 0, 0.06);\n}\n.sidebar .sidebar-logo {\n  width: 90px;\n  margin-bottom: 18px;\n}\n.sidebar ul {\n  list-style: none;\n  padding: 0;\n  width: 100%;\n}\n.sidebar ul li {\n  background-color: white;\n  color: black;\n  padding: 10px;\n  text-align: center;\n  margin: 8px 12px;\n  border-radius: 4px;\n  font-weight: 600;\n  cursor: pointer;\n  transition: 0.15s;\n}\n.sidebar ul li:hover {\n  background-color: #6ed2ca;\n  color: white;\n}\n.sidebar ul li.active {\n  background-color: #ffffff;\n  color: black;\n}\n.sidebar ul li.logout {\n  margin-top: auto;\n  background-color: white;\n  color: black;\n}\n.sidebar ul li.logout:hover {\n  background-color: #ff6961;\n  color: white;\n}\n\n/* Main Content */\n.main-content {\n  flex: 1;\n  padding: 18px 36px;\n}\n.main-content .header {\n  background-color: #a7e9df;\n  padding: 18px 24px;\n  border-radius: 4px;\n  display: flex;\n  align-items: center;\n  margin-bottom: 28px;\n}\n.main-content .header .header-left {\n  display: flex;\n  align-items: center;\n}\n.main-content .header .header-logo {\n  width: 70px;\n  margin-right: 18px;\n}\n.main-content .header .header-text h1 {\n  margin: 0;\n  font-size: 28px;\n  color: #0b3a3a;\n}\n.main-content .header .header-text h3 {\n  margin: 4px 0 0;\n  font-weight: 400;\n  font-style: italic;\n}\n.main-content .cards {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 30px;\n  align-items: flex-start;\n}\n.main-content .card {\n  width: 320px;\n  height: 150px;\n  border-radius: 4px;\n  color: white;\n  padding: 18px 20px;\n  box-sizing: border-box;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.08);\n}\n.main-content .card .card-top {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n.main-content .card .card-top h2 {\n  margin: 0;\n  font-size: 36px;\n  font-weight: 300;\n}\n.main-content .card .card-top p {\n  margin: 0;\n  font-size: 14px;\n  align-self: flex-end;\n  opacity: 0.95;\n}\n.main-content .card .info {\n  background-color: rgba(0, 0, 0, 0.12);\n  padding: 8px;\n  border-radius: 2px;\n  text-align: center;\n  font-weight: 600;\n  cursor: pointer;\n  width: 100%;\n}\n.main-content .card.blue {\n  background: linear-gradient(180deg, #3f8fe6 0%, #2c6fe3 85%);\n}\n.main-content .card.red {\n  background: linear-gradient(180deg, #ef8f8f 0%, #e36f6f 85%);\n}\n.main-content .card.green {\n  background: linear-gradient(180deg, #6dd56a 0%, #36a934 85%);\n}\n.main-content .card.purple {\n  background: linear-gradient(180deg, #c592f0 0%, #b773e0 85%);\n}\n.main-content .card.yellow {\n  background: linear-gradient(180deg, #f1ea6a 0%, #dede44 85%);\n  color: #1b1b1b;\n}\n\n/* Responsive */\n@media (max-width: 980px) {\n  .cards {\n    justify-content: center;\n  }\n  .card {\n    width: 280px;\n  }\n  .sidebar {\n    width: 140px;\n  }\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".home-page {\n  display: flex;\n  font-family: \"Arial\", sans-serif;\n  min-height: 100vh;\n  background-color: #ffffff;\n}\n\n/* Sidebar (matched with Settings.scss) */\n.sidebar {\n  width: 200px;\n  background-color: #265e5d;\n  color: rgb(0, 0, 0);\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  padding-top: 15px;\n}\n.sidebar .sidebar-logo {\n  width: 80px;\n  margin-bottom: 15px;\n}\n.sidebar ul {\n  list-style: none;\n  padding: 0;\n  width: 100%;\n}\n.sidebar ul li {\n  padding: 8px;\n  text-align: center;\n  margin: 5px 10px;\n  border: 1px solid rgb(0, 0, 0);\n  border-radius: 3px;\n  cursor: pointer;\n  background-color: #ffffff;\n  font-size: 14px;\n  transition: 0.2s;\n}\n.sidebar ul li:hover {\n  background-color: #5ed2c8;\n}\n.sidebar ul li.active {\n  background-color: #43a4a3;\n  font-weight: bold;\n}\n.sidebar ul li.logout {\n  margin-top: auto;\n  background-color: #1b4c4c;\n}\n.sidebar ul li.logout:hover {\n  background-color: #ff6961;\n  color: rgb(0, 0, 0);\n}\n\n/* Main Content */\n.main-content {\n  flex: 1;\n  padding: 18px 36px;\n  background-color: #5ed2c8;\n}\n.main-content .header {\n  background-color: #7ad5c5;\n  padding: 18px 24px;\n  border-radius: 4px;\n  display: flex;\n  align-items: center;\n  margin-bottom: 28px;\n}\n.main-content .header .header-left {\n  display: flex;\n  align-items: center;\n}\n.main-content .header .header-logo {\n  width: 60px;\n  margin-right: 15px;\n}\n.main-content .header .header-text h1 {\n  margin: 0;\n  font-size: 26px;\n  color: #0b3a3a;\n}\n.main-content .header .header-text h3 {\n  margin: 4px 0 0;\n  font-weight: 400;\n  font-style: italic;\n  font-size: 14px;\n}\n.main-content .cards {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 30px;\n  align-items: flex-start;\n}\n.main-content .card {\n  width: 320px;\n  height: 150px;\n  border-radius: 4px;\n  color: white;\n  padding: 18px 20px;\n  box-sizing: border-box;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.08);\n}\n.main-content .card .card-top {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n.main-content .card .card-top h2 {\n  margin: 0;\n  font-size: 36px;\n  font-weight: 300;\n}\n.main-content .card .card-top p {\n  margin: 0;\n  font-size: 14px;\n  align-self: flex-end;\n  opacity: 0.95;\n}\n.main-content .card .info {\n  background-color: rgba(0, 0, 0, 0.12);\n  padding: 8px;\n  border-radius: 2px;\n  text-align: center;\n  font-weight: 600;\n  cursor: pointer;\n  width: 100%;\n}\n.main-content .card.blue {\n  background: linear-gradient(180deg, #3f8fe6 0%, #2c6fe3 85%);\n}\n.main-content .card.red {\n  background: linear-gradient(180deg, #ef8f8f 0%, #e36f6f 85%);\n}\n.main-content .card.green {\n  background: linear-gradient(180deg, #6dd56a 0%, #36a934 85%);\n}\n.main-content .card.purple {\n  background: linear-gradient(180deg, #c592f0 0%, #b773e0 85%);\n}\n.main-content .card.yellow {\n  background: linear-gradient(180deg, #f1ea6a 0%, #dede44 85%);\n  color: #1b1b1b;\n}\n\n/* Responsive */\n@media (max-width: 980px) {\n  .cards {\n    justify-content: center;\n  }\n  .card {\n    width: 280px;\n  }\n  .sidebar {\n    width: 160px;\n  }\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -30089,7 +30089,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".login-page {\n  font-family: \"Arial\", sans-serif;\n  background-color: #1c7070;\n  min-height: 100vh;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n}\n\n.header {\n  width: 100%;\n  background-color: #8de0d0;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  padding: 15px 40px;\n}\n.header .logo img {\n  width: 90px;\n}\n.header .header-info {\n  text-align: right;\n}\n.header .header-info h3 {\n  margin: 0;\n  font-weight: bold;\n}\n.header .header-info .contact p {\n  margin: 3px 0;\n  font-size: 14px;\n}\n\n.login-container {\n  background-color: #2890e3;\n  width: 80%;\n  max-width: 500px;\n  margin-top: 40px;\n  padding: 30px;\n  border-radius: 10px;\n  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);\n  color: white;\n}\n\n.login-box {\n  text-align: center;\n}\n.login-box h2 {\n  margin-bottom: 5px;\n  font-size: 28px;\n  letter-spacing: 1px;\n}\n.login-box .subtitle {\n  font-size: 13px;\n  margin-bottom: 20px;\n  color: #dfe8f1;\n}\n.login-box form {\n  display: flex;\n  flex-direction: column;\n  text-align: left;\n}\n.login-box form label {\n  font-size: 14px;\n  margin: 8px 0 4px;\n}\n.login-box form input {\n  padding: 10px;\n  border: none;\n  border-radius: 5px;\n  margin-bottom: 10px;\n  font-size: 14px;\n  outline: none;\n}\n.login-box form .forgot {\n  color: #e8f3ff;\n  font-size: 13px;\n  text-align: right;\n  margin-bottom: 15px;\n  text-decoration: none;\n}\n.login-box form .forgot:hover {\n  text-decoration: underline;\n}\n.login-box form .error {\n  background-color: rgba(255, 0, 0, 0.2);\n  border: 1px solid #ff7070;\n  color: #ffe0e0;\n  padding: 8px;\n  border-radius: 5px;\n  font-size: 13px;\n  margin-bottom: 10px;\n  text-align: center;\n}\n.login-box form .login-btn {\n  background-color: #1f61d1;\n  color: white;\n  padding: 10px;\n  border: none;\n  border-radius: 5px;\n  cursor: pointer;\n  font-size: 15px;\n  transition: background-color 0.3s ease, transform 0.2s ease;\n}\n.login-box form .login-btn:hover {\n  background-color: #1549a3;\n  transform: scale(1.02);\n}\n\n/* Responsive fix */\n@media (max-width: 600px) {\n  .login-container {\n    width: 90%;\n    padding: 20px;\n  }\n  .header {\n    flex-direction: column;\n    align-items: center;\n    text-align: center;\n  }\n  .header-info {\n    margin-top: 10px;\n  }\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".login-page {\n  font-family: \"Arial\", sans-serif;\n  background-color: #1c7070;\n  min-height: 100vh;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n}\n\n/* ===== HEADER ===== */\n.header {\n  width: 100%;\n  background-color: #8de0d0;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  padding: 15px 50px;\n  box-sizing: border-box;\n}\n.header .logo img {\n  width: 90px;\n  height: auto;\n}\n.header .header-info {\n  text-align: left;\n  color: #084d4d;\n}\n.header .header-info h3 {\n  margin: 0;\n  font-weight: bold;\n  font-size: 16px;\n}\n.header .header-info .contact {\n  margin-top: 5px;\n}\n.header .header-info .contact p {\n  margin: 2px 0;\n  font-size: 14px;\n}\n\n/* ===== LOGIN CONTAINER ===== */\n.login-container {\n  background-color: #2890e3;\n  width: 400px;\n  margin-top: 60px;\n  border-radius: 10px;\n  padding: 40px 30px;\n  text-align: center;\n  color: white;\n  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);\n}\n\n.login-box h2 {\n  font-size: 24px;\n  margin-bottom: 5px;\n}\n.login-box .subtitle {\n  font-size: 13px;\n  color: #dfe8f1;\n  margin-bottom: 20px;\n}\n.login-box {\n  /* === SIGN IN / SIGN UP BUTTONS === */\n}\n.login-box .switch-buttons {\n  display: flex;\n  justify-content: center;\n  margin-bottom: 25px;\n  background-color: #a8c3e8;\n  border-radius: 5px;\n  overflow: hidden;\n}\n.login-box .switch-buttons button {\n  flex: 1;\n  padding: 10px 0;\n  font-size: 14px;\n  border: none;\n  cursor: pointer;\n  background-color: transparent;\n  color: #000;\n  transition: all 0.3s ease;\n}\n.login-box .switch-buttons button.active {\n  background-color: white;\n  color: #000;\n  font-weight: bold;\n}\n.login-box .switch-buttons button:not(.active):hover {\n  background-color: #d6e4f7;\n}\n.login-box form {\n  display: flex;\n  flex-direction: column;\n  text-align: left;\n}\n.login-box form label {\n  font-size: 14px;\n  margin: 8px 0 4px;\n  color: white;\n}\n.login-box form input {\n  padding: 10px;\n  border: none;\n  border-radius: 5px;\n  margin-bottom: 12px;\n  font-size: 14px;\n  outline: none;\n}\n.login-box form .error {\n  background-color: rgba(255, 0, 0, 0.2);\n  border: 1px solid #ff7070;\n  color: #ffe0e0;\n  padding: 8px;\n  border-radius: 5px;\n  font-size: 13px;\n  margin-bottom: 10px;\n  text-align: center;\n}\n.login-box form .login-btn {\n  background-color: #1f61d1;\n  color: white;\n  padding: 10px;\n  border: none;\n  border-radius: 5px;\n  cursor: pointer;\n  font-size: 15px;\n  transition: background-color 0.3s ease, transform 0.2s ease;\n}\n.login-box form .login-btn:hover {\n  background-color: #1549a3;\n  transform: scale(1.03);\n}\n.login-box .signup-placeholder {\n  background: rgba(255, 255, 255, 0.2);\n  padding: 20px;\n  border-radius: 8px;\n  font-size: 14px;\n}\n\n/* ===== RESPONSIVE ===== */\n@media (max-width: 600px) {\n  .header {\n    flex-direction: column;\n    align-items: center;\n    text-align: center;\n    padding: 15px 20px;\n  }\n  .header .logo img {\n    width: 70px;\n    margin-bottom: 8px;\n  }\n  .header .header-info {\n    text-align: center;\n  }\n  .login-container {\n    width: 90%;\n    padding: 25px;\n  }\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -30161,7 +30161,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".settings-page {\n  display: flex;\n  background-color: #4ecbd1;\n  height: 100vh;\n}\n.settings-page .sidebar {\n  width: 200px;\n  background-color: #265e5d;\n  color: white;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  padding-top: 15px;\n}\n.settings-page .sidebar .sidebar-logo {\n  width: 80px;\n  margin-bottom: 15px;\n}\n.settings-page .sidebar ul {\n  list-style: none;\n  padding: 0;\n  width: 100%;\n}\n.settings-page .sidebar ul li {\n  padding: 8px;\n  text-align: center;\n  margin: 5px 10px;\n  border: 1px solid white;\n  border-radius: 3px;\n  cursor: pointer;\n  background-color: #2c7a7a;\n  font-size: 14px;\n}\n.settings-page .sidebar ul li:hover {\n  background-color: #358c8b;\n}\n.settings-page .sidebar ul li.active {\n  background-color: #43a4a3;\n  font-weight: bold;\n}\n.settings-page .sidebar ul li.logout {\n  margin-top: auto;\n  background-color: #1b4c4c;\n}\n.settings-page .settings-main {\n  flex: 1;\n  background-color: #5ed2c8;\n  display: flex;\n  flex-direction: column;\n}\n.settings-page .settings-main .header {\n  background-color: #7ad5c5;\n  display: flex;\n  align-items: center;\n  padding: 15px;\n}\n.settings-page .settings-main .header .header-left {\n  display: flex;\n  align-items: center;\n}\n.settings-page .settings-main .header .header-left .header-logo {\n  width: 60px;\n  margin-right: 15px;\n}\n.settings-page .settings-main .header .header-left .header-text h1 {\n  margin: 0;\n}\n.settings-page .settings-main .header .header-left .header-text h3 {\n  font-style: italic;\n  margin: 0;\n  font-size: 14px;\n}\n.settings-page .settings-main .tabs {\n  display: flex;\n  justify-content: flex-start;\n  gap: 30px;\n  padding: 25px 50px;\n  background-color: transparent;\n}\n.settings-page .settings-main .tabs button {\n  background-color: white;\n  border: 3px solid #f4b840;\n  padding: 10px 30px;\n  font-weight: 600;\n  font-size: 16px;\n  border-radius: 2px;\n  cursor: pointer;\n}\n.settings-page .settings-main .tabs button.active {\n  background-color: #f4b840;\n  color: white;\n}\n.settings-page .settings-main .tabs button:hover {\n  opacity: 0.9;\n}\n.settings-page .settings-main .content-box {\n  background-color: #3a8be0;\n  color: white;\n  margin: 0 50px;\n  padding: 25px;\n  border-radius: 5px;\n  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);\n}\n.settings-page .settings-main .content-box .content-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n.settings-page .settings-main .content-box .content-header h2 {\n  color: black;\n  margin: 0;\n}\n.settings-page .settings-main .content-box .content-header .add-btn {\n  background-color: #134fd1;\n  border: none;\n  color: white;\n  padding: 10px 20px;\n  border-radius: 3px;\n  font-weight: bold;\n  cursor: pointer;\n}\n.settings-page .settings-main .content-box .content-header .add-btn:hover {\n  background-color: #0f3fb0;\n}\n.settings-page .settings-main .content-box .content-body {\n  margin-top: 25px;\n  font-size: 14px;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".settings-page {\n  display: flex;\n  background-color: #4ecbd1;\n  height: 100vh;\n  /* ===== Sidebar ===== */\n}\n.settings-page .sidebar {\n  width: 200px;\n  background-color: #2c7a7a;\n  color: black; /* text color changed to black */\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  padding-top: 15px;\n}\n.settings-page .sidebar .sidebar-logo {\n  width: 80px;\n  margin-bottom: 15px;\n}\n.settings-page .sidebar ul {\n  list-style: none;\n  padding: 0;\n  width: 100%;\n}\n.settings-page .sidebar ul li {\n  padding: 8px;\n  text-align: center;\n  margin: 5px 10px;\n  border: 1px solid rgb(0, 0, 0);\n  border-radius: 3px;\n  cursor: pointer;\n  background-color: #f9ffff; /* changed button color */\n  font-size: 14px;\n  font-weight: 600; /* make text more readable */\n  transition: 0.2s;\n}\n.settings-page .sidebar ul li:hover {\n  background-color: #358c8b;\n  color: white;\n}\n.settings-page .sidebar ul li.active {\n  background-color: #ffffff;\n  color: rgb(0, 0, 0);\n  font-weight: bold;\n}\n.settings-page .sidebar ul li.logout {\n  margin-top: auto;\n  background-color: #ffffff;\n  color: black;\n  border: 1px solid #000;\n}\n.settings-page .sidebar ul li.logout:hover {\n  background-color: #ff6961;\n  color: white;\n}\n.settings-page {\n  /* ===== Main Content ===== */\n}\n.settings-page .settings-main {\n  flex: 1;\n  background-color: #51b6ae;\n  display: flex;\n  flex-direction: column;\n}\n.settings-page .settings-main .header {\n  background-color: #7ad5c5;\n  display: flex;\n  align-items: center;\n  padding: 15px;\n}\n.settings-page .settings-main .header .header-left {\n  display: flex;\n  align-items: center;\n}\n.settings-page .settings-main .header .header-left .header-logo {\n  width: 60px;\n  margin-right: 15px;\n}\n.settings-page .settings-main .header .header-left .header-text h1 {\n  margin: 0;\n}\n.settings-page .settings-main .header .header-left .header-text h3 {\n  font-style: italic;\n  margin: 0;\n  font-size: 14px;\n}\n.settings-page .settings-main .tabs {\n  display: flex;\n  justify-content: flex-start;\n  gap: 30px;\n  padding: 25px 50px;\n  background-color: transparent;\n}\n.settings-page .settings-main .tabs button {\n  background-color: white;\n  border: 3px solid #f4b840;\n  padding: 10px 30px;\n  font-weight: 600;\n  font-size: 16px;\n  border-radius: 2px;\n  cursor: pointer;\n}\n.settings-page .settings-main .tabs button.active {\n  background-color: #ffffff;\n  color: #000000;\n}\n.settings-page .settings-main .tabs button:hover {\n  opacity: 0.9;\n}\n.settings-page .settings-main .content-box {\n  background-color: #3a8be0;\n  color: rgb(0, 0, 0);\n  margin: 0 50px;\n  padding: 25px;\n  border-radius: 5px;\n  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);\n}\n.settings-page .settings-main .content-box .content-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n.settings-page .settings-main .content-box .content-header h2 {\n  color: rgb(0, 0, 0);\n  margin: 0;\n}\n.settings-page .settings-main .content-box .content-header .add-btn {\n  background-color: #134fd1;\n  border: none;\n  color: white;\n  padding: 10px 20px;\n  border-radius: 3px;\n  font-weight: bold;\n  cursor: pointer;\n}\n.settings-page .settings-main .content-box .content-header .add-btn:hover {\n  background-color: #0f3fb0;\n}\n.settings-page .settings-main .content-box .content-body {\n  margin-top: 25px;\n  font-size: 14px;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -30185,7 +30185,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "@charset \"UTF-8\";\n.students-page {\n  display: flex;\n  height: 100vh;\n  background-color: #b2ebf2;\n  /* ✅ Sidebar */\n}\n.students-page .sidebar {\n  width: 220px;\n  background-color: #1e656d;\n  color: white;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  padding-top: 20px;\n}\n.students-page .sidebar .sidebar-logo {\n  width: 90px;\n  margin-bottom: 20px;\n}\n.students-page .sidebar ul {\n  list-style: none;\n  padding: 0;\n  width: 100%;\n  display: flex;\n  flex-direction: column;\n  gap: 5px;\n}\n.students-page .sidebar ul li {\n  padding: 12px 20px;\n  cursor: pointer;\n  text-align: center;\n  font-weight: 500;\n  transition: 0.3s;\n}\n.students-page .sidebar ul li:hover, .students-page .sidebar ul li.active {\n  background-color: #0f4c55;\n}\n.students-page .sidebar ul .profile-management {\n  background-color: #1b777f;\n  font-weight: bold;\n}\n.students-page .sidebar ul .profile-management:hover {\n  background-color: #0f4c55;\n}\n.students-page .sidebar ul .logout {\n  margin-top: auto;\n  background-color: #f3f3f3;\n  color: #1e656d;\n  font-weight: bold;\n  border-top: 2px solid rgba(255, 255, 255, 0.1);\n}\n.students-page .sidebar ul .logout:hover {\n  background-color: #e0e0e0;\n}\n.students-page {\n  /* ✅ Main Section */\n}\n.students-page .students-main {\n  flex: 1;\n  padding: 20px;\n  overflow-y: auto;\n  /* ===== Header ===== */\n}\n.students-page .students-main .header {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  background-color: #5fdde5;\n  padding: 15px;\n  border-radius: 10px;\n  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);\n}\n.students-page .students-main .header .header-left {\n  display: flex;\n  align-items: center;\n  gap: 15px;\n}\n.students-page .students-main .header .header-left .header-logo {\n  width: 60px;\n}\n.students-page .students-main .header .header-left .header-text h1 {\n  margin: 0;\n  color: #00363a;\n  font-size: 24px;\n}\n.students-page .students-main .header .header-left .header-text h3 {\n  margin: 0;\n  font-size: 14px;\n  color: #004d40;\n}\n.students-page .students-main .header .add-btn {\n  background-color: #f4a261;\n  border: none;\n  padding: 8px 15px;\n  border-radius: 6px;\n  cursor: pointer;\n  color: white;\n  font-weight: bold;\n  transition: 0.3s;\n}\n.students-page .students-main .header .add-btn:hover {\n  background-color: #e76f51;\n}\n.students-page .students-main {\n  /* ===== Search Bar ===== */\n}\n.students-page .students-main .search-bar {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n  margin: 15px 0;\n}\n.students-page .students-main .search-bar input {\n  flex: 1;\n  padding: 8px 12px;\n  border-radius: 6px;\n  border: 1px solid #ccc;\n  outline: none;\n  font-size: 14px;\n  transition: 0.3s;\n}\n.students-page .students-main .search-bar input:focus {\n  border-color: #4a90e2;\n  box-shadow: 0 0 5px rgba(74, 144, 226, 0.5);\n}\n.students-page .students-main .search-bar .filter-btn,\n.students-page .students-main .search-bar .archive-view-btn {\n  padding: 8px 14px;\n  border: none;\n  border-radius: 6px;\n  cursor: pointer;\n  color: white;\n  font-weight: 500;\n  transition: 0.3s;\n}\n.students-page .students-main .search-bar .filter-btn {\n  background-color: #1abc9c;\n}\n.students-page .students-main .search-bar .filter-btn:hover {\n  background-color: #16a085;\n}\n.students-page .students-main .search-bar .archive-view-btn {\n  background-color: #3498db;\n}\n.students-page .students-main .search-bar .archive-view-btn:hover {\n  background-color: #2980b9;\n}\n.students-page .students-main {\n  /* ===== Table ===== */\n}\n.students-page .students-main .students-table {\n  width: 100%;\n  border-collapse: collapse;\n  border-radius: 10px;\n  overflow: hidden;\n}\n.students-page .students-main .students-table th,\n.students-page .students-main .students-table td {\n  text-align: center;\n  padding: 10px;\n  font-size: 14px;\n  vertical-align: middle;\n}\n.students-page .students-main .students-table th {\n  background-color: #1e88e5;\n  color: white;\n  font-size: 15px;\n}\n.students-page .students-main .students-table tr:nth-child(even) {\n  background-color: #64b5f6;\n}\n.students-page .students-main .students-table tr:nth-child(odd) {\n  background-color: #42a5f5;\n}\n.students-page .students-main .students-table {\n  /* ✅ Combine Edit + Archive neatly side by side */\n}\n.students-page .students-main .students-table td.actions {\n  display: flex;\n  justify-content: center;\n  gap: 8px;\n}\n.students-page .students-main .students-table td.actions .edit-btn,\n.students-page .students-main .students-table td.actions .archive-btn {\n  border: none;\n  padding: 6px 12px;\n  border-radius: 4px;\n  color: white;\n  cursor: pointer;\n  font-weight: 500;\n  transition: all 0.3s;\n}\n.students-page .students-main .students-table td.actions .edit-btn {\n  background-color: #f4b400;\n}\n.students-page .students-main .students-table td.actions .edit-btn:hover {\n  background-color: #c49000;\n  transform: scale(1.05);\n}\n.students-page .students-main .students-table td.actions .archive-btn {\n  background-color: #e53935;\n}\n.students-page .students-main .students-table td.actions .archive-btn:hover {\n  background-color: #c62828;\n  transform: scale(1.05);\n}\n.students-page {\n  /* ===== Edit/Add Student Page ===== */\n}\n.students-page .edit-student-page {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  height: 100vh;\n  background-color: #b2ebf2;\n}\n.students-page .edit-student-page .edit-container {\n  background: white;\n  padding: 40px 60px;\n  border-radius: 20px;\n  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);\n  width: 420px;\n  text-align: left;\n  animation: popIn 0.3s ease;\n}\n.students-page .edit-student-page .edit-container h2 {\n  text-align: center;\n  margin-bottom: 25px;\n  color: #00363a;\n}\n.students-page .edit-student-page .edit-container .edit-form {\n  display: flex;\n  flex-direction: column;\n  gap: 15px;\n}\n.students-page .edit-student-page .edit-container .edit-form label {\n  font-weight: 600;\n  color: #004d40;\n  display: flex;\n  flex-direction: column;\n  font-size: 15px;\n}\n.students-page .edit-student-page .edit-container .edit-form label input,\n.students-page .edit-student-page .edit-container .edit-form label select {\n  margin-top: 6px;\n  padding: 8px 10px;\n  border-radius: 6px;\n  border: 1px solid #ccc;\n  outline: none;\n  font-size: 14px;\n  transition: 0.3s;\n}\n.students-page .edit-student-page .edit-container .edit-form label input:focus,\n.students-page .edit-student-page .edit-container .edit-form label select:focus {\n  border-color: #1565c0;\n  box-shadow: 0 0 5px rgba(21, 101, 192, 0.5);\n}\n.students-page .edit-student-page .edit-container .edit-form .edit-buttons {\n  display: flex;\n  justify-content: space-between;\n  margin-top: 20px;\n}\n.students-page .edit-student-page .edit-container .edit-form .edit-buttons .save-btn {\n  background-color: #1565c0;\n  color: white;\n  border: none;\n  padding: 10px 18px;\n  border-radius: 8px;\n  cursor: pointer;\n  font-weight: bold;\n  transition: 0.3s;\n}\n.students-page .edit-student-page .edit-container .edit-form .edit-buttons .save-btn:hover {\n  background-color: #0d47a1;\n  transform: scale(1.05);\n}\n.students-page .edit-student-page .edit-container .edit-form .edit-buttons .cancel-btn {\n  background-color: #e53935;\n  color: white;\n  border: none;\n  padding: 10px 18px;\n  border-radius: 8px;\n  cursor: pointer;\n  font-weight: bold;\n  transition: 0.3s;\n}\n.students-page .edit-student-page .edit-container .edit-form .edit-buttons .cancel-btn:hover {\n  background-color: #c62828;\n  transform: scale(1.05);\n}\n.students-page {\n  /* ===== Confirmation Modal ===== */\n}\n.students-page .confirm-box {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background: rgba(0, 0, 0, 0.55);\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  z-index: 3000;\n  animation: fadeIn 0.25s ease-in;\n}\n.students-page .confirm-box .confirm-content {\n  background: #ffffff;\n  padding: 40px 60px;\n  border-radius: 16px;\n  text-align: center;\n  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);\n  animation: popIn 0.3s ease;\n}\n.students-page .confirm-box .confirm-content p {\n  font-size: 19px;\n  font-weight: 600;\n  margin-bottom: 25px;\n  color: #2c2c2c;\n}\n.students-page .confirm-box .confirm-content .confirm-buttons {\n  display: flex;\n  justify-content: center;\n  gap: 25px;\n}\n.students-page .confirm-box .confirm-content .confirm-buttons .yes,\n.students-page .confirm-box .confirm-content .confirm-buttons .no {\n  padding: 10px 22px;\n  border: none;\n  border-radius: 8px;\n  font-size: 15px;\n  font-weight: 600;\n  cursor: pointer;\n  transition: all 0.3s ease;\n  min-width: 90px;\n}\n.students-page .confirm-box .confirm-content .confirm-buttons .yes {\n  background-color: #1565c0;\n  color: white;\n}\n.students-page .confirm-box .confirm-content .confirm-buttons .yes:hover {\n  background-color: #0d47a1;\n  transform: scale(1.05);\n}\n.students-page .confirm-box .confirm-content .confirm-buttons .no {\n  background-color: #e53935;\n  color: white;\n}\n.students-page .confirm-box .confirm-content .confirm-buttons .no:hover {\n  background-color: #c62828;\n  transform: scale(1.05);\n}\n.students-page {\n  /* ===== Animations ===== */\n}\n@keyframes popIn {\n  from {\n    transform: scale(0.85);\n    opacity: 0;\n  }\n  to {\n    transform: scale(1);\n    opacity: 1;\n  }\n}\n@keyframes fadeIn {\n  from {\n    opacity: 0;\n  }\n  to {\n    opacity: 1;\n  }\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "@charset \"UTF-8\";\n.students-page {\n  display: flex;\n  height: 100vh;\n  background-color: #b2ebf2;\n  /* ✅ SIDEBAR (Updated to match Home Page Design) */\n}\n.students-page .sidebar {\n  width: 200px;\n  background-color: #265e5d;\n  color: rgb(0, 0, 0);\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  padding-top: 15px;\n  box-shadow: 3px 0 6px rgba(0, 0, 0, 0.2);\n}\n.students-page .sidebar .sidebar-logo {\n  width: 80px;\n  margin-bottom: 15px;\n}\n.students-page .sidebar ul {\n  list-style: none;\n  padding: 0;\n  width: 100%;\n}\n.students-page .sidebar ul li {\n  padding: 8px;\n  text-align: center;\n  margin: 5px 10px;\n  border: 1px solid rgb(0, 0, 0);\n  border-radius: 3px;\n  cursor: pointer;\n  background-color: #ffffff;\n  font-size: 14px;\n  font-weight: 500;\n  transition: 0.2s;\n}\n.students-page .sidebar ul li:hover {\n  background-color: #5ed2c8;\n  transform: scale(1.03);\n}\n.students-page .sidebar ul li.active {\n  background-color: #43a4a3;\n  color: #ffffff;\n  font-weight: bold;\n}\n.students-page .sidebar ul li.logout {\n  margin-top: auto;\n  background-color: #1b4c4c;\n  color: #ffffff;\n}\n.students-page .sidebar ul li.logout:hover {\n  background-color: #ff6961;\n  color: rgb(0, 0, 0);\n}\n.students-page {\n  /* ✅ MAIN SECTION */\n}\n.students-page .students-main {\n  flex: 1;\n  padding: 20px;\n  overflow-y: auto;\n  /* ===== Header ===== */\n}\n.students-page .students-main .header {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  background-color: #5fdde5;\n  padding: 15px;\n  border-radius: 10px;\n  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);\n}\n.students-page .students-main .header .header-left {\n  display: flex;\n  align-items: center;\n  gap: 15px;\n}\n.students-page .students-main .header .header-left .header-logo {\n  width: 60px;\n}\n.students-page .students-main .header .header-left .header-text h1 {\n  margin: 0;\n  color: #00363a;\n  font-size: 24px;\n}\n.students-page .students-main .header .header-left .header-text h3 {\n  margin: 0;\n  font-size: 14px;\n  color: #004d40;\n}\n.students-page .students-main .header .add-btn {\n  background-color: #f4a261;\n  border: none;\n  padding: 8px 15px;\n  border-radius: 6px;\n  cursor: pointer;\n  color: white;\n  font-weight: bold;\n  transition: 0.3s;\n}\n.students-page .students-main .header .add-btn:hover {\n  background-color: #e76f51;\n}\n.students-page .students-main {\n  /* ===== Search Bar ===== */\n}\n.students-page .students-main .search-bar {\n  display: flex;\n  align-items: center;\n  gap: 10px;\n  margin: 15px 0;\n}\n.students-page .students-main .search-bar input {\n  flex: 1;\n  padding: 8px 12px;\n  border-radius: 6px;\n  border: 1px solid #ccc;\n  outline: none;\n  font-size: 14px;\n  transition: 0.3s;\n}\n.students-page .students-main .search-bar input:focus {\n  border-color: #4a90e2;\n  box-shadow: 0 0 5px rgba(74, 144, 226, 0.5);\n}\n.students-page .students-main .search-bar .filter-btn,\n.students-page .students-main .search-bar .archive-view-btn {\n  padding: 8px 14px;\n  border: none;\n  border-radius: 6px;\n  cursor: pointer;\n  color: white;\n  font-weight: 500;\n  transition: 0.3s;\n}\n.students-page .students-main .search-bar .filter-btn {\n  background-color: #1abc9c;\n}\n.students-page .students-main .search-bar .filter-btn:hover {\n  background-color: #16a085;\n}\n.students-page .students-main .search-bar .archive-view-btn {\n  background-color: #3498db;\n}\n.students-page .students-main .search-bar .archive-view-btn:hover {\n  background-color: #2980b9;\n}\n.students-page .students-main {\n  /* ===== Table ===== */\n}\n.students-page .students-main .students-table {\n  width: 100%;\n  border-collapse: collapse;\n  border-radius: 10px;\n  overflow: hidden;\n}\n.students-page .students-main .students-table th,\n.students-page .students-main .students-table td {\n  text-align: center;\n  padding: 10px;\n  font-size: 14px;\n  vertical-align: middle;\n}\n.students-page .students-main .students-table th {\n  background-color: #1e88e5;\n  color: white;\n  font-size: 15px;\n}\n.students-page .students-main .students-table tr:nth-child(even) {\n  background-color: #64b5f6;\n}\n.students-page .students-main .students-table tr:nth-child(odd) {\n  background-color: #42a5f5;\n}\n.students-page .students-main .students-table {\n  /* ✅ Edit + Archive buttons side by side */\n}\n.students-page .students-main .students-table td.actions {\n  display: flex;\n  justify-content: center;\n  gap: 8px;\n}\n.students-page .students-main .students-table td.actions .edit-btn,\n.students-page .students-main .students-table td.actions .archive-btn {\n  border: none;\n  padding: 6px 12px;\n  border-radius: 4px;\n  color: white;\n  cursor: pointer;\n  font-weight: 500;\n  transition: all 0.3s;\n}\n.students-page .students-main .students-table td.actions .edit-btn {\n  background-color: #f4b400;\n}\n.students-page .students-main .students-table td.actions .edit-btn:hover {\n  background-color: #c49000;\n  transform: scale(1.05);\n}\n.students-page .students-main .students-table td.actions .archive-btn {\n  background-color: #e53935;\n}\n.students-page .students-main .students-table td.actions .archive-btn:hover {\n  background-color: #c62828;\n  transform: scale(1.05);\n}\n.students-page {\n  /* ===== Edit/Add Student Page ===== */\n}\n.students-page .edit-student-page {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  height: 100vh;\n  background-color: #b2ebf2;\n}\n.students-page .edit-student-page .edit-container {\n  background: white;\n  padding: 40px 60px;\n  border-radius: 20px;\n  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);\n  width: 420px;\n  text-align: left;\n  animation: popIn 0.3s ease;\n}\n.students-page .edit-student-page .edit-container h2 {\n  text-align: center;\n  margin-bottom: 25px;\n  color: #00363a;\n}\n.students-page .edit-student-page .edit-container .edit-form {\n  display: flex;\n  flex-direction: column;\n  gap: 15px;\n}\n.students-page .edit-student-page .edit-container .edit-form label {\n  font-weight: 600;\n  color: #004d40;\n  display: flex;\n  flex-direction: column;\n  font-size: 15px;\n}\n.students-page .edit-student-page .edit-container .edit-form label input,\n.students-page .edit-student-page .edit-container .edit-form label select {\n  margin-top: 6px;\n  padding: 8px 10px;\n  border-radius: 6px;\n  border: 1px solid #ccc;\n  outline: none;\n  font-size: 14px;\n  transition: 0.3s;\n}\n.students-page .edit-student-page .edit-container .edit-form label input:focus,\n.students-page .edit-student-page .edit-container .edit-form label select:focus {\n  border-color: #1565c0;\n  box-shadow: 0 0 5px rgba(21, 101, 192, 0.5);\n}\n.students-page .edit-student-page .edit-container .edit-form .edit-buttons {\n  display: flex;\n  justify-content: space-between;\n  margin-top: 20px;\n}\n.students-page .edit-student-page .edit-container .edit-form .edit-buttons .save-btn {\n  background-color: #1565c0;\n  color: white;\n  border: none;\n  padding: 10px 18px;\n  border-radius: 8px;\n  cursor: pointer;\n  font-weight: bold;\n  transition: 0.3s;\n}\n.students-page .edit-student-page .edit-container .edit-form .edit-buttons .save-btn:hover {\n  background-color: #0d47a1;\n  transform: scale(1.05);\n}\n.students-page .edit-student-page .edit-container .edit-form .edit-buttons .cancel-btn {\n  background-color: #e53935;\n  color: white;\n  border: none;\n  padding: 10px 18px;\n  border-radius: 8px;\n  cursor: pointer;\n  font-weight: bold;\n  transition: 0.3s;\n}\n.students-page .edit-student-page .edit-container .edit-form .edit-buttons .cancel-btn:hover {\n  background-color: #c62828;\n  transform: scale(1.05);\n}\n.students-page {\n  /* ===== Confirmation Modal ===== */\n}\n.students-page .confirm-box {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background: rgba(0, 0, 0, 0.55);\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  z-index: 3000;\n  animation: fadeIn 0.25s ease-in;\n}\n.students-page .confirm-box .confirm-content {\n  background: #ffffff;\n  padding: 40px 60px;\n  border-radius: 16px;\n  text-align: center;\n  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);\n  animation: popIn 0.3s ease;\n}\n.students-page .confirm-box .confirm-content p {\n  font-size: 19px;\n  font-weight: 600;\n  margin-bottom: 25px;\n  color: #2c2c2c;\n}\n.students-page .confirm-box .confirm-content .confirm-buttons {\n  display: flex;\n  justify-content: center;\n  gap: 25px;\n}\n.students-page .confirm-box .confirm-content .confirm-buttons .yes,\n.students-page .confirm-box .confirm-content .confirm-buttons .no {\n  padding: 10px 22px;\n  border: none;\n  border-radius: 8px;\n  font-size: 15px;\n  font-weight: 600;\n  cursor: pointer;\n  transition: all 0.3s ease;\n  min-width: 90px;\n}\n.students-page .confirm-box .confirm-content .confirm-buttons .yes {\n  background-color: #1565c0;\n  color: white;\n}\n.students-page .confirm-box .confirm-content .confirm-buttons .yes:hover {\n  background-color: #0d47a1;\n  transform: scale(1.05);\n}\n.students-page .confirm-box .confirm-content .confirm-buttons .no {\n  background-color: #e53935;\n  color: white;\n}\n.students-page .confirm-box .confirm-content .confirm-buttons .no:hover {\n  background-color: #c62828;\n  transform: scale(1.05);\n}\n.students-page {\n  /* ===== Animations ===== */\n}\n@keyframes popIn {\n  from {\n    transform: scale(0.85);\n    opacity: 0;\n  }\n  to {\n    transform: scale(1);\n    opacity: 1;\n  }\n}\n@keyframes fadeIn {\n  from {\n    opacity: 0;\n  }\n  to {\n    opacity: 1;\n  }\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -89422,10 +89422,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _sass_AddStudents_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../sass/AddStudents.scss */ "./resources/sass/AddStudents.scss");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
-function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
-function _arrayWithoutHoles(r) { if (Array.isArray(r)) return _arrayLikeToArray(r); }
+function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */ var e, t, r = "function" == typeof Symbol ? Symbol : {}, n = r.iterator || "@@iterator", o = r.toStringTag || "@@toStringTag"; function i(r, n, o, i) { var c = n && n.prototype instanceof Generator ? n : Generator, u = Object.create(c.prototype); return _regeneratorDefine2(u, "_invoke", function (r, n, o) { var i, c, u, f = 0, p = o || [], y = !1, G = { p: 0, n: 0, v: e, a: d, f: d.bind(e, 4), d: function d(t, r) { return i = t, c = 0, u = e, G.n = r, a; } }; function d(r, n) { for (c = r, u = n, t = 0; !y && f && !o && t < p.length; t++) { var o, i = p[t], d = G.p, l = i[2]; r > 3 ? (o = l === n) && (u = i[(c = i[4]) ? 5 : (c = 3, 3)], i[4] = i[5] = e) : i[0] <= d && ((o = r < 2 && d < i[1]) ? (c = 0, G.v = n, G.n = i[1]) : d < l && (o = r < 3 || i[0] > n || n > l) && (i[4] = r, i[5] = n, G.n = l, c = 0)); } if (o || r > 1) return a; throw y = !0, n; } return function (o, p, l) { if (f > 1) throw TypeError("Generator is already running"); for (y && 1 === p && d(p, l), c = p, u = l; (t = c < 2 ? e : u) || !y;) { i || (c ? c < 3 ? (c > 1 && (G.n = -1), d(c, u)) : G.n = u : G.v = u); try { if (f = 2, i) { if (c || (o = "next"), t = i[o]) { if (!(t = t.call(i, u))) throw TypeError("iterator result is not an object"); if (!t.done) return t; u = t.value, c < 2 && (c = 0); } else 1 === c && (t = i["return"]) && t.call(i), c < 2 && (u = TypeError("The iterator does not provide a '" + o + "' method"), c = 1); i = e; } else if ((t = (y = G.n < 0) ? u : r.call(n, G)) !== a) break; } catch (t) { i = e, c = 1, u = t; } finally { f = 1; } } return { value: t, done: y }; }; }(r, o, i), !0), u; } var a = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} t = Object.getPrototypeOf; var c = [][n] ? t(t([][n]())) : (_regeneratorDefine2(t = {}, n, function () { return this; }), t), u = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(c); function f(e) { return Object.setPrototypeOf ? Object.setPrototypeOf(e, GeneratorFunctionPrototype) : (e.__proto__ = GeneratorFunctionPrototype, _regeneratorDefine2(e, o, "GeneratorFunction")), e.prototype = Object.create(u), e; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, _regeneratorDefine2(u, "constructor", GeneratorFunctionPrototype), _regeneratorDefine2(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = "GeneratorFunction", _regeneratorDefine2(GeneratorFunctionPrototype, o, "GeneratorFunction"), _regeneratorDefine2(u), _regeneratorDefine2(u, o, "Generator"), _regeneratorDefine2(u, n, function () { return this; }), _regeneratorDefine2(u, "toString", function () { return "[object Generator]"; }), (_regenerator = function _regenerator() { return { w: i, m: f }; })(); }
+function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } _regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { function o(r, n) { _regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); } r ? i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n : (o("next", 0), o("throw", 1), o("return", 2)); }, _regeneratorDefine2(e, r, n, t); }
+function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
+function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
 function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
@@ -89457,37 +89457,82 @@ var AddStudents = function AddStudents() {
     _useState2 = _slicedToArray(_useState, 2),
     formData = _useState2[0],
     setFormData = _useState2[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState4 = _slicedToArray(_useState3, 2),
+    loading = _useState4[0],
+    setLoading = _useState4[1];
   var handleChange = function handleChange(e) {
     var _e$target = e.target,
       name = _e$target.name,
       value = _e$target.value;
+    if (name === "contact_number" && !/^\d*$/.test(value)) return; // only numbers
     setFormData(function (prev) {
       return _objectSpread(_objectSpread({}, prev), {}, _defineProperty({}, name, value));
     });
   };
-  var handleSubmit = function handleSubmit(e) {
-    e.preventDefault();
-    if (!formData.fullname || !formData.email || !formData.course || !formData.student_id) {
-      alert("Please fill out all required fields.");
-      return;
-    }
-    var newStudent = _objectSpread(_objectSpread({}, formData), {}, {
-      id: Date.now()
-    });
-
-    // ✅ Save to localStorage
-    var stored = JSON.parse(localStorage.getItem("students")) || [];
-    var updated = [].concat(_toConsumableArray(stored), [newStudent]);
-    localStorage.setItem("students", JSON.stringify(updated));
-
-    // ✅ Navigate back with new data
-    navigate("/students", {
-      state: {
-        newStudent: newStudent,
-        fromAdd: true
-      }
-    });
-  };
+  var handleSubmit = /*#__PURE__*/function () {
+    var _ref = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee(e) {
+      var res, errorData, _t;
+      return _regenerator().w(function (_context) {
+        while (1) switch (_context.p = _context.n) {
+          case 0:
+            e.preventDefault();
+            if (!(!formData.fullname || !formData.email || !formData.course || !formData.student_id)) {
+              _context.n = 1;
+              break;
+            }
+            alert("Please fill out all required fields.");
+            return _context.a(2);
+          case 1:
+            setLoading(true);
+            _context.p = 2;
+            _context.n = 3;
+            return fetch("http://127.0.0.1:8000/api/students", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json"
+              },
+              body: JSON.stringify(formData)
+            });
+          case 3:
+            res = _context.v;
+            if (res.ok) {
+              _context.n = 5;
+              break;
+            }
+            _context.n = 4;
+            return res.json();
+          case 4:
+            errorData = _context.v;
+            throw new Error(errorData.message || "Failed to add student");
+          case 5:
+            alert("🎉 Student added successfully!");
+            // ✅ Auto refresh trigger when redirected to Students page
+            navigate("/students", {
+              state: {
+                added: true
+              }
+            });
+            _context.n = 7;
+            break;
+          case 6:
+            _context.p = 6;
+            _t = _context.v;
+            console.error("⚠️ Error adding student:", _t);
+            alert("Cannot connect to backend. Make sure Laravel server is running.");
+          case 7:
+            _context.p = 7;
+            setLoading(false);
+            return _context.f(7);
+          case 8:
+            return _context.a(2);
+        }
+      }, _callee, null, [[2, 6, 7, 8]]);
+    }));
+    return function handleSubmit(_x) {
+      return _ref.apply(this, arguments);
+    };
+  }();
   var handleCancel = function handleCancel() {
     if (window.confirm("Cancel adding this student?")) navigate("/students");
   };
@@ -89528,19 +89573,19 @@ var AddStudents = function AddStudents() {
               value: "",
               children: "Select Course"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
-              value: "CS",
+              value: "Computer Science",
               children: "Computer Science"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
-              value: "IT",
+              value: "Information Technology",
               children: "Information Technology"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
-              value: "ACC",
+              value: "Accountancy",
               children: "Accountancy"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
-              value: "ENG",
+              value: "Engineering",
               children: "Engineering"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
-              value: "BA",
+              value: "Business Administration",
               children: "Business Administration"
             })]
           })]
@@ -89563,20 +89608,20 @@ var AddStudents = function AddStudents() {
               value: "",
               children: "Select Department"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
-              value: "Computer Science",
-              children: "Computer Science"
+              value: "Computer Science Department",
+              children: "Computer Science Department"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
-              value: "Accountancy",
-              children: "Accountancy"
+              value: "Accountancy Department",
+              children: "Accountancy Department"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
-              value: "Psychology",
-              children: "Psychology"
+              value: "Psychology Department",
+              children: "Psychology Department"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
-              value: "Engineering",
-              children: "Engineering"
+              value: "Engineering Department",
+              children: "Engineering Department"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
-              value: "Business Administration",
-              children: "Business Administration"
+              value: "Business Administration Department",
+              children: "Business Administration Department"
             })]
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("label", {
@@ -89617,6 +89662,9 @@ var AddStudents = function AddStudents() {
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
               value: "F",
               children: "Female"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+              value: "O",
+              children: "Other"
             })]
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("label", {
@@ -89643,7 +89691,8 @@ var AddStudents = function AddStudents() {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
             type: "submit",
             className: "save-btn",
-            children: "Save"
+            disabled: loading,
+            children: loading ? "Saving..." : "Save"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
             type: "button",
             className: "cancel-btn",
@@ -89897,6 +89946,10 @@ function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArra
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
 function _arrayWithoutHoles(r) { if (Array.isArray(r)) return _arrayLikeToArray(r); }
+function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */ var e, t, r = "function" == typeof Symbol ? Symbol : {}, n = r.iterator || "@@iterator", o = r.toStringTag || "@@toStringTag"; function i(r, n, o, i) { var c = n && n.prototype instanceof Generator ? n : Generator, u = Object.create(c.prototype); return _regeneratorDefine2(u, "_invoke", function (r, n, o) { var i, c, u, f = 0, p = o || [], y = !1, G = { p: 0, n: 0, v: e, a: d, f: d.bind(e, 4), d: function d(t, r) { return i = t, c = 0, u = e, G.n = r, a; } }; function d(r, n) { for (c = r, u = n, t = 0; !y && f && !o && t < p.length; t++) { var o, i = p[t], d = G.p, l = i[2]; r > 3 ? (o = l === n) && (u = i[(c = i[4]) ? 5 : (c = 3, 3)], i[4] = i[5] = e) : i[0] <= d && ((o = r < 2 && d < i[1]) ? (c = 0, G.v = n, G.n = i[1]) : d < l && (o = r < 3 || i[0] > n || n > l) && (i[4] = r, i[5] = n, G.n = l, c = 0)); } if (o || r > 1) return a; throw y = !0, n; } return function (o, p, l) { if (f > 1) throw TypeError("Generator is already running"); for (y && 1 === p && d(p, l), c = p, u = l; (t = c < 2 ? e : u) || !y;) { i || (c ? c < 3 ? (c > 1 && (G.n = -1), d(c, u)) : G.n = u : G.v = u); try { if (f = 2, i) { if (c || (o = "next"), t = i[o]) { if (!(t = t.call(i, u))) throw TypeError("iterator result is not an object"); if (!t.done) return t; u = t.value, c < 2 && (c = 0); } else 1 === c && (t = i["return"]) && t.call(i), c < 2 && (u = TypeError("The iterator does not provide a '" + o + "' method"), c = 1); i = e; } else if ((t = (y = G.n < 0) ? u : r.call(n, G)) !== a) break; } catch (t) { i = e, c = 1, u = t; } finally { f = 1; } } return { value: t, done: y }; }; }(r, o, i), !0), u; } var a = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} t = Object.getPrototypeOf; var c = [][n] ? t(t([][n]())) : (_regeneratorDefine2(t = {}, n, function () { return this; }), t), u = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(c); function f(e) { return Object.setPrototypeOf ? Object.setPrototypeOf(e, GeneratorFunctionPrototype) : (e.__proto__ = GeneratorFunctionPrototype, _regeneratorDefine2(e, o, "GeneratorFunction")), e.prototype = Object.create(u), e; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, _regeneratorDefine2(u, "constructor", GeneratorFunctionPrototype), _regeneratorDefine2(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = "GeneratorFunction", _regeneratorDefine2(GeneratorFunctionPrototype, o, "GeneratorFunction"), _regeneratorDefine2(u), _regeneratorDefine2(u, o, "Generator"), _regeneratorDefine2(u, n, function () { return this; }), _regeneratorDefine2(u, "toString", function () { return "[object Generator]"; }), (_regenerator = function _regenerator() { return { w: i, m: f }; })(); }
+function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } _regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { function o(r, n) { _regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); } r ? i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n : (o("next", 0), o("throw", 1), o("return", 2)); }, _regeneratorDefine2(e, r, n, t); }
+function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
+function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
 function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
@@ -89922,59 +89975,151 @@ var Archivestu = function Archivestu() {
     setFilterMode = _useState6[1];
   var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_1__.useNavigate)();
 
-  // ✅ Load archived students from localStorage
+  // 🔹 Fetch archived students from backend
+  var fetchArchivedStudents = /*#__PURE__*/function () {
+    var _ref = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee() {
+      var res, data, _t;
+      return _regenerator().w(function (_context) {
+        while (1) switch (_context.p = _context.n) {
+          case 0:
+            _context.p = 0;
+            _context.n = 1;
+            return fetch("http://127.0.0.1:8000/api/students/archived");
+          case 1:
+            res = _context.v;
+            if (res.ok) {
+              _context.n = 2;
+              break;
+            }
+            throw new Error("Failed to fetch archived students");
+          case 2:
+            _context.n = 3;
+            return res.json();
+          case 3:
+            data = _context.v;
+            setStudents(data);
+            _context.n = 5;
+            break;
+          case 4:
+            _context.p = 4;
+            _t = _context.v;
+            console.error("⚠️ Error fetching archived students:", _t);
+            alert("Cannot load archived students. Please check backend connection.");
+          case 5:
+            return _context.a(2);
+        }
+      }, _callee, null, [[0, 4]]);
+    }));
+    return function fetchArchivedStudents() {
+      return _ref.apply(this, arguments);
+    };
+  }();
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    var archived = JSON.parse(localStorage.getItem("archivedStudents")) || [];
-    setStudents(archived);
+    fetchArchivedStudents();
   }, []);
 
   // 🔙 Restore student
-  var handleRestore = function handleRestore(id) {
-    if (window.confirm("Are you sure you want to restore this student?")) {
-      var archivedList = JSON.parse(localStorage.getItem("archivedStudents")) || [];
-      var studentToRestore = archivedList.find(function (s) {
-        return s.id === id;
-      });
-      var remaining = archivedList.filter(function (s) {
-        return s.id !== id;
-      });
-      var currentStudents = JSON.parse(localStorage.getItem("students")) || [];
-      localStorage.setItem("students", JSON.stringify([].concat(_toConsumableArray(currentStudents), [studentToRestore])));
-      localStorage.setItem("archivedStudents", JSON.stringify(remaining));
-      setStudents(remaining);
-      alert("✅ Student restored successfully!");
-    }
-  };
+  var handleRestore = /*#__PURE__*/function () {
+    var _ref2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee2(id) {
+      var res, _t2;
+      return _regenerator().w(function (_context2) {
+        while (1) switch (_context2.p = _context2.n) {
+          case 0:
+            if (!window.confirm("Restore this student?")) {
+              _context2.n = 5;
+              break;
+            }
+            _context2.p = 1;
+            _context2.n = 2;
+            return fetch("http://127.0.0.1:8000/api/students/".concat(id, "/restore"), {
+              method: "PUT",
+              headers: {
+                "Content-Type": "application/json"
+              }
+            });
+          case 2:
+            res = _context2.v;
+            if (res.ok) {
+              _context2.n = 3;
+              break;
+            }
+            throw new Error("Failed to restore student");
+          case 3:
+            alert("✅ Student restored successfully!");
+            fetchArchivedStudents();
+            _context2.n = 5;
+            break;
+          case 4:
+            _context2.p = 4;
+            _t2 = _context2.v;
+            console.error("⚠️ Restore error:", _t2);
+            alert("Failed to restore student.");
+          case 5:
+            return _context2.a(2);
+        }
+      }, _callee2, null, [[1, 4]]);
+    }));
+    return function handleRestore(_x) {
+      return _ref2.apply(this, arguments);
+    };
+  }();
 
   // 🗑️ Permanently delete
-  var handleDelete = function handleDelete(id) {
-    if (window.confirm("⚠️ Are you sure you want to permanently delete this student? This action cannot be undone.")) {
-      var remaining = students.filter(function (student) {
-        return student.id !== id;
-      });
-      localStorage.setItem("archivedStudents", JSON.stringify(remaining));
-      setStudents(remaining);
-      alert("🗑️ Student permanently deleted!");
-    }
-  };
+  var handleDelete = /*#__PURE__*/function () {
+    var _ref3 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee3(id) {
+      var res, _t3;
+      return _regenerator().w(function (_context3) {
+        while (1) switch (_context3.p = _context3.n) {
+          case 0:
+            if (!window.confirm("⚠️ Permanently delete this student?")) {
+              _context3.n = 5;
+              break;
+            }
+            _context3.p = 1;
+            _context3.n = 2;
+            return fetch("http://127.0.0.1:8000/api/students/".concat(id), {
+              method: "DELETE"
+            });
+          case 2:
+            res = _context3.v;
+            if (res.ok) {
+              _context3.n = 3;
+              break;
+            }
+            throw new Error("Failed to delete student");
+          case 3:
+            alert("🗑️ Student permanently deleted!");
+            fetchArchivedStudents();
+            _context3.n = 5;
+            break;
+          case 4:
+            _context3.p = 4;
+            _t3 = _context3.v;
+            console.error("⚠️ Delete error:", _t3);
+            alert("Failed to delete student.");
+          case 5:
+            return _context3.a(2);
+        }
+      }, _callee3, null, [[1, 4]]);
+    }));
+    return function handleDelete(_x2) {
+      return _ref3.apply(this, arguments);
+    };
+  }();
 
-  // 🔍 Search filter
-  var filteredStudents = students.filter(function (student) {
-    var _student$fullname, _student$email;
-    return ((_student$fullname = student.fullname) === null || _student$fullname === void 0 ? void 0 : _student$fullname.toLowerCase().includes(search.toLowerCase())) || ((_student$email = student.email) === null || _student$email === void 0 ? void 0 : _student$email.toLowerCase().includes(search.toLowerCase()));
+  // 🔍 Search & sort
+  var filteredStudents = students.filter(function (s) {
+    var _s$fullname, _s$email;
+    return ((_s$fullname = s.fullname) === null || _s$fullname === void 0 ? void 0 : _s$fullname.toLowerCase().includes(search.toLowerCase())) || ((_s$email = s.email) === null || _s$email === void 0 ? void 0 : _s$email.toLowerCase().includes(search.toLowerCase()));
   });
-
-  // 🔄 Filter button
   var handleFilter = function handleFilter() {
     if (filterMode === "none") {
-      var sorted = _toConsumableArray(students).sort(function (a, b) {
+      setStudents(_toConsumableArray(students).sort(function (a, b) {
         return a.fullname.localeCompare(b.fullname);
-      });
-      setStudents(sorted);
+      }));
       setFilterMode("az");
     } else {
-      var saved = JSON.parse(localStorage.getItem("archivedStudents")) || [];
-      setStudents(saved);
+      fetchArchivedStudents();
       setFilterMode("none");
     }
   };
@@ -90050,10 +90195,10 @@ var Archivestu = function Archivestu() {
             })]
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("tbody", {
-          children: filteredStudents.length > 0 ? filteredStudents.map(function (student, index) {
+          children: filteredStudents.length > 0 ? filteredStudents.map(function (student, idx) {
             return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("tr", {
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
-                children: index + 1
+                children: idx + 1
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
                 children: student.fullname
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
@@ -90061,34 +90206,31 @@ var Archivestu = function Archivestu() {
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
                 children: student.course
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
-                children: student.student_id || "—"
+                children: student.student_id
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
-                children: student.department || "—"
+                children: student.department
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
-                children: student.year_level || "—"
+                children: student.year_level
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
-                children: student.gender || "—"
+                children: student.gender
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
-                children: student.contact_number || "—"
+                children: student.contact_number
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
-                children: student.adviser || "—"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-                  className: "action-buttons",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
-                    className: "restore-btn",
-                    onClick: function onClick() {
-                      return handleRestore(student.id);
-                    },
-                    children: "Restore"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
-                    className: "delete-btn",
-                    onClick: function onClick() {
-                      return handleDelete(student.id);
-                    },
-                    children: "Delete"
-                  })]
-                })
+                children: student.adviser
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("td", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+                  className: "restore-btn",
+                  onClick: function onClick() {
+                    return handleRestore(student.id);
+                  },
+                  children: "Restore"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+                  className: "delete-btn",
+                  onClick: function onClick() {
+                    return handleDelete(student.id);
+                  },
+                  children: "Delete"
+                })]
               })]
             }, student.id);
           }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("tr", {
@@ -90164,15 +90306,11 @@ var Dashboard = function Dashboard() {
       var storedFaculty = JSON.parse(localStorage.getItem("faculty")) || [];
       var storedCourses = JSON.parse(localStorage.getItem("courses")) || [];
       var storedDepartments = JSON.parse(localStorage.getItem("departments")) || [];
-
-      // 🔹 Count students per course
       var courseCount = {};
       storedStudents.forEach(function (s) {
         var course = s.course || "Unassigned";
         courseCount[course] = (courseCount[course] || 0) + 1;
       });
-
-      // 🔹 Count faculty per department
       var deptCount = {};
       storedFaculty.forEach(function (f) {
         var dept = f.department || "Unassigned";
@@ -90193,8 +90331,6 @@ var Dashboard = function Dashboard() {
       return clearInterval(interval);
     };
   }, []);
-
-  // 🔸 Chart setup for Students per Course
   var studentCourseChart = {
     labels: Object.keys(studentPerCourse),
     datasets: [{
@@ -90202,8 +90338,6 @@ var Dashboard = function Dashboard() {
       backgroundColor: ["#007bff", "#ff6384", "#36a2eb", "#ffce56", "#4bc0c0", "#9966ff"]
     }]
   };
-
-  // 🔸 Chart setup for Faculty per Department
   var facultyDepartmentChart = {
     labels: Object.keys(facultyPerDepartment),
     datasets: [{
@@ -90238,6 +90372,11 @@ var Dashboard = function Dashboard() {
             return navigate("/dashboard");
           },
           children: "Dashboard"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("li", {
+          onClick: function onClick() {
+            return navigate("/profile-management");
+          },
+          children: "My Profile"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("li", {
           onClick: function onClick() {
             return navigate("/students");
@@ -90630,8 +90769,12 @@ var EditStudent = function EditStudent() {
       fullname: "",
       email: "",
       student_id: "",
+      course: "",
       department: "",
-      year_level: ""
+      year_level: "",
+      gender: "",
+      contact_number: "",
+      adviser: ""
     }),
     _useState2 = _slicedToArray(_useState, 2),
     form = _useState2[0],
@@ -90640,10 +90783,12 @@ var EditStudent = function EditStudent() {
     _useState4 = _slicedToArray(_useState3, 2),
     loading = _useState4[0],
     setLoading = _useState4[1];
+
+  // ✅ Fetch student info
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     var fetchStudent = /*#__PURE__*/function () {
       var _ref = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee() {
-        var res, data, stored, student, _t;
+        var res, data, _t;
         return _regenerator().w(function (_context) {
           while (1) switch (_context.p = _context.n) {
             case 0:
@@ -90656,31 +90801,20 @@ var EditStudent = function EditStudent() {
                 _context.n = 2;
                 break;
               }
-              throw new Error("No API response");
+              throw new Error("Failed to fetch student");
             case 2:
               _context.n = 3;
               return res.json();
             case 3:
               data = _context.v;
-              setForm({
-                fullname: data.fullname,
-                email: data.email,
-                student_id: data.student_id,
-                department: data.department,
-                year_level: data.year_level
-              });
+              setForm(data);
               _context.n = 5;
               break;
             case 4:
               _context.p = 4;
               _t = _context.v;
-              console.warn("⚠️ API failed, loading from localStorage instead");
-              // Fallback: get data from localStorage
-              stored = JSON.parse(localStorage.getItem("students")) || [];
-              student = stored.find(function (s) {
-                return String(s.id) === String(id);
-              });
-              if (student) setForm(student);else alert("⚠️ Student not found in localStorage.");
+              console.error("⚠️ Error loading student:", _t);
+              alert("Failed to load student info from backend.");
             case 5:
               _context.p = 5;
               setLoading(false);
@@ -90696,12 +90830,21 @@ var EditStudent = function EditStudent() {
     }();
     fetchStudent();
   }, [id]);
+
+  // ✅ Handle input changes
   var handleChange = function handleChange(e) {
-    setForm(_objectSpread(_objectSpread({}, form), {}, _defineProperty({}, e.target.name, e.target.value)));
+    var _e$target = e.target,
+      name = _e$target.name,
+      value = _e$target.value;
+    setForm(function (prev) {
+      return _objectSpread(_objectSpread({}, prev), {}, _defineProperty({}, name, value));
+    });
   };
+
+  // ✅ Submit updated data
   var handleSubmit = /*#__PURE__*/function () {
     var _ref2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee2(e) {
-      var res, updated, stored, updatedList, _t2;
+      var res, errData, _t2;
       return _regenerator().w(function (_context2) {
         while (1) switch (_context2.p = _context2.n) {
           case 0:
@@ -90717,56 +90860,39 @@ var EditStudent = function EditStudent() {
             });
           case 2:
             res = _context2.v;
-            if (!res.ok) {
+            if (res.ok) {
               _context2.n = 4;
               break;
             }
             _context2.n = 3;
-            return res.json();
+            return res.json()["catch"](function () {
+              return {};
+            });
           case 3:
-            updated = _context2.v;
-            _context2.n = 5;
-            break;
+            errData = _context2.v;
+            throw new Error(errData.message || "Failed to update student");
           case 4:
-            // Fallback if no backend
-            updated = _objectSpread({
-              id: id
-            }, form);
-          case 5:
-            // Update in localStorage
-            stored = JSON.parse(localStorage.getItem("students")) || [];
-            updatedList = stored.map(function (s) {
-              return String(s.id) === String(id) ? updated : s;
-            });
-            localStorage.setItem("students", JSON.stringify(updatedList));
             alert("✅ Student updated successfully!");
-            navigate("/students", {
-              state: {
-                updatedStudent: updated
-              }
-            });
-            _context2.n = 7;
+            navigate("/students");
+            _context2.n = 6;
             break;
-          case 6:
-            _context2.p = 6;
+          case 5:
+            _context2.p = 5;
             _t2 = _context2.v;
-            console.error(_t2);
-            alert("⚠️ Failed to update student.");
-          case 7:
+            console.error("⚠️ Update error:", _t2);
+            alert("⚠️ Failed to update student. Please try again.");
+          case 6:
             return _context2.a(2);
         }
-      }, _callee2, null, [[1, 6]]);
+      }, _callee2, null, [[1, 5]]);
     }));
     return function handleSubmit(_x) {
       return _ref2.apply(this, arguments);
     };
   }();
-  if (loading) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-    className: "edit-student-page",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
-      className: "loading-text",
-      children: "Loading student data..."
-    })
+  if (loading) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+    className: "loading-text",
+    children: "Loading student data..."
   });
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
     className: "edit-student-page",
@@ -90802,18 +90928,114 @@ var EditStudent = function EditStudent() {
             required: true
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("label", {
-          children: ["Department:", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
-            type: "text",
+          children: ["Course:", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("select", {
+            name: "course",
+            value: form.course,
+            onChange: handleChange,
+            required: true,
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+              value: "",
+              children: "Select Course"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+              value: "CS",
+              children: "Computer Science"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+              value: "IT",
+              children: "Information Technology"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+              value: "ACC",
+              children: "Accountancy"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+              value: "ENG",
+              children: "Engineering"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+              value: "BA",
+              children: "Business Administration"
+            })]
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("label", {
+          children: ["Department:", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("select", {
             name: "department",
             value: form.department,
             onChange: handleChange,
+            required: true,
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+              value: "",
+              children: "Select Department"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+              value: "Computer Science",
+              children: "Computer Science"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+              value: "Accountancy",
+              children: "Accountancy"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+              value: "Psychology",
+              children: "Psychology"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+              value: "Engineering",
+              children: "Engineering"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+              value: "Business Administration",
+              children: "Business Administration"
+            })]
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("label", {
+          children: ["Year Level:", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("select", {
+            name: "year_level",
+            value: form.year_level,
+            onChange: handleChange,
+            required: true,
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+              value: "",
+              children: "Select Year"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+              value: "1st Year",
+              children: "1st Year"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+              value: "2nd Year",
+              children: "2nd Year"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+              value: "3rd Year",
+              children: "3rd Year"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+              value: "4th Year",
+              children: "4th Year"
+            })]
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("label", {
+          children: ["Gender:", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("select", {
+            name: "gender",
+            value: form.gender,
+            onChange: handleChange,
+            required: true,
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+              value: "",
+              children: "Select Gender"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+              value: "M",
+              children: "Male"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+              value: "F",
+              children: "Female"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+              value: "O",
+              children: "Other"
+            })]
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("label", {
+          children: ["Contact Number:", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+            type: "text",
+            name: "contact_number",
+            value: form.contact_number,
+            onChange: handleChange,
+            maxLength: "11",
             required: true
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("label", {
-          children: ["Year Level:", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+          children: ["Adviser:", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
             type: "text",
-            name: "year_level",
-            value: form.year_level,
+            name: "adviser",
+            value: form.adviser,
             onChange: handleChange,
             required: true
           })]
@@ -90931,7 +91153,7 @@ var Faculty = function Faculty() {
     fetchFaculty();
   }, []);
 
-  // ✅ Archive Faculty
+  // ✅ Archive Faculty (temporary via localStorage)
   var handleArchive = function handleArchive(id) {
     if (window.confirm("Archive this faculty member?")) {
       var selected = faculty.find(function (f) {
@@ -90985,8 +91207,8 @@ var Faculty = function Faculty() {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("aside", {
       className: "sidebar",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
-        src: "/logo.png",
-        alt: "Logo",
+        src: "/image/fsuu logo.png",
+        alt: "FSUU Logo",
         className: "sidebar-logo"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("ul", {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("li", {
@@ -90999,6 +91221,11 @@ var Faculty = function Faculty() {
             return navigate("/dashboard");
           },
           children: "Dashboard"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("li", {
+          onClick: function onClick() {
+            return navigate("/profile");
+          },
+          children: "My Profile"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("li", {
           onClick: function onClick() {
             return navigate("/students");
@@ -91021,11 +91248,6 @@ var Faculty = function Faculty() {
           },
           children: "Settings"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("li", {
-          onClick: function onClick() {
-            return navigate("/profile");
-          },
-          children: "My Profile"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("li", {
           className: "logout",
           onClick: function onClick() {
             return navigate("/");
@@ -91040,7 +91262,7 @@ var Faculty = function Faculty() {
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
           className: "header-left",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
-            src: "/logo.png",
+            src: "/image/fsuu logo.png",
             alt: "logo",
             className: "header-logo"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
@@ -91111,19 +91333,19 @@ var Faculty = function Faculty() {
                 children: idx + 1
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
                 className: "fullname-cell",
-                children: f.fullname
+                children: f.fullname || "—"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
-                children: f.email
+                children: f.email || "—"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
-                children: f.employee_id || "—"
+                children: f.employee_id || "EMP-".concat(1000 + f.id)
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
-                children: f.department
+                children: f.department || "General Education"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
-                children: f.position
+                children: f.position || "Instructor"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
-                children: f.gender
+                children: f.gender || "N/A"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
-                children: f.contact_number
+                children: f.contact_number || "09XXXXXXXXX"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("td", {
                 className: "actions",
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
@@ -91194,11 +91416,11 @@ var Home = function Home() {
   var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(20),
     _useState4 = _slicedToArray(_useState3, 2),
     facultyCount = _useState4[0],
-    setFacultyCount = _useState4[1]; // optional static
+    setFacultyCount = _useState4[1]; // static example
   var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(12),
     _useState6 = _slicedToArray(_useState5, 2),
     courseCount = _useState6[0],
-    setCourseCount = _useState6[1]; // optional static
+    setCourseCount = _useState6[1];
   var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(6),
     _useState8 = _slicedToArray(_useState7, 2),
     departmentCount = _useState8[0],
@@ -91208,7 +91430,7 @@ var Home = function Home() {
     activeUsers = _useState0[0],
     setActiveUsers = _useState0[1];
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    // ✅ Get students count from localStorage
+    // ✅ Load students count from localStorage
     var students = JSON.parse(localStorage.getItem("students")) || [];
     setStudentCount(students.length);
   }, []);
@@ -91218,7 +91440,7 @@ var Home = function Home() {
       className: "sidebar",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
         src: "/logo.png",
-        alt: "School Logo",
+        alt: "Logo",
         className: "sidebar-logo"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("ul", {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("li", {
@@ -91236,7 +91458,7 @@ var Home = function Home() {
           onClick: function onClick() {
             return navigate("/profile-management");
           },
-          children: "Profile Management"
+          children: "My Profile"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("li", {
           onClick: function onClick() {
             return navigate("/students");
@@ -91252,11 +91474,6 @@ var Home = function Home() {
             return navigate("/course");
           },
           children: "Course"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("li", {
-          onClick: function onClick() {
-            return navigate("/report");
-          },
-          children: "Report"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("li", {
           onClick: function onClick() {
             return navigate("/settings");
@@ -91405,15 +91622,19 @@ var Login = function Login() {
     _useState6 = _slicedToArray(_useState5, 2),
     error = _useState6[0],
     setError = _useState6[1];
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true),
+    _useState8 = _slicedToArray(_useState7, 2),
+    isSignIn = _useState8[0],
+    setIsSignIn = _useState8[1]; // toggle buttons
   var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_1__.useNavigate)();
   var handleSubmit = function handleSubmit(e) {
     e.preventDefault();
 
-    // ✅ Get stored credentials
-    var storedEmail = localStorage.getItem("email") || "admin123";
-    var storedPassword = localStorage.getItem("password") || "12345";
+    // Default credentials
+    var storedEmail = "admin123";
+    var storedPassword = "admin1234";
     if (email === storedEmail && password === storedPassword) {
-      navigate("/home"); // redirect to home
+      navigate("/home");
     } else {
       setError("Invalid email or password");
     }
@@ -91425,8 +91646,8 @@ var Login = function Login() {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
         className: "logo",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
-          src: "/logo.png",
-          alt: "School Logo"
+          src: "/image/fsuu logo.png",
+          alt: "FSUU Logo"
         })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
         className: "header-info",
@@ -91453,11 +91674,28 @@ var Login = function Login() {
           children: "LOGIN"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
           className: "subtitle",
-          children: "Enter your credentials to continue"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("form", {
+          children: "Sign in to manage students and faculty"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+          className: "switch-buttons",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+            type: "button",
+            className: isSignIn ? "active" : "",
+            onClick: function onClick() {
+              return setIsSignIn(true);
+            },
+            children: "Sign in"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+            type: "button",
+            className: !isSignIn ? "active" : "",
+            onClick: function onClick() {
+              return setIsSignIn(false);
+            },
+            children: "Sign up"
+          })]
+        }), isSignIn && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("form", {
           onSubmit: handleSubmit,
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
-            children: "Email Address:"
+            children: "Email"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
             type: "text",
             placeholder: "Enter your email",
@@ -91467,7 +91705,7 @@ var Login = function Login() {
             },
             required: true
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
-            children: "Password:"
+            children: "Password"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
             type: "password",
             placeholder: "Enter your password",
@@ -91476,21 +91714,19 @@ var Login = function Login() {
               return setPassword(e.target.value);
             },
             required: true
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("a", {
-            href: "#",
-            className: "forgot",
-            children: "Forget password?"
           }), error && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
-            style: {
-              color: "yellow",
-              fontSize: "13px"
-            },
+            className: "error",
             children: error
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
             type: "submit",
             className: "login-btn",
-            children: "Log in"
+            children: "Sign in"
           })]
+        }), !isSignIn && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+          className: "signup-placeholder",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+            children: "Sign up feature coming soon..."
+          })
         })]
       })
     })]
@@ -91842,6 +92078,11 @@ var Report = function Report() {
           children: "Dashboard"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("li", {
           onClick: function onClick() {
+            return navigate("/profile");
+          },
+          children: "My Profile"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("li", {
+          onClick: function onClick() {
             return navigate("/students");
           },
           children: "Students"
@@ -91861,11 +92102,6 @@ var Report = function Report() {
             return navigate("/settings");
           },
           children: "Settings"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("li", {
-          onClick: function onClick() {
-            return navigate("/profile");
-          },
-          children: "My Profile"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("li", {
           className: "logout",
           onClick: function onClick() {
@@ -92133,6 +92369,11 @@ var Settings = function Settings() {
           children: "Dashboard"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("li", {
           onClick: function onClick() {
+            return navigate("/profile-management");
+          },
+          children: "My Profile"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("li", {
+          onClick: function onClick() {
             return navigate("/students");
           },
           children: "Students"
@@ -92152,11 +92393,6 @@ var Settings = function Settings() {
             return navigate("/settings");
           },
           children: "Settings"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("li", {
-          onClick: function onClick() {
-            return navigate("/profile-management");
-          },
-          children: "Profile Management"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("li", {
           className: "logout",
           onClick: function onClick() {
@@ -92267,6 +92503,7 @@ function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 
 var Students = function Students() {
   var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_1__.useNavigate)();
+  var location = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_1__.useLocation)();
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
     _useState2 = _slicedToArray(_useState, 2),
     students = _useState2[0],
@@ -92280,7 +92517,7 @@ var Students = function Students() {
     filterMode = _useState6[0],
     setFilterMode = _useState6[1];
 
-  // ✅ Fetch real students from Laravel API
+  // ✅ Fetch all active (non-archived) students
   var fetchStudents = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee() {
       var res, data, _t;
@@ -92302,7 +92539,9 @@ var Students = function Students() {
             return res.json();
           case 3:
             data = _context.v;
-            setStudents(data);
+            setStudents(data.filter(function (s) {
+              return !s.is_archived;
+            }));
             _context.n = 5;
             break;
           case 4:
@@ -92319,27 +92558,75 @@ var Students = function Students() {
       return _ref.apply(this, arguments);
     };
   }();
+
+  // ✅ Fetch once on mount, and refetch if redirected after adding student
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     fetchStudents();
   }, []);
 
-  // ✅ Archive Student
-  var handleArchive = function handleArchive(id) {
-    if (window.confirm("Are you sure you want to archive this student?")) {
-      var selected = students.find(function (s) {
-        return s.id === id;
+  // ✅ Detect redirect after AddStudent
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    var _location$state;
+    if ((_location$state = location.state) !== null && _location$state !== void 0 && _location$state.added) {
+      fetchStudents(); // re-fetch list
+      // ✅ clear state para hindi infinite loop
+      navigate(location.pathname, {
+        replace: true
       });
-      var updatedList = students.filter(function (s) {
-        return s.id !== id;
-      });
-      var archivedList = JSON.parse(localStorage.getItem("archivedStudents")) || [];
-      localStorage.setItem("archivedStudents", JSON.stringify([].concat(_toConsumableArray(archivedList), [selected])));
-      setStudents(updatedList);
-      alert("📦 Student archived successfully!");
     }
-  };
+  }, [location.state, navigate, location.pathname]);
 
-  // ✅ Search filter
+  // ✅ Archive student
+  var handleArchive = /*#__PURE__*/function () {
+    var _ref2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee2(id) {
+      var res, _t2;
+      return _regenerator().w(function (_context2) {
+        while (1) switch (_context2.p = _context2.n) {
+          case 0:
+            if (!window.confirm("Are you sure you want to archive this student?")) {
+              _context2.n = 5;
+              break;
+            }
+            _context2.p = 1;
+            _context2.n = 2;
+            return fetch("http://127.0.0.1:8000/api/students/".concat(id, "/archive"), {
+              method: "PUT",
+              headers: {
+                "Content-Type": "application/json"
+              }
+            });
+          case 2:
+            res = _context2.v;
+            if (res.ok) {
+              _context2.n = 3;
+              break;
+            }
+            throw new Error("Failed to archive student");
+          case 3:
+            setStudents(function (prev) {
+              return prev.filter(function (s) {
+                return s.id !== id;
+              });
+            });
+            alert("📦 Student archived successfully!");
+            _context2.n = 5;
+            break;
+          case 4:
+            _context2.p = 4;
+            _t2 = _context2.v;
+            console.error("⚠️ Error archiving student:", _t2);
+            alert("Failed to archive student. Please try again.");
+          case 5:
+            return _context2.a(2);
+        }
+      }, _callee2, null, [[1, 4]]);
+    }));
+    return function handleArchive(_x) {
+      return _ref2.apply(this, arguments);
+    };
+  }();
+
+  // ✅ Search
   var handleSearch = function handleSearch(e) {
     return setSearchTerm(e.target.value);
   };
@@ -92348,7 +92635,7 @@ var Students = function Students() {
     return ((_s$fullname = s.fullname) === null || _s$fullname === void 0 ? void 0 : _s$fullname.toLowerCase().includes(searchTerm.toLowerCase())) || ((_s$email = s.email) === null || _s$email === void 0 ? void 0 : _s$email.toLowerCase().includes(searchTerm.toLowerCase())) || ((_s$student_id = s.student_id) === null || _s$student_id === void 0 ? void 0 : _s$student_id.toLowerCase().includes(searchTerm.toLowerCase()));
   });
 
-  // ✅ Sort A→Z toggle
+  // ✅ Sort A–Z toggle
   var handleFilter = function handleFilter() {
     if (filterMode === "none") {
       var sorted = _toConsumableArray(students).sort(function (a, b) {
@@ -92357,7 +92644,7 @@ var Students = function Students() {
       setStudents(sorted);
       setFilterMode("az");
     } else {
-      fetchStudents(); // reset to original order
+      fetchStudents();
       setFilterMode("none");
     }
   };
@@ -92395,28 +92682,23 @@ var Students = function Students() {
           onClick: function onClick() {
             return navigate("/profile-management");
           },
-          children: "Profile Management"
+          children: "My Profile"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("li", {
+          className: "active",
           onClick: function onClick() {
             return navigate("/students");
           },
-          className: "active",
-          children: "Student"
+          children: "Students"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("li", {
           onClick: function onClick() {
             return navigate("/faculty");
           },
-          children: "Faculty Management"
+          children: "Faculty"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("li", {
           onClick: function onClick() {
             return navigate("/reports");
           },
-          children: "Report"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("li", {
-          onClick: function onClick() {
-            return navigate("/archivestu");
-          },
-          children: "Archived Students"
+          children: "Reports"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("li", {
           onClick: function onClick() {
             return navigate("/settings");
@@ -92512,11 +92794,11 @@ var Students = function Students() {
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
                 children: student.email
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
-                children: student.course
+                children: student.course || "N/A"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
                 children: student.student_id
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
-                children: student.department
+                children: student.department || "N/A"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
                 children: student.year_level
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {

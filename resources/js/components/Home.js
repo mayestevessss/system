@@ -6,13 +6,13 @@ const Home = () => {
   const navigate = useNavigate();
 
   const [studentCount, setStudentCount] = useState(0);
-  const [facultyCount, setFacultyCount] = useState(20); // optional static
-  const [courseCount, setCourseCount] = useState(12); // optional static
+  const [facultyCount, setFacultyCount] = useState(20); // static example
+  const [courseCount, setCourseCount] = useState(12);
   const [departmentCount, setDepartmentCount] = useState(6);
   const [activeUsers, setActiveUsers] = useState(10);
 
   useEffect(() => {
-    // ✅ Get students count from localStorage
+    // ✅ Load students count from localStorage
     const students = JSON.parse(localStorage.getItem("students")) || [];
     setStudentCount(students.length);
   }, []);
@@ -21,15 +21,15 @@ const Home = () => {
     <div className="home-page">
       {/* Sidebar */}
       <aside className="sidebar">
-        <img src="/logo.png" alt="School Logo" className="sidebar-logo" />
+        <img src="/logo.png" alt="Logo" className="sidebar-logo" />
         <ul>
           <li className="active" onClick={() => navigate("/home")}>Home</li>
           <li onClick={() => navigate("/dashboard")}>Dashboard</li>
-          <li onClick={() => navigate("/profile-management")}>Profile Management</li>
+          {/* ✅ Changed name here */}
+          <li onClick={() => navigate("/profile-management")}>My Profile</li>
           <li onClick={() => navigate("/students")}>Students</li>
           <li onClick={() => navigate("/faculty")}>Faculty</li>
           <li onClick={() => navigate("/course")}>Course</li>
-          <li onClick={() => navigate("/report")}>Report</li>
           <li onClick={() => navigate("/settings")}>Settings</li>
           <li className="logout" onClick={() => navigate("/")}>Logout</li>
         </ul>
@@ -49,7 +49,7 @@ const Home = () => {
           </div>
         </header>
 
-        {/* Cards */}
+        {/* Dashboard Cards */}
         <section className="cards">
           <div className="card blue">
             <div className="card-top">

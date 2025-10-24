@@ -25,13 +25,13 @@ const Report = () => {
         <ul>
           <li onClick={() => navigate("/home")}>Home</li>
           <li onClick={() => navigate("/dashboard")}>Dashboard</li>
+          <li onClick={() => navigate("/profile")}>My Profile</li>
           <li onClick={() => navigate("/students")}>Students</li>
           <li onClick={() => navigate("/faculty")}>Faculty</li>
           <li className="active" onClick={() => navigate("/reports")}>
             Reports
           </li>
           <li onClick={() => navigate("/settings")}>Settings</li>
-          <li onClick={() => navigate("/profile")}>My Profile</li>
           <li className="logout" onClick={() => navigate("/")}>Logout</li>
         </ul>
       </aside>

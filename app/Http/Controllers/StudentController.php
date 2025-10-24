@@ -8,24 +8,37 @@ use Illuminate\Validation\Rule;
 
 class StudentController extends Controller
 {
-    // 🧾 GET /api/students
+    /**
+     * 🧾 GET /api/students
+     * Get all active (non-archived) students
+     */
     public function index(Request $request)
     {
-        $students = Student::orderBy('id', 'asc')->get();
-        return response()->json($students);
+        $students = Student::where('is_archived', false)
+            ->orderBy('id', 'asc')
+            ->get();
+
+        return response()->json($students, 200);
     }
 
-    // 👁️ GET /api/students/{id}
+    /**
+     * 👁️ GET /api/students/{id}
+     */
     public function show($id)
     {
         $student = Student::find($id);
+
         if (!$student) {
-            return response()->json(['message' => 'Student not found'], 404);
+            return response()->json(['message' => 'Student not found.'], 404);
         }
-        return response()->json($student);
+
+        return response()->json($student, 200);
     }
 
-    // ➕ POST /api/students
+    /**
+     * ➕ POST /api/students
+     * Add a new student
+     */
     public function store(Request $request)
     {
         $data = $request->validate([
@@ -38,23 +51,27 @@ class StudentController extends Controller
             'contact_number' => 'nullable|string|max:20',
             'adviser' => 'nullable|string|max:100',
             'gender' => ['nullable', Rule::in(['M', 'F', 'O'])],
-            'is_archived' => 'boolean',
         ]);
+
+        $data['is_archived'] = false;
 
         $student = Student::create($data);
 
         return response()->json([
-            'message' => 'Student added successfully',
+            'message' => 'Student added successfully!',
             'student' => $student
         ], 201);
     }
 
-    // ✏️ PUT/PATCH /api/students/{id}
+    /**
+     * ✏️ PUT/PATCH /api/students/{id}
+     * Update an existing student
+     */
     public function update(Request $request, $id)
     {
         $student = Student::find($id);
         if (!$student) {
-            return response()->json(['message' => 'Student not found'], 404);
+            return response()->json(['message' => 'Student not found.'], 404);
         }
 
         $data = $request->validate([
@@ -67,23 +84,26 @@ class StudentController extends Controller
             'contact_number' => 'nullable|string|max:20',
             'adviser' => 'nullable|string|max:100',
             'gender' => ['nullable', Rule::in(['M', 'F', 'O'])],
-            'is_archived' => 'boolean',
         ]);
 
         $student->update($data);
 
         return response()->json([
-            'message' => 'Student updated successfully',
+            'message' => 'Student updated successfully!',
             'student' => $student
-        ]);
+        ], 200);
     }
 
-    // 📦 PATCH /api/students/{id}/archive
+    /**
+     * 📦 PATCH /api/students/{id}/archive
+     * Toggle archive/unarchive
+     */
     public function toggleArchive($id)
     {
         $student = Student::find($id);
+
         if (!$student) {
-            return response()->json(['message' => 'Student not found'], 404);
+            return response()->json(['message' => 'Student not found.'], 404);
         }
 
         $student->is_archived = !$student->is_archived;
@@ -94,19 +114,23 @@ class StudentController extends Controller
         return response()->json([
             'message' => "Student successfully {$status}.",
             'student' => $student
-        ]);
+        ], 200);
     }
 
-    // ❌ DELETE /api/students/{id}
+    /**
+     * ❌ DELETE /api/students/{id}
+     * Permanently delete a student
+     */
     public function destroy($id)
     {
         $student = Student::find($id);
+
         if (!$student) {
-            return response()->json(['message' => 'Student not found'], 404);
+            return response()->json(['message' => 'Student not found.'], 404);
         }
 
         $student->delete();
 
-        return response()->json(['message' => 'Student deleted successfully']);
+        return response()->json(['message' => 'Student permanently deleted.'], 200);
     }
 }

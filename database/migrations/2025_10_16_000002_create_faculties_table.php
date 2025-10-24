@@ -15,18 +15,26 @@ return new class extends Migration
             $table->id();
             $table->string('fullname');
             $table->string('email')->unique();
-            
-            // ✅ New proper relationship
+
+            // ✅ Relationship to departments
             $table->foreignId('department_id')
                   ->nullable()
                   ->constrained('departments')
-                  ->nullOnDelete(); // Automatically set NULL when department deleted
-            
-            // Optional legacy column (can remove later if not needed)
+                  ->nullOnDelete();
+
+            // ✅ Optional legacy column (still here for compatibility)
             $table->string('department')->nullable();
 
             $table->string('position');
             $table->enum('gender', ['M', 'F'])->default('M');
+
+            // ✅ Added fields (fixes seeder error)
+            $table->string('employee_id')->nullable();
+            $table->string('contact_number')->nullable();
+
+            // ✅ For archiving support
+            $table->boolean('is_archived')->default(false);
+
             $table->timestamps();
         });
     }

@@ -17,36 +17,45 @@ const AddStudents = () => {
     adviser: "",
   });
 
+  const [loading, setLoading] = useState(false);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
+    if (name === "contact_number" && !/^\d*$/.test(value)) return; // only numbers
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (
-      !formData.fullname ||
-      !formData.email ||
-      !formData.course ||
-      !formData.student_id
-    ) {
+    if (!formData.fullname || !formData.email || !formData.course || !formData.student_id) {
       alert("Please fill out all required fields.");
       return;
     }
 
-    const newStudent = {
-      ...formData,
-      id: Date.now(),
-    };
+    setLoading(true);
 
-    // ✅ Save to localStorage
-    const stored = JSON.parse(localStorage.getItem("students")) || [];
-    const updated = [...stored, newStudent];
-    localStorage.setItem("students", JSON.stringify(updated));
+    try {
+      const res = await fetch("http://127.0.0.1:8000/api/students", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
 
-    // ✅ Navigate back with new data
-    navigate("/students", { state: { newStudent, fromAdd: true } });
+      if (!res.ok) {
+        const errorData = await res.json();
+        throw new Error(errorData.message || "Failed to add student");
+      }
+
+      alert("🎉 Student added successfully!");
+      // ✅ Auto refresh trigger when redirected to Students page
+      navigate("/students", { state: { added: true } });
+    } catch (error) {
+      console.error("⚠️ Error adding student:", error);
+      alert("Cannot connect to backend. Make sure Laravel server is running.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleCancel = () => {
@@ -86,11 +95,11 @@ const AddStudents = () => {
             Course
             <select name="course" value={formData.course} onChange={handleChange} required>
               <option value="">Select Course</option>
-              <option value="CS">Computer Science</option>
-              <option value="IT">Information Technology</option>
-              <option value="ACC">Accountancy</option>
-              <option value="ENG">Engineering</option>
-              <option value="BA">Business Administration</option>
+              <option value="Computer Science">Computer Science</option>
+              <option value="Information Technology">Information Technology</option>
+              <option value="Accountancy">Accountancy</option>
+              <option value="Engineering">Engineering</option>
+              <option value="Business Administration">Business Administration</option>
             </select>
           </label>
 
@@ -108,31 +117,19 @@ const AddStudents = () => {
 
           <label>
             Department
-            <select
-              name="department"
-              value={formData.department}
-              onChange={handleChange}
-              required
-            >
+            <select name="department" value={formData.department} onChange={handleChange} required>
               <option value="">Select Department</option>
-              <option value="Computer Science">Computer Science</option>
-              <option value="Accountancy">Accountancy</option>
-              <option value="Psychology">Psychology</option>
-              <option value="Engineering">Engineering</option>
-              <option value="Business Administration">
-                Business Administration
-              </option>
+              <option value="Computer Science Department">Computer Science Department</option>
+              <option value="Accountancy Department">Accountancy Department</option>
+              <option value="Psychology Department">Psychology Department</option>
+              <option value="Engineering Department">Engineering Department</option>
+              <option value="Business Administration Department">Business Administration Department</option>
             </select>
           </label>
 
           <label>
             Year Level
-            <select
-              name="year_level"
-              value={formData.year_level}
-              onChange={handleChange}
-              required
-            >
+            <select name="year_level" value={formData.year_level} onChange={handleChange} required>
               <option value="">Select Year</option>
               <option value="1st Year">1st Year</option>
               <option value="2nd Year">2nd Year</option>
@@ -143,15 +140,11 @@ const AddStudents = () => {
 
           <label>
             Gender
-            <select
-              name="gender"
-              value={formData.gender}
-              onChange={handleChange}
-              required
-            >
+            <select name="gender" value={formData.gender} onChange={handleChange} required>
               <option value="">Select Gender</option>
               <option value="M">Male</option>
               <option value="F">Female</option>
+              <option value="O">Other</option>
             </select>
           </label>
 
@@ -181,8 +174,8 @@ const AddStudents = () => {
           </label>
 
           <div className="add-buttons">
-            <button type="submit" className="save-btn">
-              Save
+            <button type="submit" className="save-btn" disabled={loading}>
+              {loading ? "Saving..." : "Save"}
             </button>
             <button type="button" className="cancel-btn" onClick={handleCancel}>
               Cancel

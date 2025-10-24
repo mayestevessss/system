@@ -11,12 +11,12 @@ class StudentSeeder extends Seeder
 {
     public function run(): void
     {
-        // Clear existing records before seeding
+        // ✅ Clear existing records before seeding
         DB::table('students')->truncate();
 
         $faker = Faker::create();
 
-        // Sample departments and courses
+        // ✅ Sample departments and courses (no IDs)
         $departments = [
             'Information Technology' => 'BSIT',
             'Business Administration' => 'BSBA',
@@ -28,6 +28,7 @@ class StudentSeeder extends Seeder
         $yearLevels = ['1st Year', '2nd Year', '3rd Year', '4th Year'];
         $genders = ['M', 'F'];
 
+        // ✅ Generate 50 random students
         for ($i = 1; $i <= 50; $i++) {
             $department = array_rand($departments);
             $course = $departments[$department];
@@ -46,7 +47,7 @@ class StudentSeeder extends Seeder
             ]);
         }
 
-        // Optional: add a few specific default entries
+        // ✅ Add a few specific default entries
         $defaults = [
             [
                 'student_id' => 'STU9991',
@@ -74,8 +75,8 @@ class StudentSeeder extends Seeder
             ],
         ];
 
-        foreach ($defaults as $s) {
-            Student::updateOrCreate(['email' => $s['email']], $s);
+        foreach ($defaults as $student) {
+            Student::updateOrCreate(['email' => $student['email']], $student);
         }
     }
 }
