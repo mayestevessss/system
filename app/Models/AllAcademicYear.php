@@ -2,12 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class AllAcademicYear extends Model
 {
-    use HasFactory;
 
     // ✅ Correct table name
     protected $table = 'all_academic_years';

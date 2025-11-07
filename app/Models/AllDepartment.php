@@ -2,12 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class AllDepartment extends Model
 {
-    use HasFactory;
 
     // ✅ Correct table name (with underscore)
     protected $table = 'all_departments';

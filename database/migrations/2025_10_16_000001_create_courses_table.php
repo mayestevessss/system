@@ -4,23 +4,26 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class CreateCoursesTable extends Migration
 {
     /**
      * Run the migrations.
+     *
+     * @return void
      */
-    public function up(): void
+    public function up()
     {
         Schema::create('courses', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->string('title'); // Course name/title (e.g., BSIT)
             $table->text('description')->nullable(); // More descriptive field for flexibility
             
             // ✅ Relationship: Each course belongs to one department
-            $table->foreignId('department_id')
-                  ->nullable()
-                  ->constrained('departments')
-                  ->nullOnDelete(); // Automatically sets department_id to NULL when deleted
+            $table->unsignedBigInteger('department_id')->nullable();
+            $table->foreign('department_id')
+                  ->references('id')
+                  ->on('departments')
+                  ->onDelete('set null'); // Automatically sets department_id to NULL when deleted
 
             $table->timestamps();
         });
@@ -28,9 +31,11 @@ return new class extends Migration
 
     /**
      * Reverse the migrations.
+     *
+     * @return void
      */
-    public function down(): void
+    public function down()
     {
         Schema::dropIfExists('courses');
     }
-};
+}
