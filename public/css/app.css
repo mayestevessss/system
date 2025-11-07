@@ -12023,13 +12023,14 @@ textarea.form-control-lg {
 /* ===== LOGIN CONTAINER ===== */
 .login-container {
   background-color: #2890e3;
-  width: 400px;
+  width: 420px;
   margin-top: 60px;
   border-radius: 10px;
   padding: 40px 30px;
   text-align: center;
   color: white;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
 }
 
 .login-box h2, .login-box .h2 {
@@ -12042,7 +12043,7 @@ textarea.form-control-lg {
   margin-bottom: 20px;
 }
 .login-box {
-  /* === SIGN IN / SIGN UP BUTTONS === */
+  /* ==== SIGN IN / SIGN UP BUTTONS ==== */
 }
 .login-box .switch-buttons {
   display: flex;
@@ -12070,10 +12071,14 @@ textarea.form-control-lg {
 .login-box .switch-buttons button:not(.active):hover {
   background-color: #d6e4f7;
 }
+.login-box {
+  /* ===== FORM STYLING ===== */
+}
 .login-box form {
   display: flex;
   flex-direction: column;
   text-align: left;
+  box-sizing: border-box;
 }
 .login-box form label {
   font-size: 14px;
@@ -12087,6 +12092,18 @@ textarea.form-control-lg {
   margin-bottom: 12px;
   font-size: 14px;
   outline: none;
+  width: 100%;
+  box-sizing: border-box;
+}
+.login-box form .name-fields,
+.login-box form .birthday-fields {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.login-box form .name-fields input,
+.login-box form .birthday-fields input {
+  flex: 1;
 }
 .login-box form .error {
   background-color: rgba(255, 0, 0, 0.2);
@@ -12097,6 +12114,30 @@ textarea.form-control-lg {
   font-size: 13px;
   margin-bottom: 10px;
   text-align: center;
+}
+.login-box form {
+  /* === Text links (top or bottom) === */
+}
+.login-box form .switch-top-text,
+.login-box form .switch-text {
+  text-align: center;
+  font-size: 14px;
+  color: #e6e6e6;
+  margin: 10px 0 15px;
+}
+.login-box form .switch-top-text span,
+.login-box form .switch-text span {
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: underline;
+}
+.login-box form .switch-top-text span:hover,
+.login-box form .switch-text span:hover {
+  color: #dfe8f1;
+}
+.login-box form {
+  /* === Sign In / Sign Up Button === */
 }
 .login-box form .login-btn {
   background-color: #1f61d1;
@@ -12112,12 +12153,6 @@ textarea.form-control-lg {
   background-color: #1549a3;
   transform: scale(1.03);
 }
-.login-box .signup-placeholder {
-  background: rgba(255, 255, 255, 0.2);
-  padding: 20px;
-  border-radius: 8px;
-  font-size: 14px;
-}
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 600px) {
@@ -12128,7 +12163,7 @@ textarea.form-control-lg {
     padding: 15px 20px;
   }
   .header .logo img {
-    width: 70px;
+    width: 150px; /* adjusted for mobile */
     margin-bottom: 8px;
   }
   .header .header-info {
@@ -13425,6 +13460,8 @@ textarea.form-control-lg {
   padding: 18px 40px;
   background-color: #ffffff;
   border-bottom: 1px solid #ddd;
+  flex-wrap: wrap;
+  gap: 15px;
 }
 .top-controls .back-btn {
   background-color: #6c757d;
@@ -13440,11 +13477,13 @@ textarea.form-control-lg {
 .top-controls .back-btn:hover {
   background-color: #5a6268;
   transform: translateY(-2px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 .top-controls .search-area {
   display: flex;
   align-items: center;
   gap: 10px;
+  flex-wrap: wrap;
 }
 .top-controls .search-area input {
   width: 280px;
@@ -13467,11 +13506,12 @@ textarea.form-control-lg {
   padding: 8px 15px;
   cursor: pointer;
   font-weight: 500;
-  transition: background 0.3s, transform 0.2s;
+  transition: all 0.3s;
 }
 .top-controls .search-area .filter-btn:hover {
   background-color: #0b5ed7;
   transform: translateY(-2px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 /* TABLE */
@@ -13479,6 +13519,7 @@ textarea.form-control-lg {
   margin-top: 25px;
   display: flex;
   justify-content: center;
+  overflow-x: auto;
 }
 
 .archived-table {
@@ -13489,6 +13530,7 @@ textarea.form-control-lg {
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  transition: 0.3s;
 }
 .archived-table th {
   background-color: #1abc9c;
@@ -13497,6 +13539,7 @@ textarea.form-control-lg {
   font-size: 1rem;
   font-weight: 600;
   white-space: nowrap;
+  text-transform: uppercase;
 }
 .archived-table td {
   padding: 12px;
@@ -13509,26 +13552,25 @@ textarea.form-control-lg {
 }
 .archived-table tr:hover {
   background-color: #eaf7f5;
+  transition: background-color 0.3s ease;
 }
 .archived-table .no-data {
   color: #777;
   padding: 25px;
   font-style: italic;
 }
-.archived-table .action-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
+.archived-table .restore-btn,
+.archived-table .delete-btn {
+  border: none;
+  border-radius: 6px;
+  padding: 6px 14px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s;
 }
 .archived-table .restore-btn {
   background-color: #0d6efd;
   color: white;
-  border: none;
-  padding: 6px 14px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: 500;
-  transition: all 0.3s;
 }
 .archived-table .restore-btn:hover {
   background-color: #0b5ed7;
@@ -13537,18 +13579,35 @@ textarea.form-control-lg {
 .archived-table .delete-btn {
   background-color: #dc3545;
   color: white;
-  border: none;
-  padding: 6px 14px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: 500;
-  transition: all 0.3s;
+  margin-left: 6px;
 }
 .archived-table .delete-btn:hover {
   background-color: #bb2d3b;
   transform: scale(1.05);
 }
 
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .archived-header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+  }
+  .archived-header .header-text h1, .archived-header .header-text .h1 {
+    font-size: 1.6rem;
+  }
+  .top-controls {
+    padding: 15px 20px;
+  }
+  .archived-table {
+    width: 100%;
+    font-size: 0.9rem;
+  }
+  .archived-table th,
+  .archived-table td {
+    padding: 10px;
+  }
+}
 .faculty-page {
   display: flex;
   height: 100vh;
@@ -13839,129 +13898,84 @@ textarea.form-control-lg {
   }
 }
 
-.faculty-page {
+.edit-faculty-page {
   display: flex;
+  justify-content: center;
+  align-items: center;
   min-height: 100vh;
-  background-color: #f9fafc;
+  background: linear-gradient(135deg, #e3f2fd, #bbdefb);
 }
-.faculty-page .sidebar {
-  width: 230px;
-  background-color: #1e3a8a;
-  color: #fff;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.faculty-page .sidebar .sidebar-logo {
-  width: 90px;
-  margin-bottom: 20px;
-}
-.faculty-page .sidebar ul {
-  list-style: none;
-  padding: 0;
-  width: 100%;
-}
-.faculty-page .sidebar ul li {
-  padding: 10px 15px;
-  border-radius: 8px;
-  margin-bottom: 8px;
-  cursor: pointer;
-  font-size: 15px;
-  transition: background 0.3s;
-}
-.faculty-page .sidebar ul li:hover {
-  background-color: #3b82f6;
-}
-.faculty-page .sidebar ul li.active {
-  background-color: #2563eb;
-}
-.faculty-page .faculty-content {
-  flex: 1;
-  padding: 30px;
-}
-.faculty-page .faculty-content .faculty-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 20px;
-}
-.faculty-page .faculty-content .faculty-header h1, .faculty-page .faculty-content .faculty-header .h1 {
-  font-size: 24px;
-  font-weight: 700;
+.edit-faculty-page .loading {
+  font-size: 1.2rem;
   color: #333;
 }
-.faculty-page .faculty-content .faculty-header .faculty-actions {
-  display: flex;
-  gap: 10px;
+.edit-faculty-page .edit-card {
+  background: #ffffff;
+  padding: 2.5rem 3rem;
+  border-radius: 15px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+  width: 500px;
+  text-align: left;
 }
-.faculty-page .faculty-content .faculty-header .faculty-actions .search-input {
-  padding: 8px 12px;
+.edit-faculty-page .edit-card h2, .edit-faculty-page .edit-card .h2 {
+  text-align: center;
+  color: #1e40af;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.5px;
+}
+.edit-faculty-page .edit-card .edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.edit-faculty-page .edit-card .edit-form label {
+  font-weight: 600;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  font-size: 0.95rem;
+}
+.edit-faculty-page .edit-card .edit-form label input,
+.edit-faculty-page .edit-card .edit-form label select {
+  margin-top: 5px;
+  padding: 10px;
   border: 1px solid #ccc;
   border-radius: 6px;
-  width: 250px;
-  font-size: 14px;
+  font-size: 1rem;
+  transition: border 0.2s;
 }
-.faculty-page .faculty-content .faculty-header .faculty-actions .add-btn {
-  background-color: #3b82f6;
-  color: #fff;
-  border: none;
-  padding: 8px 14px;
-  border-radius: 6px;
-  font-size: 14px;
-  cursor: pointer;
-  transition: 0.3s;
+.edit-faculty-page .edit-card .edit-form label input:focus,
+.edit-faculty-page .edit-card .edit-form label select:focus {
+  border-color: #2563eb;
+  outline: none;
 }
-.faculty-page .faculty-content .faculty-header .faculty-actions .add-btn:hover {
-  background-color: #2563eb;
+.edit-faculty-page .edit-card .edit-form .form-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5rem;
 }
-.faculty-page .faculty-content .faculty-table {
-  width: 100%;
-  border-collapse: collapse;
-  background: #fff;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  overflow: hidden;
-}
-.faculty-page .faculty-content .faculty-table th,
-.faculty-page .faculty-content .faculty-table td {
-  padding: 12px 16px;
-  text-align: left;
-  border-bottom: 1px solid #eee;
-}
-.faculty-page .faculty-content .faculty-table th {
-  background-color: #f1f5f9;
+.edit-faculty-page .edit-card .edit-form .form-buttons button {
+  padding: 10px 20px;
   font-weight: 600;
-  font-size: 14px;
-  color: #555;
-}
-.faculty-page .faculty-content .faculty-table td {
-  font-size: 14px;
-  color: #444;
-}
-.faculty-page .faculty-content .faculty-table .edit-btn,
-.faculty-page .faculty-content .faculty-table .delete-btn {
-  padding: 6px 10px;
   border: none;
-  border-radius: 4px;
+  border-radius: 8px;
   cursor: pointer;
-  font-size: 13px;
-  margin-right: 6px;
-  transition: 0.3s;
+  transition: background 0.2s ease-in-out;
 }
-.faculty-page .faculty-content .faculty-table .edit-btn {
-  background-color: #10b981;
+.edit-faculty-page .edit-card .edit-form .form-buttons .update-btn {
+  background: #2563eb;
   color: white;
 }
-.faculty-page .faculty-content .faculty-table .edit-btn:hover {
-  background-color: #059669;
+.edit-faculty-page .edit-card .edit-form .form-buttons .update-btn:hover {
+  background: #1e3a8a;
 }
-.faculty-page .faculty-content .faculty-table .delete-btn {
-  background-color: #ef4444;
-  color: white;
+.edit-faculty-page .edit-card .edit-form .form-buttons .cancel-btn {
+  background: #e5e7eb;
+  color: #111827;
 }
-.faculty-page .faculty-content .faculty-table .delete-btn:hover {
-  background-color: #dc2626;
+.edit-faculty-page .edit-card .edit-form .form-buttons .cancel-btn:hover {
+  background: #d1d5db;
 }
 
 .archived-container {
@@ -14129,13 +14143,15 @@ textarea.form-control-lg {
 
 .report-page {
   display: flex;
-  background-color: #4ecbd1;
-  height: 100vh;
+  font-family: "Arial", sans-serif;
+  min-height: 100vh;
+  background-color: #ffffff;
+  /* === Sidebar (same as Home.scss) === */
 }
 .report-page .sidebar {
   width: 200px;
   background-color: #265e5d;
-  color: white;
+  color: rgb(0, 0, 0);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -14154,14 +14170,15 @@ textarea.form-control-lg {
   padding: 8px;
   text-align: center;
   margin: 5px 10px;
-  border: 1px solid white;
+  border: 1px solid rgb(0, 0, 0);
   border-radius: 3px;
   cursor: pointer;
-  background-color: #2c7a7a;
+  background-color: #ffffff;
   font-size: 14px;
+  transition: 0.2s;
 }
 .report-page .sidebar ul li:hover {
-  background-color: #358c8b;
+  background-color: #5ed2c8;
 }
 .report-page .sidebar ul li.active {
   background-color: #43a4a3;
@@ -14171,17 +14188,29 @@ textarea.form-control-lg {
   margin-top: auto;
   background-color: #1b4c4c;
 }
+.report-page .sidebar ul li.logout:hover {
+  background-color: #ff6961;
+  color: rgb(0, 0, 0);
+}
+.report-page {
+  /* === Main === */
+}
 .report-page .report-main {
   flex: 1;
   background-color: #5ed2c8;
   display: flex;
   flex-direction: column;
+  padding: 0 20px;
+  /* === Header (same as Home.scss) === */
 }
 .report-page .report-main .header {
   background-color: #7ad5c5;
+  padding: 18px 24px;
+  border-radius: 4px;
   display: flex;
   align-items: center;
-  padding: 15px;
+  margin-top: 20px;
+  margin-bottom: 28px;
 }
 .report-page .report-main .header .header-left {
   display: flex;
@@ -14193,11 +14222,17 @@ textarea.form-control-lg {
 }
 .report-page .report-main .header .header-left .header-text h1, .report-page .report-main .header .header-left .header-text .h1 {
   margin: 0;
+  font-size: 26px;
+  color: #0b3a3a;
 }
 .report-page .report-main .header .header-left .header-text h3, .report-page .report-main .header .header-left .header-text .h3 {
+  margin: 4px 0 0;
+  font-weight: 400;
   font-style: italic;
-  margin: 0;
   font-size: 14px;
+}
+.report-page .report-main {
+  /* === Existing Report Content (unchanged) === */
 }
 .report-page .report-main .report-container {
   display: flex;
@@ -14246,145 +14281,845 @@ textarea.form-control-lg {
   background-color: #0f3fb0;
 }
 
-.settings-page {
+.settings-wrapper {
   display: flex;
-  background-color: #4ecbd1;
   height: 100vh;
-  /* ===== Sidebar ===== */
+  background-color: #5ed1d0;
+  font-family: "Segoe UI", sans-serif;
 }
-.settings-page .sidebar {
+
+/* === MAIN SIDEBAR === */
+.main-sidebar {
   width: 200px;
-  background-color: #2c7a7a;
-  color: black; /* text color changed to black */
+  background-color: #135f5f;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 15px;
+  padding-top: 20px;
 }
-.settings-page .sidebar .sidebar-logo {
+
+.main-sidebar .logo {
   width: 80px;
   margin-bottom: 15px;
 }
-.settings-page .sidebar ul {
+
+.main-sidebar ul {
   list-style: none;
-  padding: 0;
   width: 100%;
+  padding: 0;
 }
-.settings-page .sidebar ul li {
-  padding: 8px;
-  text-align: center;
+
+.main-sidebar li {
+  background-color: white;
   margin: 5px 10px;
-  border: 1px solid rgb(0, 0, 0);
-  border-radius: 3px;
+  padding: 8px;
+  border-radius: 4px;
+  text-align: center;
   cursor: pointer;
-  background-color: #f9ffff; /* changed button color */
-  font-size: 14px;
-  font-weight: 600; /* make text more readable */
-  transition: 0.2s;
+  font-weight: 500;
+  transition: all 0.2s;
 }
-.settings-page .sidebar ul li:hover {
-  background-color: #358c8b;
-  color: white;
+
+.main-sidebar li.active {
+  background-color: #fdd835;
 }
-.settings-page .sidebar ul li.active {
-  background-color: #ffffff;
-  color: rgb(0, 0, 0);
-  font-weight: bold;
-}
-.settings-page .sidebar ul li.logout {
+
+.main-sidebar li.logout {
   margin-top: auto;
-  background-color: #ffffff;
-  color: black;
-  border: 1px solid #000;
+  background-color: #fff;
 }
-.settings-page .sidebar ul li.logout:hover {
-  background-color: #ff6961;
-  color: white;
-}
-.settings-page {
-  /* ===== Main Content ===== */
-}
-.settings-page .settings-main {
+
+/* === MAIN SECTION === */
+.settings-main {
   flex: 1;
-  background-color: #51b6ae;
   display: flex;
   flex-direction: column;
+  height: 100vh;
 }
-.settings-page .settings-main .header {
-  background-color: #7ad5c5;
+
+/* === HEADER === */
+.settings-header {
   display: flex;
   align-items: center;
-  padding: 15px;
-}
-.settings-page .settings-main .header .header-left {
-  display: flex;
-  align-items: center;
-}
-.settings-page .settings-main .header .header-left .header-logo {
-  width: 60px;
-  margin-right: 15px;
-}
-.settings-page .settings-main .header .header-left .header-text h1, .settings-page .settings-main .header .header-left .header-text .h1 {
-  margin: 0;
-}
-.settings-page .settings-main .header .header-left .header-text h3, .settings-page .settings-main .header .header-left .header-text .h3 {
-  font-style: italic;
-  margin: 0;
-  font-size: 14px;
-}
-.settings-page .settings-main .tabs {
-  display: flex;
   justify-content: flex-start;
-  gap: 30px;
-  padding: 25px 50px;
-  background-color: transparent;
+  background-color: #76e0de;
+  padding: 20px 40px;
+  width: 100%;
+  box-sizing: border-box;
 }
-.settings-page .settings-main .tabs button {
-  background-color: white;
-  border: 3px solid #f4b840;
-  padding: 10px 30px;
-  font-weight: 600;
-  font-size: 16px;
-  border-radius: 2px;
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.header-logo {
+  width: 70px;
+  height: 70px;
+}
+
+.header-text h1, .header-text .h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  color: #002b2b;
+}
+
+.header-text h3, .header-text .h3 {
+  margin: 0;
+  font-weight: normal;
+  color: #013131;
+  font-size: 1rem;
+}
+
+/* === BODY WRAPPER === */
+.settings-body {
+  display: flex;
+  flex: 1;
+  width: 100%;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+/* === INNER SIDEBAR === */
+.inner-sidebar {
+  background-color: #3dbcb9;
+  display: flex;
+  flex-direction: column;
+  padding-top: 20px;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.inner-sidebar.open {
+  width: 240px;
+}
+
+.inner-sidebar.collapsed {
+  width: 40px;
+}
+
+.inner-sidebar .toggle-btn {
+  background-color: #134f4e;
+  border: none;
+  color: white;
+  padding: 5px 7px;
+  font-size: 14px;
+  border-radius: 3px;
   cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: -15px;
+  z-index: 2;
 }
-.settings-page .settings-main .tabs button.active {
-  background-color: #ffffff;
-  color: #000000;
+
+.inner-sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 40px;
 }
-.settings-page .settings-main .tabs button:hover {
-  opacity: 0.9;
+
+.inner-sidebar li {
+  background-color: #fff;
+  margin: 8px 15px;
+  padding: 12px;
+  border-radius: 6px;
+  text-align: center;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.2s;
 }
-.settings-page .settings-main .content-box {
-  background-color: #3a8be0;
-  color: rgb(0, 0, 0);
-  margin: 0 50px;
-  padding: 25px;
-  border-radius: 5px;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+
+.inner-sidebar li.active {
+  background-color: #fdd835;
 }
-.settings-page .settings-main .content-box .content-header {
+
+/* === CONTENT AREA === */
+.inner-content {
+  flex: 1;
+  background-color: #2f73eb;
+  padding: 30px 40px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.content-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.content-header h2, .content-header .h2 {
+  color: #fff;
+  font-size: 1.6rem;
+  margin: 0;
+}
+
+.add-btn {
+  background-color: #1234a6;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.add-btn:hover {
+  background-color: #0e2c8a;
+}
+
+.content-body {
+  flex: 1;
+  background-color: rgba(255, 255, 255, 0.1019607843);
+  padding: 20px;
+  border-radius: 6px;
+  overflow-y: auto;
+  font-weight: 500;
+  color: #eef3ff;
+}
+
+/* === TABLE STYLES (shared) === */
+.departments-table,
+.courses-table,
+.academic-years-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  background: #ffffff;
+  border-radius: 6px;
+  overflow: hidden;
+  color: #000;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.departments-table th,
+.departments-table td,
+.courses-table th,
+.courses-table td,
+.academic-years-table th,
+.academic-years-table td {
+  border: 1px solid #ddd;
+  padding: 12px 16px;
+  text-align: left;
+  font-size: 0.95rem;
+}
+
+.departments-table th,
+.courses-table th,
+.academic-years-table th {
+  background-color: #1e4bd1;
+  color: white;
+  font-weight: 600;
+}
+
+.departments-table tr:nth-child(even),
+.courses-table tr:nth-child(even),
+.academic-years-table tr:nth-child(even) {
+  background-color: #f2f6ff;
+}
+
+.departments-table tr:hover,
+.courses-table tr:hover,
+.academic-years-table tr:hover {
+  background-color: #dce7ff;
+  transition: 0.2s ease;
+}
+
+/* === ACADEMIC YEARS TABLE SPECIFIC === */
+.academic-years-table td {
+  white-space: nowrap;
+}
+
+.academic-years-table th:nth-child(1),
+.academic-years-table td:nth-child(1) {
+  width: 40%;
+}
+
+.academic-years-table th:nth-child(2),
+.academic-years-table td:nth-child(2),
+.academic-years-table th:nth-child(3),
+.academic-years-table td:nth-child(3) {
+  width: 30%;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .settings-wrapper {
+    flex-direction: column;
+  }
+  .main-sidebar {
+    width: 100%;
+    flex-direction: row;
+    overflow-x: auto;
+  }
+  .inner-content {
+    padding: 20px;
+  }
+  .add-btn {
+    padding: 8px 14px;
+    font-size: 0.9rem;
+  }
+  table th,
+  table td {
+    padding: 10px;
+    font-size: 0.85rem;
+  }
+}
+.listreport-page, .listreport-faculty-page {
+  display: flex;
+  background-color: #4dd0e1;
+  min-height: 100vh;
+  font-family: "Poppins", sans-serif;
+}
+.listreport-page .sidebar, .listreport-faculty-page .sidebar {
+  width: 220px;
+  background-color: #4a148c;
+}
+.listreport-page .main-content, .listreport-faculty-page .main-content {
+  flex: 1;
+  padding: 30px 60px;
+  color: white;
+}
+.listreport-page .main-content .header, .listreport-faculty-page .main-content .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.settings-page .settings-main .content-box .content-header h2, .settings-page .settings-main .content-box .content-header .h2 {
-  color: rgb(0, 0, 0);
-  margin: 0;
+.listreport-page .main-content .header h1, .listreport-faculty-page .main-content .header h1, .listreport-page .main-content .header .h1, .listreport-faculty-page .main-content .header .h1 {
+  font-size: 28px;
 }
-.settings-page .settings-main .content-box .content-header .add-btn {
-  background-color: #134fd1;
+.listreport-page .main-content .header .back-btn, .listreport-faculty-page .main-content .header .back-btn {
+  background-color: white;
+  color: #4a148c;
   border: none;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 3px;
+  padding: 8px 20px;
+  border-radius: 6px;
   font-weight: bold;
   cursor: pointer;
+  transition: 0.3s;
 }
-.settings-page .settings-main .content-box .content-header .add-btn:hover {
-  background-color: #0f3fb0;
+.listreport-page .main-content .header .back-btn:hover, .listreport-faculty-page .main-content .header .back-btn:hover {
+  background-color: #e1bee7;
 }
-.settings-page .settings-main .content-box .content-body {
-  margin-top: 25px;
+.listreport-page .main-content, .listreport-faculty-page .main-content {
+  /* FILTERS + TOP BUTTON */
+}
+.listreport-page .main-content .filters, .listreport-faculty-page .main-content .filters {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 25px 0;
+  font-size: 18px;
+  gap: 15px;
+}
+.listreport-page .main-content .filters div, .listreport-faculty-page .main-content .filters div {
+  display: flex;
+  align-items: center;
+}
+.listreport-page .main-content .filters select, .listreport-faculty-page .main-content .filters select {
+  margin-left: 10px;
+  padding: 5px 10px;
+  border-radius: 6px;
+  border: none;
+  color: #4a148c;
+  font-weight: 600;
+  background-color: #fff;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.listreport-page .main-content .filters select:focus, .listreport-faculty-page .main-content .filters select:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #ba68c8;
+}
+.listreport-page .main-content .filters, .listreport-faculty-page .main-content .filters {
+  /* ✅ View Inactive Students button sa taas */
+}
+.listreport-page .main-content .filters .inactive-btn-top, .listreport-faculty-page .main-content .filters .inactive-btn-top {
+  background-color: #6a1b9a;
+  color: white;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.listreport-page .main-content .filters .inactive-btn-top:hover, .listreport-faculty-page .main-content .filters .inactive-btn-top:hover {
+  background-color: #8e24aa;
+}
+.listreport-page .main-content, .listreport-faculty-page .main-content {
+  /* TABLE */
+}
+.listreport-page .main-content .report-table, .listreport-faculty-page .main-content .report-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.listreport-page .main-content .report-table th, .listreport-faculty-page .main-content .report-table th {
+  background-color: #1565c0;
+  color: white;
+  padding: 12px;
+  text-align: left;
+}
+.listreport-page .main-content .report-table th:first-child, .listreport-faculty-page .main-content .report-table th:first-child {
+  width: 60px;
+  text-align: center;
+}
+.listreport-page .main-content .report-table td, .listreport-faculty-page .main-content .report-table td {
+  background-color: #1976d2;
+  color: white;
+  padding: 10px;
+}
+.listreport-page .main-content .report-table td:first-child, .listreport-faculty-page .main-content .report-table td:first-child {
+  text-align: center;
+  font-weight: bold;
+}
+.listreport-page .main-content .report-table tr:not(:first-child), .listreport-faculty-page .main-content .report-table tr:not(:first-child) {
+  border-top: 2px solid #4dd0e1;
+}
+.listreport-page .main-content .report-table .edit-btn, .listreport-faculty-page .main-content .report-table .edit-btn {
+  background-color: #ffeb3b;
+  color: black;
+  border: none;
+  padding: 5px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+.listreport-page .main-content .report-table .edit-btn:hover, .listreport-faculty-page .main-content .report-table .edit-btn:hover {
+  background-color: #fdd835;
+}
+.listreport-page .main-content, .listreport-faculty-page .main-content {
+  /* POPUP */
+}
+.listreport-page .main-content .confirm-popup, .listreport-faculty-page .main-content .confirm-popup {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+.listreport-page .main-content .confirm-popup .popup-box, .listreport-faculty-page .main-content .confirm-popup .popup-box {
+  background-color: white;
+  padding: 25px 40px;
+  border-radius: 10px;
+  text-align: center;
+  color: black;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+.listreport-page .main-content .confirm-popup .popup-box p, .listreport-faculty-page .main-content .confirm-popup .popup-box p {
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+.listreport-page .main-content .confirm-popup .popup-box .popup-buttons, .listreport-faculty-page .main-content .confirm-popup .popup-box .popup-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+.listreport-page .main-content .confirm-popup .popup-box .popup-buttons .yes-btn, .listreport-faculty-page .main-content .confirm-popup .popup-box .popup-buttons .yes-btn {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 6px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+.listreport-page .main-content .confirm-popup .popup-box .popup-buttons .yes-btn:hover, .listreport-faculty-page .main-content .confirm-popup .popup-box .popup-buttons .yes-btn:hover {
+  background-color: #45a049;
+}
+.listreport-page .main-content .confirm-popup .popup-box .popup-buttons .no-btn, .listreport-faculty-page .main-content .confirm-popup .popup-box .popup-buttons .no-btn {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 6px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+.listreport-page .main-content .confirm-popup .popup-box .popup-buttons .no-btn:hover, .listreport-faculty-page .main-content .confirm-popup .popup-box .popup-buttons .no-btn:hover {
+  background-color: #d32f2f;
+}
+
+.listinactive-page {
+  display: flex;
+  background-color: #4dd0e1;
+  min-height: 100vh;
+  font-family: "Poppins", sans-serif;
+}
+.listinactive-page .sidebar {
+  width: 220px;
+  background-color: #6a1b9a;
+}
+.listinactive-page .main-content {
+  flex: 1;
+  padding: 30px 60px;
+  color: white;
+}
+.listinactive-page .main-content .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.listinactive-page .main-content .header h1, .listinactive-page .main-content .header .h1 {
+  font-size: 28px;
+}
+.listinactive-page .main-content .header .back-btn {
+  background-color: white;
+  color: #6a1b9a;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.listinactive-page .main-content .header .back-btn:hover {
+  background-color: #e1bee7;
+}
+.listinactive-page .main-content .filters {
+  margin: 25px 0;
+  display: flex;
+  justify-content: flex-end;
+}
+.listinactive-page .main-content .filters .status-switch {
+  background-color: #ffeb3b;
+  color: black;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.listinactive-page .main-content .filters .status-switch:hover {
+  background-color: #fdd835;
+}
+.listinactive-page .main-content .report-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.listinactive-page .main-content .report-table th {
+  background-color: #283593;
+  color: white;
+  padding: 12px;
+}
+.listinactive-page .main-content .report-table td {
+  background-color: #303f9f;
+  padding: 10px;
+  color: white;
+}
+.listinactive-page .main-content .report-table tr:not(:first-child) {
+  border-top: 2px solid #4dd0e1;
+}
+.listinactive-page .main-content .report-table .activate-btn {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 6px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+.listinactive-page .main-content .report-table .activate-btn:hover {
+  background-color: #43a047;
+}
+
+.add-department-page {
+  background-color: #4dd0e1;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 50px;
+}
+.add-department-page h1, .add-department-page .h1 {
+  margin-bottom: 20px;
+  color: #0d2c40;
+}
+.add-department-page .add-department-container {
+  width: 650px;
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+.add-department-page .add-department-container .add-header {
+  background: #e6af2e;
+  padding: 12px 20px;
+  font-weight: bold;
+  font-size: 16px;
+}
+.add-department-page .add-department-container .add-department-form {
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.add-department-page .add-department-container .add-department-form label {
+  display: flex;
+  flex-direction: column;
+  font-size: 15px;
+  color: #222;
+}
+.add-department-page .add-department-container .add-department-form label input,
+.add-department-page .add-department-container .add-department-form label textarea {
+  margin-top: 6px;
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
   font-size: 14px;
+}
+.add-department-page .add-department-container .add-department-form label textarea {
+  resize: none;
+}
+.add-department-page .add-department-container .add-department-form .form-buttons {
+  display: flex;
+  justify-content: flex-start;
+  gap: 12px;
+  margin-top: 10px;
+}
+.add-department-page .add-department-container .add-department-form .form-buttons .add-btn {
+  background-color: #1565c0;
+  color: white;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.add-department-page .add-department-container .add-department-form .form-buttons .add-btn:hover {
+  background-color: #0d47a1;
+}
+.add-department-page .add-department-container .add-department-form .form-buttons .cancel-btn {
+  background-color: white;
+  color: black;
+  border: 1px solid #555;
+  padding: 8px 18px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.add-department-page .add-department-container .add-department-form .form-buttons .cancel-btn:hover {
+  background-color: #f1f1f1;
+}
+
+.add-course-page {
+  background-color: #4fd0d0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* centers horizontally */
+  justify-content: center; /* centers vertically */
+  font-family: "Segoe UI", sans-serif;
+  color: #111;
+  padding: 20px;
+}
+.add-course-page .breadcrumb {
+  width: 100%;
+  max-width: 700px;
+  text-align: left;
+  font-size: 0.9rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+.add-course-page .breadcrumb span {
+  color: #333;
+  font-weight: 500;
+}
+.add-course-page .page-title {
+  font-size: 1.6rem;
+  margin-bottom: 20px;
+  color: #111;
+  text-align: left;
+  width: 100%;
+  max-width: 700px;
+}
+.add-course-page .course-form-container {
+  background-color: #fff;
+  border-radius: 3px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  max-width: 700px;
+  width: 100%;
+}
+.add-course-page .course-form-container .form-header {
+  background-color: #e0a82e;
+  color: #111;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-bottom: 1px solid #ccc;
+}
+.add-course-page .course-form-container .course-form {
+  display: flex;
+  flex-direction: column;
+  padding: 25px 40px;
+  background-color: #fff;
+}
+.add-course-page .course-form-container .course-form label {
+  margin: 12px 0 5px;
+  font-weight: 500;
+}
+.add-course-page .course-form-container .course-form input,
+.add-course-page .course-form-container .course-form textarea {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 1rem;
+  font-family: inherit;
+}
+.add-course-page .course-form-container .course-form input:focus,
+.add-course-page .course-form-container .course-form textarea:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+.add-course-page .course-form-container .course-form textarea {
+  resize: none;
+}
+.add-course-page .course-form-container .course-form .form-buttons {
+  display: flex;
+  justify-content: flex-start;
+  gap: 15px;
+  margin-top: 20px;
+}
+.add-course-page .course-form-container .course-form .form-buttons .add-btn {
+  background-color: #0a3edc;
+  color: #fff;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+.add-course-page .course-form-container .course-form .form-buttons .add-btn:hover {
+  background-color: #072da8;
+}
+.add-course-page .course-form-container .course-form .form-buttons .cancel-btn {
+  background-color: #fff;
+  border: 1px solid #333;
+  padding: 10px 25px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.add-course-page .course-form-container .course-form .form-buttons .cancel-btn:hover {
+  background-color: #f3f3f3;
+}
+
+.academic-year-container {
+  background-color: #43c5c8;
+  min-height: 100vh;
+  padding: 40px 60px;
+  font-family: "Segoe UI", sans-serif;
+  color: #002b2b;
+}
+
+.academic-year-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+.academic-year-header h2, .academic-year-header .h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+.academic-year-header .breadcrumb {
+  font-size: 0.95rem;
+  color: #1d1d1d;
+}
+
+.academic-year-form-card {
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.form-header {
+  background-color: #f2b84c;
+  padding: 12px 20px;
+}
+.form-header h3, .form-header .h3 {
+  margin: 0;
+  color: #000;
+  font-weight: 600;
+}
+
+.academic-year-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 25px 35px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  font-size: 1rem;
+}
+.form-group label {
+  margin-bottom: 5px;
+}
+.form-group input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  font-size: 0.95rem;
+}
+.form-group input:focus {
+  outline: none;
+  border-color: #1e4bd1;
+  box-shadow: 0 0 4px #1e4bd1;
+}
+
+.form-buttons {
+  display: flex;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.add-btn {
+  background-color: #134cd1;
+  color: white;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.add-btn:hover {
+  background-color: #0e3ca6;
+}
+
+.cancel-btn {
+  background-color: white;
+  border: 1px solid #000;
+  padding: 10px 25px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.cancel-btn:hover {
+  background-color: #f5f5f5;
 }

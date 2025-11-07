@@ -5,14 +5,14 @@ import "../../sass/Login.scss";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
-  const [isSignIn, setIsSignIn] = useState(true); // toggle buttons
+  const [isSignIn, setIsSignIn] = useState(true);
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleLogin = (e) => {
     e.preventDefault();
 
-    // Default credentials
     const storedEmail = "admin123";
     const storedPassword = "admin1234";
 
@@ -23,12 +23,24 @@ const Login = () => {
     }
   };
 
+  const handleSignUp = (e) => {
+    e.preventDefault();
+
+    if (password !== confirmPassword) {
+      setError("Passwords do not match");
+      return;
+    }
+
+    alert("Sign Up Successful!");
+    setIsSignIn(true);
+  };
+
   return (
     <div className="login-page">
       {/* ===== HEADER ===== */}
       <header className="header">
         <div className="logo">
-          <img src="/image/fsuu logo.png" alt="FSUU Logo" />
+          <img src="/image/logo-removebg-preview.png" alt="FSUU Logo" />
         </div>
 
         <div className="header-info">
@@ -41,33 +53,42 @@ const Login = () => {
         </div>
       </header>
 
-      {/* ===== LOGIN BOX ===== */}
+      {/* ===== LOGIN / SIGNUP BOX ===== */}
       <main className="login-container">
         <div className="login-box">
-          <h2>LOGIN</h2>
-          <p className="subtitle">Sign in to manage students and faculty</p>
+          <h2>{isSignIn ? "LOGIN" : "SIGN UP"}</h2>
+          <p className="subtitle">
+            {isSignIn
+              ? "Sign in to manage students and faculty"
+              : "Register to use the system"}
+          </p>
 
-          {/* Sign in / Sign up Buttons */}
           <div className="switch-buttons">
             <button
               type="button"
               className={isSignIn ? "active" : ""}
-              onClick={() => setIsSignIn(true)}
+              onClick={() => {
+                setIsSignIn(true);
+                setError("");
+              }}
             >
               Sign in
             </button>
             <button
               type="button"
               className={!isSignIn ? "active" : ""}
-              onClick={() => setIsSignIn(false)}
+              onClick={() => {
+                setIsSignIn(false);
+                setError("");
+              }}
             >
               Sign up
             </button>
           </div>
 
-          {/* Login Form */}
+          {/* === SIGN IN FORM === */}
           {isSignIn && (
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleLogin}>
               <label>Email</label>
               <input
                 type="text"
@@ -88,17 +109,69 @@ const Login = () => {
 
               {error && <p className="error">{error}</p>}
 
+              {/* You don't have an account text ABOVE Sign In button */}
+              <p className="switch-top-text">
+                You don’t have an account?{" "}
+                <span onClick={() => setIsSignIn(false)}>Sign Up</span>
+              </p>
+
               <button type="submit" className="login-btn">
                 Sign in
               </button>
             </form>
           )}
 
-          {/* Placeholder for Sign Up */}
+          {/* === SIGN UP FORM === */}
           {!isSignIn && (
-            <div className="signup-placeholder">
-              <p>Sign up feature coming soon...</p>
-            </div>
+            <form onSubmit={handleSignUp}>
+              {/* Already have an account text ABOVE all fields */}
+              <p className="switch-top-text">
+                Already have an account?{" "}
+                <span onClick={() => setIsSignIn(true)}>Sign In</span>
+              </p>
+
+              <div className="name-fields">
+                <input type="text" placeholder="First Name" required />
+                <input type="text" placeholder="Last Name" required />
+              </div>
+
+              <label>Birthday</label>
+              <div className="birthday-fields">
+                <input type="text" placeholder="Month" required />
+                <input type="text" placeholder="Day" required />
+                <input type="text" placeholder="Year" required />
+              </div>
+
+              <input
+                type="text"
+                placeholder="Mobile number or email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+
+              <input
+                type="password"
+                placeholder="New password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+
+              <input
+                type="password"
+                placeholder="Confirm password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                required
+              />
+
+              {error && <p className="error">{error}</p>}
+
+              <button type="submit" className="login-btn">
+                Sign Up
+              </button>
+            </form>
           )}
         </div>
       </main>

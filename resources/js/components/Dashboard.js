@@ -30,41 +30,60 @@ const Dashboard = () => {
   const [studentPerCourse, setStudentPerCourse] = useState({});
   const [facultyPerDepartment, setFacultyPerDepartment] = useState({});
 
-  useEffect(() => {
-    const updateCounts = () => {
-      const storedStudents = JSON.parse(localStorage.getItem("students")) || [];
-      const storedFaculty = JSON.parse(localStorage.getItem("faculty")) || [];
-      const storedCourses = JSON.parse(localStorage.getItem("courses")) || [];
-      const storedDepartments = JSON.parse(localStorage.getItem("departments")) || [];
+  // ✅ Fetch counts from backend
+  const fetchCounts = async () => {
+    try {
+      // 🧑‍🎓 Fetch Students
+      const stuRes = await fetch("http://127.0.0.1:8000/api/students");
+      const stuData = stuRes.ok ? await stuRes.json() : [];
+      const activeStudents = stuData.filter((s) => !s.is_archived);
 
+      // 👩‍🏫 Fetch Faculty (if API exists)
+      let facultyData = [];
+      try {
+        const facRes = await fetch("http://127.0.0.1:8000/api/faculty");
+        if (facRes.ok) facultyData = await facRes.json();
+      } catch {}
+
+      // 🧮 Count students per course & department
       const courseCount = {};
-      storedStudents.forEach((s) => {
+      const deptCountFromStudents = {};
+
+      activeStudents.forEach((s) => {
         const course = s.course || "Unassigned";
+        const dept = s.department || "Unassigned";
+
         courseCount[course] = (courseCount[course] || 0) + 1;
+        deptCountFromStudents[dept] = (deptCountFromStudents[dept] || 0) + 1;
       });
 
-      const deptCount = {};
-      storedFaculty.forEach((f) => {
+      // 🧮 Count faculty per department
+      const deptCountFromFaculty = {};
+      facultyData.forEach((f) => {
         const dept = f.department || "Unassigned";
-        deptCount[dept] = (deptCount[dept] || 0) + 1;
+        deptCountFromFaculty[dept] = (deptCountFromFaculty[dept] || 0) + 1;
       });
 
+      // ✅ Update state (based on active students)
       setData({
-        students: storedStudents.length,
-        faculty: storedFaculty.length,
-        courses: storedCourses.length,
-        departments: storedDepartments.length,
+        students: activeStudents.length,
+        faculty: facultyData.length,
+        courses: Object.keys(courseCount).length, // distinct courses used
+        departments: Object.keys(deptCountFromStudents).length, // distinct depts used
       });
 
       setStudentPerCourse(courseCount);
-      setFacultyPerDepartment(deptCount);
-    };
+      setFacultyPerDepartment(deptCountFromFaculty);
+    } catch (err) {
+      console.error("⚠️ Error fetching dashboard data:", err);
+    }
+  };
 
-    updateCounts();
-    const interval = setInterval(updateCounts, 1000);
-    return () => clearInterval(interval);
+  useEffect(() => {
+    fetchCounts();
   }, []);
 
+  // 📊 Chart Configurations
   const studentCourseChart = {
     labels: Object.keys(studentPerCourse),
     datasets: [
@@ -100,27 +119,33 @@ const Dashboard = () => {
   };
 
   const pieOptions = {
-    plugins: {
-      legend: { display: false },
-    },
+    plugins: { legend: { display: false } },
   };
 
   return (
     <div className="dashboard-page">
       {/* SIDEBAR */}
       <aside className="sidebar">
-        <img src="/logo.png" alt="School Logo" className="sidebar-logo" />
+        <img
+          src="/image/logo-removebg-preview.png"
+          alt="School Logo"
+          className="sidebar-logo"
+        />
         <ul>
           <li onClick={() => navigate("/home")}>Home</li>
-          <li className="active" onClick={() => navigate("/dashboard")}>Dashboard</li>
-          <li onClick={() => navigate("/profile-management")}>My Profile</li>
+          <li className="active" onClick={() => navigate("/dashboard")}>
+            Dashboard
+          </li>
+          <li onClick={() => navigate("/profile-management")}>
+            My Profile
+          </li>
           <li onClick={() => navigate("/students")}>Students</li>
           <li onClick={() => navigate("/faculty")}>Faculty</li>
-          <li onClick={() => navigate("/course")}>Courses</li>
-          <li onClick={() => navigate("/departments")}>Departments</li>
           <li onClick={() => navigate("/reports")}>Reports</li>
           <li onClick={() => navigate("/settings")}>Settings</li>
-          <li className="logout" onClick={() => navigate("/")}>Logout</li>
+          <li className="logout" onClick={() => navigate("/")}>
+            Logout
+          </li>
         </ul>
       </aside>
 
@@ -128,10 +153,16 @@ const Dashboard = () => {
       <main className="main-content">
         <header className="header">
           <div className="header-left">
-            <img src="/logo.png" alt="logo" className="header-logo" />
+            <img
+              src="/image/logo-removebg-preview.png"
+              alt="Logo"
+              className="header-logo"
+            />
             <div className="header-text">
               <h1>Dashboard</h1>
-              <h3><em>Overview of Students and Faculty</em></h3>
+              <h3>
+                <em>Overview of Students and Faculty</em>
+              </h3>
             </div>
           </div>
         </header>
@@ -141,28 +172,36 @@ const Dashboard = () => {
             <FaUserGraduate className="card-icon" />
             <h2>{data.students}</h2>
             <p>Total Students</p>
-            <div className="info" onClick={() => navigate("/students")}>More info</div>
+            <div className="info" onClick={() => navigate("/students")}>
+              More info
+            </div>
           </div>
 
           <div className="card red">
             <FaChalkboardTeacher className="card-icon" />
             <h2>{data.faculty}</h2>
             <p>Faculty Members</p>
-            <div className="info" onClick={() => navigate("/faculty")}>More info</div>
+            <div className="info" onClick={() => navigate("/faculty")}>
+              More info
+            </div>
           </div>
 
           <div className="card green">
             <FaBook className="card-icon" />
             <h2>{data.courses}</h2>
             <p>Active Courses</p>
-            <div className="info" onClick={() => navigate("/course")}>More info</div>
+            <div className="info" onClick={() => navigate("/course")}>
+              More info
+            </div>
           </div>
 
           <div className="card purple">
             <FaBuilding className="card-icon" />
             <h2>{data.departments}</h2>
             <p>Departments</p>
-            <div className="info" onClick={() => navigate("/departments")}>More info</div>
+            <div className="info" onClick={() => navigate("/departments")}>
+              More info
+            </div>
           </div>
         </section>
 
@@ -172,38 +211,12 @@ const Dashboard = () => {
             <div className="chart-container">
               <Pie data={studentCourseChart} options={pieOptions} />
             </div>
-            <div className="chart-legend">
-              {studentCourseChart.labels.map((label, i) => (
-                <div key={i} className="legend-item">
-                  <span
-                    className="legend-color"
-                    style={{ backgroundColor: studentCourseChart.datasets[0].backgroundColor[i] }}
-                  ></span>
-                  <span className="legend-text">
-                    {label} — {studentCourseChart.datasets[0].data[i]} Students
-                  </span>
-                </div>
-              ))}
-            </div>
           </div>
 
           <div className="chart-box">
             <h3>Faculty per Department</h3>
             <div className="chart-container">
               <Pie data={facultyDepartmentChart} options={pieOptions} />
-            </div>
-            <div className="chart-legend">
-              {facultyDepartmentChart.labels.map((label, i) => (
-                <div key={i} className="legend-item">
-                  <span
-                    className="legend-color"
-                    style={{ backgroundColor: facultyDepartmentChart.datasets[0].backgroundColor[i] }}
-                  ></span>
-                  <span className="legend-text">
-                    {label} — {facultyDepartmentChart.datasets[0].data[i]} Faculty
-                  </span>
-                </div>
-              ))}
             </div>
           </div>
         </section>

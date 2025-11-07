@@ -44,6 +44,8 @@
   padding: 18px 40px;
   background-color: #ffffff;
   border-bottom: 1px solid #ddd;
+  flex-wrap: wrap;
+  gap: 15px;
 
   .back-btn {
     background-color: #6c757d;
@@ -59,6 +61,7 @@
     &:hover {
       background-color: #5a6268;
       transform: translateY(-2px);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     }
   }
 
@@ -66,6 +69,7 @@
     display: flex;
     align-items: center;
     gap: 10px;
+    flex-wrap: wrap;
 
     input {
       width: 280px;
@@ -90,11 +94,12 @@
       padding: 8px 15px;
       cursor: pointer;
       font-weight: 500;
-      transition: background 0.3s, transform 0.2s;
+      transition: all 0.3s;
 
       &:hover {
         background-color: #0b5ed7;
         transform: translateY(-2px);
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
       }
     }
   }
@@ -105,6 +110,7 @@
   margin-top: 25px;
   display: flex;
   justify-content: center;
+  overflow-x: auto;
 }
 
 .archived-table {
@@ -115,6 +121,7 @@
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  transition: 0.3s;
 
   th {
     background-color: #1abc9c;
@@ -123,6 +130,7 @@
     font-size: 1rem;
     font-weight: 600;
     white-space: nowrap;
+    text-transform: uppercase;
   }
 
   td {
@@ -138,6 +146,7 @@
 
   tr:hover {
     background-color: #eaf7f5;
+    transition: background-color 0.3s ease;
   }
 
   .no-data {
@@ -146,21 +155,19 @@
     font-style: italic;
   }
 
-  .action-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
+  .restore-btn,
+  .delete-btn {
+    border: none;
+    border-radius: 6px;
+    padding: 6px 14px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s;
   }
 
   .restore-btn {
     background-color: #0d6efd;
     color: white;
-    border: none;
-    padding: 6px 14px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: 500;
-    transition: all 0.3s;
 
     &:hover {
       background-color: #0b5ed7;
@@ -171,16 +178,38 @@
   .delete-btn {
     background-color: #dc3545;
     color: white;
-    border: none;
-    padding: 6px 14px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: 500;
-    transition: all 0.3s;
+    margin-left: 6px;
 
     &:hover {
       background-color: #bb2d3b;
       transform: scale(1.05);
+    }
+  }
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .archived-header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+
+    .header-text h1 {
+      font-size: 1.6rem;
+    }
+  }
+
+  .top-controls {
+    padding: 15px 20px;
+  }
+
+  .archived-table {
+    width: 100%;
+    font-size: 0.9rem;
+
+    th,
+    td {
+      padding: 10px;
     }
   }
 }

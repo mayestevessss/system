@@ -41,7 +41,7 @@ const Students = () => {
     if (window.confirm("Are you sure you want to archive this student?")) {
       try {
         const res = await fetch(`http://127.0.0.1:8000/api/students/${id}/archive`, {
-          method: "PUT",
+          method: "PATCH",
           headers: { "Content-Type": "application/json" },
         });
 

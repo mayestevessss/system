@@ -17,6 +17,11 @@ import EditFaculties from "./Edit-Faculties";
 import ArchiveFaculty from "../components/ArchiveFaculty";
 import Report from "./Report";
 import Settings from "./Settings";  
+import ListreportStudent from "./Listreport-Student";
+import ListInactiveStudents from "./ListInactive-Students";
+import AllDepartments from "./AllDepartments";
+import AllCourse from "./AllCourse";
+import AllAcademicYears from "./AllAcademic-Years";
 
 function Routers() {
   return (
@@ -42,8 +47,15 @@ function Routers() {
         <Route path="/edit-faculty/:id" element={<EditFaculties />} />
         <Route path="/archivefaculty" element={<ArchiveFaculty />} />
 
-        <Route path="reports" element={<Report />} />
-        <Route path="settings" element={<Settings />} />
+        <Route path="/reports" element={<Report />} />
+        <Route path="/listreport-student" element={<ListreportStudent />} />
+        <Route path="/listinactive-students" element={<ListInactiveStudents />} />
+        <Route path="/settings" element={<Settings />} />
+        <Route path="/all-departments" element={<AllDepartments />} />
+        <Route path="/all-courses" element={<AllCourse />} />
+        <Route path="/add-academic-year" element={<AllAcademicYears />} />
+
+
       </Routes>
     </Router>
   );

@@ -9,22 +9,14 @@ class Faculty extends Model
 {
     use HasFactory;
 
-    protected $table = 'faculties';
-
     protected $fillable = [
         'fullname',
         'email',
         'department',
-        'department_id',
         'position',
         'gender',
+        'contact_number',
+        'is_archived',
+        'status',
     ];
-
-    /**
-     * ✅ Relationship: Faculty belongs to a Department
-     */
-    public function department()
-    {
-        return $this->belongsTo(Department::class, 'department_id');
-    }
 }

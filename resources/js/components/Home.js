@@ -6,40 +6,61 @@ const Home = () => {
   const navigate = useNavigate();
 
   const [studentCount, setStudentCount] = useState(0);
-  const [facultyCount, setFacultyCount] = useState(20); // static example
+  const [facultyCount, setFacultyCount] = useState(20);
   const [courseCount, setCourseCount] = useState(12);
   const [departmentCount, setDepartmentCount] = useState(6);
-  const [activeUsers, setActiveUsers] = useState(10);
+  const [activeUsers, setActiveUsers] = useState(0);
 
   useEffect(() => {
-    // ✅ Load students count from localStorage
-    const students = JSON.parse(localStorage.getItem("students")) || [];
-    setStudentCount(students.length);
+    const updateCounts = () => {
+      const students = JSON.parse(localStorage.getItem("students")) || [];
+      setStudentCount(students.length);
+      const active = students.filter((s) => s.status === "Active").length;
+      setActiveUsers(active);
+    };
+
+    updateCounts();
+
+    // ✅ listen to localStorage + refocus event
+    window.addEventListener("storage", updateCounts);
+    window.addEventListener("focus", updateCounts);
+
+    return () => {
+      window.removeEventListener("storage", updateCounts);
+      window.removeEventListener("focus", updateCounts);
+    };
   }, []);
 
   return (
     <div className="home-page">
-      {/* Sidebar */}
       <aside className="sidebar">
-        <img src="/logo.png" alt="Logo" className="sidebar-logo" />
+        {/* ✅ Updated logo path */}
+        <img
+          src="/image/logo-removebg-preview.png"
+          alt="Logo"
+          className="sidebar-logo"
+        />
         <ul>
           <li className="active" onClick={() => navigate("/home")}>Home</li>
           <li onClick={() => navigate("/dashboard")}>Dashboard</li>
-          {/* ✅ Changed name here */}
           <li onClick={() => navigate("/profile-management")}>My Profile</li>
           <li onClick={() => navigate("/students")}>Students</li>
           <li onClick={() => navigate("/faculty")}>Faculty</li>
-          <li onClick={() => navigate("/course")}>Course</li>
+          <li onClick={() => navigate("/reports")}>Reports</li>
           <li onClick={() => navigate("/settings")}>Settings</li>
           <li className="logout" onClick={() => navigate("/")}>Logout</li>
         </ul>
       </aside>
 
-      {/* Main Content */}
       <main className="main-content">
         <header className="header">
           <div className="header-left">
-            <img src="/logo.png" alt="logo" className="header-logo" />
+            {/* ✅ Updated header logo path */}
+            <img
+              src="/image/logo-removebg-preview.png"
+              alt="Logo"
+              className="header-logo"
+            />
             <div className="header-text">
               <h1>Homepage</h1>
               <h3>
@@ -49,7 +70,6 @@ const Home = () => {
           </div>
         </header>
 
-        {/* Dashboard Cards */}
         <section className="cards">
           <div className="card blue">
             <div className="card-top">
@@ -86,7 +106,7 @@ const Home = () => {
           <div className="card yellow">
             <div className="card-top">
               <h2>{activeUsers}</h2>
-              <p>Active Users</p>
+              <p>Active Students</p>
             </div>
             <div className="info">More info</div>
           </div>

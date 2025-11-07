@@ -11,7 +11,7 @@ const Archivestu = () => {
   // 🔹 Fetch archived students from backend
   const fetchArchivedStudents = async () => {
     try {
-      const res = await fetch("http://127.0.0.1:8000/api/students/archived");
+      const res = await fetch("http://127.0.0.1:8000/api/archived-students");
       if (!res.ok) throw new Error("Failed to fetch archived students");
       const data = await res.json();
       setStudents(data);
@@ -29,8 +29,8 @@ const Archivestu = () => {
   const handleRestore = async (id) => {
     if (window.confirm("Restore this student?")) {
       try {
-        const res = await fetch(`http://127.0.0.1:8000/api/students/${id}/restore`, {
-          method: "PUT",
+        const res = await fetch(`http://127.0.0.1:8000/api/archived-students/${id}/restore`, {
+          method: "PATCH",
           headers: { "Content-Type": "application/json" },
         });
         if (!res.ok) throw new Error("Failed to restore student");
@@ -47,7 +47,7 @@ const Archivestu = () => {
   const handleDelete = async (id) => {
     if (window.confirm("⚠️ Permanently delete this student?")) {
       try {
-        const res = await fetch(`http://127.0.0.1:8000/api/students/${id}`, {
+        const res = await fetch(`http://127.0.0.1:8000/api/archived-students/${id}`, {
           method: "DELETE",
         });
         if (!res.ok) throw new Error("Failed to delete student");

@@ -49,7 +49,7 @@ const ProfileManagement = () => {
           <li onClick={() => navigate("/home")}>Home</li>
           <li onClick={() => navigate("/dashboard")}>Dashboard</li>
             <li className="active" onClick={() => navigate("/profile-management")}>
-            Profile Management
+            My Profile
           </li>
           <li onClick={() => navigate("/students")}>Students</li>
           <li onClick={() => navigate("/faculty")}>Faculty</li>

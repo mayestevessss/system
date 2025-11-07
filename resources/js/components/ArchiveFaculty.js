@@ -9,39 +9,61 @@ const ArchiveFaculty = () => {
   const [filterMode, setFilterMode] = useState("none");
   const navigate = useNavigate();
 
-  // ✅ Load archived faculty from localStorage
-  useEffect(() => {
-    const archived = JSON.parse(localStorage.getItem("archivedFaculty")) || [];
-    setFaculty(archived);
-  }, []);
-
-  // 🔙 Restore faculty back to main list
-  const handleRestore = (id) => {
-    if (window.confirm("Are you sure you want to restore this faculty member?")) {
-      const archivedList = JSON.parse(localStorage.getItem("archivedFaculty")) || [];
-      const facultyToRestore = archivedList.find((f) => f.id === id);
-      const remaining = archivedList.filter((f) => f.id !== id);
-
-      const currentFaculty = JSON.parse(localStorage.getItem("faculty")) || [];
-      localStorage.setItem("faculty", JSON.stringify([...currentFaculty, facultyToRestore]));
-      localStorage.setItem("archivedFaculty", JSON.stringify(remaining));
-
-      setFaculty(remaining);
-      alert("✅ Faculty restored successfully!");
+  // ✅ Load archived faculty from API
+  const fetchArchivedFaculty = async () => {
+    try {
+      const res = await fetch("http://127.0.0.1:8000/api/faculties/archived");
+      if (!res.ok) throw new Error("Failed to fetch archived faculty");
+      const data = await res.json();
+      setFaculty(data);
+    } catch (error) {
+      console.error("⚠️ Error fetching archived faculty:", error);
+      alert("Cannot load archived faculty. Please check backend connection.");
     }
   };
 
-  // 🗑️ Permanently delete
-  const handleDelete = (id) => {
+  useEffect(() => {
+    fetchArchivedFaculty();
+  }, []);
+
+  // 🔙 Restore faculty through API
+  const handleRestore = async (id) => {
+    if (window.confirm("Are you sure you want to restore this faculty member?")) {
+      try {
+        const res = await fetch(`http://127.0.0.1:8000/api/faculties/${id}/restore`, {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+        });
+        if (!res.ok) throw new Error("Failed to restore faculty");
+        
+        alert("✅ Faculty restored successfully!");
+        fetchArchivedFaculty(); // Refresh the list
+      } catch (error) {
+        console.error("⚠️ Restore error:", error);
+        alert("Failed to restore faculty member.");
+      }
+    }
+  };
+
+  // 🗑️ Permanently delete through API
+  const handleDelete = async (id) => {
     if (
       window.confirm(
         "⚠️ Are you sure you want to permanently delete this faculty member? This action cannot be undone."
       )
     ) {
-      const remaining = faculty.filter((f) => f.id !== id);
-      localStorage.setItem("archivedFaculty", JSON.stringify(remaining));
-      setFaculty(remaining);
-      alert("🗑️ Faculty permanently deleted!");
+      try {
+        const res = await fetch(`http://127.0.0.1:8000/api/faculties/${id}`, {
+          method: "DELETE",
+        });
+        if (!res.ok) throw new Error("Failed to delete faculty");
+        
+        alert("🗑️ Faculty permanently deleted!");
+        fetchArchivedFaculty(); // Refresh the list
+      } catch (error) {
+        console.error("⚠️ Delete error:", error);
+        alert("Failed to delete faculty member.");
+      }
     }
   };
 
@@ -50,19 +72,14 @@ const ArchiveFaculty = () => {
     f.email.toLowerCase().includes(search.toLowerCase())
   );
 
-  // 🔄 Filter button logic (A→Z / Random / Reset)
+  // 🔄 Filter button logic (A→Z / Reset)
   const handleFilter = () => {
     if (filterMode === "none") {
       const sorted = [...faculty].sort((a, b) => a.email.localeCompare(b.email));
       setFaculty(sorted);
       setFilterMode("az");
-    } else if (filterMode === "az") {
-      const shuffled = [...faculty].sort(() => Math.random() - 0.5);
-      setFaculty(shuffled);
-      setFilterMode("random");
     } else {
-      const saved = JSON.parse(localStorage.getItem("archivedFaculty")) || [];
-      setFaculty(saved);
+      fetchArchivedFaculty();
       setFilterMode("none");
     }
   };

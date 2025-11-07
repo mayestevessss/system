@@ -15,6 +15,7 @@ class StudentController extends Controller
     public function index(Request $request)
     {
         $students = Student::where('is_archived', false)
+            ->where('status', 'Active')
             ->orderBy('id', 'asc')
             ->get();
 
@@ -95,10 +96,10 @@ class StudentController extends Controller
     }
 
     /**
-     * 📦 PATCH /api/students/{id}/archive
-     * Toggle archive/unarchive
+     * 📦 PUT /api/students/{id}/archive
+     * Archive a student (move to Archivestu)
      */
-    public function toggleArchive($id)
+    public function archive($id)
     {
         $student = Student::find($id);
 
@@ -106,13 +107,33 @@ class StudentController extends Controller
             return response()->json(['message' => 'Student not found.'], 404);
         }
 
-        $student->is_archived = !$student->is_archived;
+        // Mark as archived
+        $student->is_archived = true;
         $student->save();
 
-        $status = $student->is_archived ? 'archived' : 'restored';
+        return response()->json([
+            'message' => 'Student archived successfully!',
+            'student' => $student
+        ], 200);
+    }
+
+    /**
+     * 🔄 PUT /api/students/{id}/restore
+     * Restore a student from archive
+     */
+    public function restore($id)
+    {
+        $student = Student::find($id);
+
+        if (!$student) {
+            return response()->json(['message' => 'Student not found.'], 404);
+        }
+
+        $student->is_archived = false;
+        $student->save();
 
         return response()->json([
-            'message' => "Student successfully {$status}.",
+            'message' => 'Student restored successfully!',
             'student' => $student
         ], 200);
     }
@@ -132,5 +153,49 @@ class StudentController extends Controller
         $student->delete();
 
         return response()->json(['message' => 'Student permanently deleted.'], 200);
+    }
+
+    /**
+     * 📂 GET /api/archived-students
+     * Show all archived students
+     */
+    public function archivedList()
+    {
+        $students = Student::where('is_archived', true)
+            ->orderBy('id', 'asc')
+            ->get();
+
+        return response()->json($students, 200);
+    }
+
+    /**
+     * 🔁 PATCH /api/students/{student}/status
+     * Update only the student's status field
+     */
+    public function updateStatus(Request $request, Student $student)
+    {
+        try {
+            $data = $request->validate([
+                'status' => 'required|string|in:Active,Inactive',
+            ]);
+
+            $student->status = $data['status'];
+            $student->save();
+
+            return response()->json([
+                'message' => 'Student status updated successfully.',
+                'student' => $student
+            ], 200);
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            return response()->json([
+                'message' => 'Invalid status value.',
+                'errors' => $e->errors()
+            ], 422);
+        } catch (\Exception $e) {
+            \Log::error('Error updating student status: ' . $e->getMessage());
+            return response()->json([
+                'message' => 'Failed to update student status.'
+            ], 500);
+        }
     }
 }

@@ -1,0 +1,202 @@
+.listreport-page {
+  display: flex;
+  background-color: #4dd0e1;
+  min-height: 100vh;
+  font-family: "Poppins", sans-serif;
+
+  .sidebar {
+    width: 220px;
+    background-color: #4a148c;
+  }
+
+  .main-content {
+    flex: 1;
+    padding: 30px 60px;
+    color: white;
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      h1 {
+        font-size: 28px;
+      }
+
+      .back-btn {
+        background-color: white;
+        color: #4a148c;
+        border: none;
+        padding: 8px 20px;
+        border-radius: 6px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.3s;
+
+        &:hover {
+          background-color: #e1bee7;
+        }
+      }
+    }
+
+    /* FILTERS + TOP BUTTON */
+    .filters {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      margin: 25px 0;
+      font-size: 18px;
+      gap: 15px;
+
+      div {
+        display: flex;
+        align-items: center;
+      }
+
+      select {
+        margin-left: 10px;
+        padding: 5px 10px;
+        border-radius: 6px;
+        border: none;
+        color: #4a148c;
+        font-weight: 600;
+        background-color: #fff;
+        cursor: pointer;
+        transition: 0.3s;
+
+        &:focus {
+          outline: none;
+          box-shadow: 0 0 0 2px #ba68c8;
+        }
+      }
+
+      /* ✅ View Inactive Students button sa taas */
+      .inactive-btn-top {
+        background-color: #6a1b9a;
+        color: white;
+        border: none;
+        padding: 10px 22px;
+        border-radius: 6px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.3s;
+
+        &:hover {
+          background-color: #8e24aa;
+        }
+      }
+    }
+
+    /* TABLE */
+    .report-table {
+      width: 100%;
+      border-collapse: collapse;
+      border-radius: 8px;
+      overflow: hidden;
+
+      th {
+        background-color: #1565c0;
+        color: white;
+        padding: 12px;
+        text-align: left;
+
+        &:first-child {
+          width: 60px;
+          text-align: center;
+        }
+      }
+
+      td {
+        background-color: #1976d2;
+        color: white;
+        padding: 10px;
+
+        &:first-child {
+          text-align: center;
+          font-weight: bold;
+        }
+      }
+
+      tr:not(:first-child) {
+        border-top: 2px solid #4dd0e1;
+      }
+
+      .edit-btn {
+        background-color: #ffeb3b;
+        color: black;
+        border: none;
+        padding: 5px 12px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: 0.3s;
+
+        &:hover {
+          background-color: #fdd835;
+        }
+      }
+    }
+
+    /* POPUP */
+    .confirm-popup {
+      position: fixed;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 100;
+
+      .popup-box {
+        background-color: white;
+        padding: 25px 40px;
+        border-radius: 10px;
+        text-align: center;
+        color: black;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+
+        p {
+          font-size: 18px;
+          margin-bottom: 15px;
+        }
+
+        .popup-buttons {
+          display: flex;
+          justify-content: center;
+          gap: 20px;
+
+          .yes-btn {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            padding: 6px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+
+            &:hover {
+              background-color: #45a049;
+            }
+          }
+
+          .no-btn {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            padding: 6px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+
+            &:hover {
+              background-color: #d32f2f;
+            }
+          }
+        }
+      }
+    }
+  }
+}

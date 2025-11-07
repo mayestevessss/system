@@ -23,6 +23,7 @@ class Student extends Model
         'adviser',
         'gender',
         'is_archived',
+        'status',
     ];
 
     /**

@@ -8,7 +8,7 @@ const Faculty = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [filterMode, setFilterMode] = useState("none");
 
-  // ✅ Fetch Faculty Data
+  // ✅ Fetch Faculty Data from Laravel backend
   const fetchFaculty = async () => {
     try {
       const res = await fetch("http://127.0.0.1:8000/api/faculties");
@@ -25,34 +25,41 @@ const Faculty = () => {
     fetchFaculty();
   }, []);
 
-  // ✅ Archive Faculty (temporary via localStorage)
-  const handleArchive = (id) => {
-    if (window.confirm("Archive this faculty member?")) {
-      const selected = faculty.find((f) => f.id === id);
-      const updatedList = faculty.filter((f) => f.id !== id);
-
-      const archivedList = JSON.parse(localStorage.getItem("archivedFaculty")) || [];
-      localStorage.setItem("archivedFaculty", JSON.stringify([...archivedList, selected]));
-      setFaculty(updatedList);
-
+  // ✅ Archive Faculty
+  const handleArchive = async (id) => {
+    if (!window.confirm("Archive this faculty member?")) return;
+    try {
+      const res = await fetch(`http://127.0.0.1:8000/api/faculties/${id}/archive`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+      });
+      if (!res.ok) throw new Error("Failed to archive faculty");
       alert("📦 Faculty archived successfully!");
+      fetchFaculty(); // refresh
+    } catch (error) {
+      console.error("Error archiving faculty:", error);
+      alert("❌ Failed to archive faculty.");
     }
   };
 
-  // ✅ Search filter
+  // ✅ Search Filter
   const handleSearch = (e) => setSearchTerm(e.target.value);
 
-  const filtered = faculty.filter(
-    (f) =>
+  const filtered = faculty.filter((f) => {
+    const deptName = f.department?.name || f.department || "";
+    return (
       f.fullname?.toLowerCase().includes(searchTerm.toLowerCase()) ||
       f.email?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      f.department?.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+      deptName.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+  });
 
-  // ✅ Sort A→Z toggle
+  // ✅ Sort A–Z toggle
   const handleFilter = () => {
     if (filterMode === "none") {
-      const sorted = [...faculty].sort((a, b) => a.fullname.localeCompare(b.fullname));
+      const sorted = [...faculty].sort((a, b) =>
+        a.fullname.localeCompare(b.fullname)
+      );
       setFaculty(sorted);
       setFilterMode("az");
     } else {
@@ -61,10 +68,17 @@ const Faculty = () => {
     }
   };
 
-  // ✅ Navigation
-  const handleEdit = (id) => navigate(`/editfaculty/${id}`);
-  const handleAddFaculty = () => navigate("/addfaculty");
+  // ✅ Navigation Handlers
+  const handleEdit = (id) => navigate(`/edit-faculty/${id}`);
+  const handleAddFaculty = () => navigate("/addfac");
   const handleViewArchive = () => navigate("/archivefaculty");
+
+  // ✅ Gender Display (M → Male / F → Female)
+  const displayGender = (gender) => {
+    if (gender === "M") return "Male";
+    if (gender === "F") return "Female";
+    return "N/A";
+  };
 
   return (
     <div className="faculty-page">
@@ -106,11 +120,15 @@ const Faculty = () => {
             />
           </div>
           <div className="search-buttons">
-            <button className="add-btn" onClick={handleAddFaculty}>+ Add Faculty</button>
+            <button className="add-btn" onClick={handleAddFaculty}>
+              + Add Faculty
+            </button>
             <button className="filter-btn" onClick={handleFilter}>
               {filterMode === "none" ? "Filter A→Z" : "Reset"}
             </button>
-            <button className="archive-view-btn" onClick={handleViewArchive}>View Archive</button>
+            <button className="archive-view-btn" onClick={handleViewArchive}>
+              View Archive
+            </button>
           </div>
         </div>
 
@@ -137,10 +155,10 @@ const Faculty = () => {
                   <td className="fullname-cell">{f.fullname || "—"}</td>
                   <td>{f.email || "—"}</td>
                   <td>{f.employee_id || `EMP-${1000 + f.id}`}</td>
-                  <td>{f.department || "General Education"}</td>
+                  <td>{f.department?.name || f.department || "Unassigned"}</td>
                   <td>{f.position || "Instructor"}</td>
-                  <td>{f.gender || "N/A"}</td>
-                  <td>{f.contact_number || "09XXXXXXXXX"}</td>
+                  <td>{displayGender(f.gender)}</td>
+                  <td>{f.contact_number || "—"}</td>
                   <td className="actions">
                     <button className="edit-btn" onClick={() => handleEdit(f.id)}>Edit</button>
                     <button className="archive-btn" onClick={() => handleArchive(f.id)}>Archive</button>
