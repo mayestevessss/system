@@ -14,7 +14,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        if (!class_exists('DatabaseSeeder') && class_exists(\Database\Seeders\DatabaseSeeder::class)) {
+            class_alias(\Database\Seeders\DatabaseSeeder::class, 'DatabaseSeeder');
+        }
     }
 
     /**

@@ -24,24 +24,37 @@ const ListreportStudent = () => {
   }, [type, value]);
 
   // ✅ Fetch all students
-  useEffect(() => {
-    const fetchStudents = async () => {
-      try {
-        const res = await fetch("http://127.0.0.1:8000/api/students");
-        const data = await res.json();
-        const withStatus = data.map((s) => ({
-          ...s,
-          status: s.status || "Active",
-        }));
+useEffect(() => {
+  let isMounted = true;
+  const controller = new AbortController();
 
-        setStudents(withStatus);
-        localStorage.setItem("students", JSON.stringify(withStatus));
-      } catch (err) {
-        console.error("Error fetching students:", err);
-      }
-    };
-    fetchStudents();
-  }, []);
+  const fetchStudents = async () => {
+    try {
+      const res = await fetch("http://127.0.0.1:8000/api/students", {
+        signal: controller.signal,
+      });
+      const data = await res.json();
+      if (!isMounted) return;
+
+      const withStatus = data.map((s) => ({
+        ...s,
+        status: s.status || "Active",
+      }));
+
+      setStudents(withStatus);
+      localStorage.setItem("students", JSON.stringify(withStatus));
+    } catch (err) {
+      if (err.name === "AbortError") return;
+      console.error("Error fetching students:", err);
+    }
+  };
+  fetchStudents();
+
+  return () => {
+    isMounted = false;
+    controller.abort();
+  };
+}, []);
 
   const courses = ["All", ...new Set(students.map((s) => s.course))];
   const departments = ["All", ...new Set(students.map((s) => s.department))];
