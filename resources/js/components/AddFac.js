@@ -9,7 +9,7 @@ const AddFac = () => {
     email: "",
     department: "",
     position: "",
-    gender: "M",
+    gender: "",
     contact_number: "",
   });
   const [loading, setLoading] = useState(false);
@@ -95,14 +95,14 @@ const AddFac = () => {
 
           <label>
             Department:
-            <input
-              type="text"
-              name="department"
-              value={form.department}
-              onChange={handleChange}
-              placeholder="Enter department"
-              required
-            />
+            <select name="department" value={form.department} onChange={handleChange} required>
+              <option value="">Select Department</option>
+              <option value="Computer Science Department">Computer Science Department</option>
+              <option value="Accountancy Department">Accountancy Department</option>
+              <option value="Psychology Department">Psychology Department</option>
+              <option value="Engineering Department">Engineering Department</option>
+              <option value="Business Administration Department">Business Administration Department</option>
+            </select>
           </label>
 
           <label>
@@ -119,7 +119,8 @@ const AddFac = () => {
 
           <label>
             Gender:
-            <select name="gender" value={form.gender} onChange={handleChange}>
+            <select name="gender" value={form.gender} onChange={handleChange} required>
+              <option value="">Select Gender</option>
               <option value="M">Male</option>
               <option value="F">Female</option>
             </select>

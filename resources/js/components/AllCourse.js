@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../../sass/AllCourse.scss";
 
@@ -8,9 +8,27 @@ const AllCourse = () => {
   const [formData, setFormData] = useState({
     courseName: "",
     courseCode: "",
-    department: "",
+    department_id: "",
     description: "",
   });
+
+  const [departments, setDepartments] = useState([]);
+
+  // Fetch departments for dropdown
+  useEffect(() => {
+    const fetchDepartments = async () => {
+      try {
+        const res = await fetch("http://127.0.0.1:8000/api/all-departments");
+        if (res.ok) {
+          const data = await res.json();
+          setDepartments(data);
+        }
+      } catch (error) {
+        console.error("Error fetching departments:", error);
+      }
+    };
+    fetchDepartments();
+  }, []);
 
   const handleChange = (e) => {
     setFormData({
@@ -19,11 +37,32 @@ const AllCourse = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Course added:", formData);
-    // You can later replace this with an API call to save the course
-    navigate("/settings"); // redirect back to settings
+    
+    try {
+      const res = await fetch("http://127.0.0.1:8000/api/all-courses", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.courseName,
+          code: formData.courseCode,
+          department_id: formData.department_id,
+          description: formData.description,
+        }),
+      });
+
+      if (!res.ok) {
+        const errorData = await res.json();
+        throw new Error(errorData.message || "Failed to add course");
+      }
+
+      alert("✅ Course Added Successfully!");
+      navigate("/settings");
+    } catch (error) {
+      console.error("Error adding course:", error);
+      alert("❌ Failed to add course: " + error.message);
+    }
   };
 
   return (
@@ -57,13 +96,19 @@ const AllCourse = () => {
           />
 
           <label>Department:</label>
-          <input
-            type="text"
-            name="department"
-            value={formData.department}
+          <select
+            name="department_id"
+            value={formData.department_id}
             onChange={handleChange}
             required
-          />
+          >
+            <option value="">Select Department</option>
+            {departments.map((dept) => (
+              <option key={dept.id} value={dept.id}>
+                {dept.name}
+              </option>
+            ))}
+          </select>
 
           <label>Description:</label>
           <textarea

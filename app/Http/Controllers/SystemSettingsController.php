@@ -19,7 +19,7 @@ class SystemSettingsController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|string|max:255',
-            'code' => 'required|string|max:10|unique:alldepartments,code',
+            'code' => 'required|string|max:10|unique:all_departments,code',
             'description' => 'nullable|string',
         ]);
 
@@ -37,8 +37,8 @@ class SystemSettingsController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|string|max:255',
-            'code' => 'required|string|max:10|unique:allcourses,code',
-            'department_id' => 'required|exists:alldepartments,id',
+            'code' => 'required|string|max:10|unique:all_courses,code',
+            'department_id' => 'required|exists:all_departments,id',
             'description' => 'nullable|string',
         ]);
 

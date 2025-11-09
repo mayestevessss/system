@@ -4,32 +4,65 @@ import "../../sass/ProfileManagement.scss";
 
 const ProfileManagement = () => {
   const navigate = useNavigate();
-  const location = useLocation(); // ✅ Detect navigation (for reloading)
+  const location = useLocation();
   const [showConfirm, setShowConfirm] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const [profile, setProfile] = useState({
-    firstName: "John",
-    middleName: "N/A",
-    lastName: "Lydrick",
-    email: "john@gmail.com",
-    phone: "63+994947920",
-    address: "123 St. Main, P-4 123",
-    age: "21",
-    gender: "Male",
-    password: "12345",
+    first_name: "",
+    middle_name: "",
+    last_name: "",
+    email: "",
+    phone: "",
+    address: "",
+    age: "",
+    gender: "",
   });
 
-  // ✅ Load or refresh profile from localStorage every time page changes
+  // Fetch profile from backend
   useEffect(() => {
-    const savedProfile = JSON.parse(localStorage.getItem("profileData"));
-    if (savedProfile) {
-      setProfile(savedProfile);
-    } else {
-      const email = localStorage.getItem("email") || "john@gmail.com";
-      const password = localStorage.getItem("password") || "12345";
-      setProfile((prev) => ({ ...prev, email, password }));
-    }
-  }, [location]); // 👈 triggers reload whenever you return from ViewEditProfile
+    let isMounted = true; // Track if component is mounted
+    const controller = new AbortController(); // For cancelling fetch requests
+
+    const fetchProfile = async () => {
+      try {
+        const userId = localStorage.getItem("user_id") || 1; // Default to user 1 if not logged in
+        const res = await fetch(`http://127.0.0.1:8000/api/profile/${userId}`, {
+          signal: controller.signal
+        });
+        
+        if (res.ok && isMounted) {
+          const data = await res.json();
+          setProfile({
+            first_name: data.first_name || "",
+            middle_name: data.middle_name || "",
+            last_name: data.last_name || "",
+            email: data.email || "",
+            phone: data.phone || "",
+            address: data.address || "",
+            age: data.age || "",
+            gender: data.gender || "",
+          });
+        }
+      } catch (error) {
+        if (error.name !== 'AbortError' && isMounted) {
+          console.error("Error fetching profile:", error);
+        }
+      } finally {
+        if (isMounted) {
+          setLoading(false);
+        }
+      }
+    };
+
+    fetchProfile();
+
+    // Cleanup function
+    return () => {
+      isMounted = false;
+      controller.abort();
+    };
+  }, [location]);
 
   const handleEdit = () => setShowConfirm(true);
 
@@ -81,7 +114,7 @@ const ProfileManagement = () => {
             <div className="profile-header">
               <div className="profile-icon"></div>
               <div className="profile-info">
-                <h2>{`${profile.firstName} ${profile.lastName}`}</h2>
+                <h2>{`${profile.first_name} ${profile.last_name}`}</h2>
                 <p>{profile.gender}</p>
               </div>
               <button className="edit-btn" onClick={handleEdit}>
@@ -91,45 +124,51 @@ const ProfileManagement = () => {
 
             {/* ✅ Details Section */}
             <div className="profile-details">
-              <div className="detail-row">
-                <div className="detail-box">
-                  <label>First Name</label>
-                  <div className="value">{profile.firstName}</div>
-                </div>
-                <div className="detail-box">
-                  <label>Middle Name</label>
-                  <div className="value">{profile.middleName}</div>
-                </div>
-                <div className="detail-box">
-                  <label>Last Name</label>
-                  <div className="value">{profile.lastName}</div>
-                </div>
-              </div>
+              {loading ? (
+                <div style={{ textAlign: "center", padding: "20px" }}>Loading...</div>
+              ) : (
+                <>
+                  <div className="detail-row">
+                    <div className="detail-box">
+                      <label>First Name</label>
+                      <div className="value">{profile.first_name || "N/A"}</div>
+                    </div>
+                    <div className="detail-box">
+                      <label>Middle Name</label>
+                      <div className="value">{profile.middle_name || "N/A"}</div>
+                    </div>
+                    <div className="detail-box">
+                      <label>Last Name</label>
+                      <div className="value">{profile.last_name || "N/A"}</div>
+                    </div>
+                  </div>
 
-              <div className="detail-box">
-                <label>Email</label>
-                <div className="value">{profile.email}</div>
-              </div>
+                  <div className="detail-box">
+                    <label>Email</label>
+                    <div className="value">{profile.email || "N/A"}</div>
+                  </div>
 
-              <div className="detail-box">
-                <label>Phone</label>
-                <div className="value">{profile.phone}</div>
-              </div>
+                  <div className="detail-box">
+                    <label>Phone</label>
+                    <div className="value">{profile.phone || "N/A"}</div>
+                  </div>
 
-              <div className="detail-box">
-                <label>Address</label>
-                <div className="value">{profile.address}</div>
-              </div>
+                  <div className="detail-box">
+                    <label>Address</label>
+                    <div className="value">{profile.address || "N/A"}</div>
+                  </div>
 
-              <div className="detail-box">
-                <label>Age</label>
-                <div className="value">{profile.age}</div>
-              </div>
+                  <div className="detail-box">
+                    <label>Age</label>
+                    <div className="value">{profile.age || "N/A"}</div>
+                  </div>
 
-              <div className="detail-box">
-                <label>Password</label>
-                <div className="value">{"•".repeat(profile.password.length)}</div>
-              </div>
+                  <div className="detail-box">
+                    <label>Password</label>
+                    <div className="value">••••••••</div>
+                  </div>
+                </>
+              )}
             </div>
           </div>
         </section>

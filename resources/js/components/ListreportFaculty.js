@@ -1,68 +1,103 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import "../../sass/ListreportStudent.scss"; // We can reuse the same styling
+import "../../sass/ListreportStudent.scss"; // Reuse the same styling
 
 const ListreportFaculty = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  
+  // Get initial department from navigation state
+  const initialDept = location.state?.value || "All";
+  
   const [faculties, setFaculties] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [deptFilter, setDeptFilter] = useState(initialDept);
+  const [departments, setDepartments] = useState([]);
 
+  // Fetch all faculties
   useEffect(() => {
+    let isMounted = true;
+    const controller = new AbortController();
+
     const fetchFaculties = async () => {
       try {
-        if (!location.state?.value) {
-          throw new Error("No department selected");
-        }
-
-        const res = await fetch("http://127.0.0.1:8000/api/faculty");
+        const res = await fetch("http://127.0.0.1:8000/api/faculties", {
+          signal: controller.signal,
+        });
+        
         if (!res.ok) throw new Error("Failed to fetch faculty data");
         
         const data = await res.json();
-        // Filter faculty by department
-        const filtered = data.filter(
-          f => f.department === location.state.value && !f.is_archived
-        );
         
-        setFaculties(filtered);
+        if (isMounted) {
+          // Filter out archived faculty
+          const activeFaculties = data.filter(f => !f.is_archived);
+          setFaculties(activeFaculties);
+          
+          // Extract unique departments
+          const uniqueDepts = ["All", ...new Set(activeFaculties.map(f => f.department))];
+          setDepartments(uniqueDepts);
+        }
       } catch (err) {
-        console.error("Error fetching faculty:", err);
-        setError(err.message);
-      } finally {
-        setLoading(false);
+        if (err.name !== 'AbortError' && isMounted) {
+          console.error("Error fetching faculty:", err);
+          alert("Failed to load faculty data");
+        }
       }
     };
 
     fetchFaculties();
-  }, [location.state]);
 
-  if (loading) return <div className="loading">Loading...</div>;
-  if (error) return <div className="error">{error}</div>;
+    return () => {
+      isMounted = false;
+      controller.abort();
+    };
+  }, []);
+
+  // Filter faculties by selected department
+  const filteredFaculties = faculties.filter(f => 
+    deptFilter === "All" || f.department === deptFilter
+  );
 
   return (
     <div className="listreport-page">
-      <header className="report-header">
-        <img src="/logo.png" alt="logo" className="header-logo" />
-        <div className="header-text">
+      <div className="sidebar"></div>
+
+      <div className="main-content">
+        {/* HEADER */}
+        <div className="header">
           <h1>Faculty Report</h1>
-          <h3>
-            <em>Department: {location.state?.value || "N/A"}</em>
-          </h3>
+          {initialDept !== "All" && (
+            <p>
+              Showing report by <b>Department: {initialDept}</b>
+            </p>
+          )}
+          <button className="back-btn" onClick={() => navigate("/reports")}>
+            Back
+          </button>
         </div>
-      </header>
 
-      <div className="controls">
-        <button className="back-btn" onClick={() => navigate("/reports")}>
-          ← Back to Reports
-        </button>
-      </div>
+        {/* FILTERS */}
+        <div className="filters">
+          <div>
+            <b>Department:</b>
+            <select
+              value={deptFilter}
+              onChange={(e) => setDeptFilter(e.target.value)}
+            >
+              {departments.map((dept, i) => (
+                <option key={i} value={dept}>
+                  {dept}
+                </option>
+              ))}
+            </select>
+          </div>
+        </div>
 
-      <div className="table-container">
-        <table className="data-table">
+        {/* TABLE */}
+        <table className="report-table">
           <thead>
             <tr>
-              <th>No.</th>
+              <th>#</th>
               <th>Full Name</th>
               <th>Email</th>
               <th>Department</th>
@@ -72,8 +107,8 @@ const ListreportFaculty = () => {
             </tr>
           </thead>
           <tbody>
-            {faculties.length > 0 ? (
-              faculties.map((faculty, idx) => (
+            {filteredFaculties.length > 0 ? (
+              filteredFaculties.map((faculty, idx) => (
                 <tr key={faculty.id}>
                   <td>{idx + 1}</td>
                   <td>{faculty.fullname}</td>
@@ -87,7 +122,7 @@ const ListreportFaculty = () => {
             ) : (
               <tr>
                 <td colSpan="7" style={{ textAlign: "center" }}>
-                  No faculty members found in this department.
+                  No faculty members found.
                 </td>
               </tr>
             )}

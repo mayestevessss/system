@@ -10,29 +10,66 @@ const Login = () => {
   const [isSignIn, setIsSignIn] = useState(true);
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
+    setError("");
 
-    const storedEmail = "admin123";
-    const storedPassword = "admin1234";
+    try {
+      const res = await fetch("http://127.0.0.1:8000/api/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });
 
-    if (email === storedEmail && password === storedPassword) {
+      const data = await res.json();
+
+      if (!res.ok || !data.success) {
+        throw new Error(data.message || "Invalid email or password");
+      }
+
+      // Store auth token and user data
+      localStorage.setItem("auth_token", data.token);
+      localStorage.setItem("user_id", data.user.id);
+      localStorage.setItem("user_email", data.user.email);
+      
       navigate("/home");
-    } else {
-      setError("Invalid email or password");
+    } catch (error) {
+      setError(error.message || "Login failed. Please try again.");
     }
   };
 
-  const handleSignUp = (e) => {
+  const handleSignUp = async (e) => {
     e.preventDefault();
+    setError("");
 
     if (password !== confirmPassword) {
       setError("Passwords do not match");
       return;
     }
 
-    alert("Sign Up Successful!");
-    setIsSignIn(true);
+    try {
+      const res = await fetch("http://127.0.0.1:8000/api/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          first_name: "User", // You may want to add these fields to the form
+          last_name: "Name",
+          email,
+          password,
+        }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok || !data.success) {
+        throw new Error(data.message || "Registration failed");
+      }
+
+      alert("✅ Sign Up Successful! Please login.");
+      setIsSignIn(true);
+    } catch (error) {
+      setError(error.message || "Registration failed. Please try again.");
+    }
   };
 
   return (

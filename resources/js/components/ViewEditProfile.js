@@ -5,10 +5,11 @@ import "../../sass/ViewEditProfile.scss";
 const ViewEditProfile = () => {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [form, setForm] = useState({
-    firstName: "",
-    middleName: "",
-    lastName: "",
+    first_name: "",
+    middle_name: "",
+    last_name: "",
     email: "",
     phone: "",
     address: "",
@@ -17,27 +18,50 @@ const ViewEditProfile = () => {
     password: "",
   });
 
+  // Fetch profile from backend
   useEffect(() => {
-    const savedProfile = JSON.parse(localStorage.getItem("profileData"));
-    if (savedProfile) {
-      setForm(savedProfile);
-    } else {
-      const email = localStorage.getItem("email") || "john@gmail.com";
-      const password = localStorage.getItem("password") || "12345";
-      const defaultProfile = {
-        firstName: "John",
-        middleName: "N/A",
-        lastName: "Lydrick",
-        email,
-        phone: "63+994947920",
-        address: "123 St. Main, P-4 123",
-        age: "21",
-        gender: "Male",
-        password,
-      };
-      setForm(defaultProfile);
-      localStorage.setItem("profileData", JSON.stringify(defaultProfile));
-    }
+    let isMounted = true; // Track if component is mounted
+    const controller = new AbortController(); // For cancelling fetch requests
+
+    const fetchProfile = async () => {
+      try {
+        const userId = localStorage.getItem("user_id") || 1;
+        const res = await fetch(`http://127.0.0.1:8000/api/profile/${userId}`, {
+          signal: controller.signal
+        });
+        
+        if (res.ok && isMounted) {
+          const data = await res.json();
+          setForm({
+            first_name: data.first_name || "",
+            middle_name: data.middle_name || "",
+            last_name: data.last_name || "",
+            email: data.email || "",
+            phone: data.phone || "",
+            address: data.address || "",
+            age: data.age || "",
+            gender: data.gender || "",
+            password: "", // Don't prefill password for security
+          });
+        }
+      } catch (error) {
+        if (error.name !== 'AbortError' && isMounted) {
+          console.error("Error fetching profile:", error);
+        }
+      } finally {
+        if (isMounted) {
+          setLoading(false);
+        }
+      }
+    };
+
+    fetchProfile();
+
+    // Cleanup function
+    return () => {
+      isMounted = false;
+      controller.abort();
+    };
   }, []);
 
   // Handle input changes
@@ -46,25 +70,48 @@ const ViewEditProfile = () => {
     setForm((prev) => ({ ...prev, [name]: value }));
   };
 
-  // Save updated profile
-  const handleSubmit = (e) => {
+  // Save updated profile to backend
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!form.password.trim()) {
-      alert("⚠️ Password cannot be empty!");
-      return;
+    try {
+      const userId = localStorage.getItem("user_id") || 1;
+      const payload = {
+        first_name: form.first_name,
+        middle_name: form.middle_name,
+        last_name: form.last_name,
+        email: form.email,
+        phone: form.phone,
+        address: form.address,
+        age: form.age,
+        gender: form.gender,
+      };
+
+      // Only include password if it was changed
+      if (form.password && form.password.trim()) {
+        payload.password = form.password;
+      }
+
+      const res = await fetch(`http://127.0.0.1:8000/api/profile/${userId}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      if (!res.ok) {
+        const errorData = await res.json();
+        throw new Error(errorData.message || "Failed to update profile");
+      }
+
+      alert("✅ Profile updated successfully!");
+      navigate("/profile-management");
+    } catch (error) {
+      console.error("Error updating profile:", error);
+      alert("❌ Failed to update profile: " + error.message);
     }
-
-    // Save full profile
-    localStorage.setItem("profileData", JSON.stringify(form));
-
-    // Update login credentials
-    localStorage.setItem("email", form.email);
-    localStorage.setItem("password", form.password);
-
-    alert("✅ Profile updated successfully!");
-    navigate("/profile-management");
   };
+
+  if (loading) return <div style={{textAlign: "center", padding: "50px"}}>Loading...</div>;
 
   return (
     <div className="edit-profile-page">
@@ -80,8 +127,8 @@ const ViewEditProfile = () => {
             <label>First Name:</label>
             <input
               type="text"
-              name="firstName"
-              value={form.firstName}
+              name="first_name"
+              value={form.first_name}
               onChange={handleChange}
               required
             />
@@ -91,8 +138,8 @@ const ViewEditProfile = () => {
             <label>Middle Name:</label>
             <input
               type="text"
-              name="middleName"
-              value={form.middleName}
+              name="middle_name"
+              value={form.middle_name}
               onChange={handleChange}
             />
           </div>
@@ -101,8 +148,8 @@ const ViewEditProfile = () => {
             <label>Last Name:</label>
             <input
               type="text"
-              name="lastName"
-              value={form.lastName}
+              name="last_name"
+              value={form.last_name}
               onChange={handleChange}
               required
             />

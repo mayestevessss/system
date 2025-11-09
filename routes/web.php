@@ -13,6 +13,8 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/{any}', function () {
-    return view('welcome'); // Make sure 'welcome.blade.php' exists
-})->where('any', '.*');
+// Catch-all route for React SPA
+// This will only match if no other routes (including API routes) match first
+Route::fallback(function () {
+    return view('welcome');
+});

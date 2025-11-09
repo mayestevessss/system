@@ -18,6 +18,7 @@ import ArchiveFaculty from "../components/ArchiveFaculty";
 import Report from "./Report";
 import Settings from "./Settings";  
 import ListreportStudent from "./Listreport-Student";
+import ListreportFaculty from "./ListreportFaculty";
 import ListInactiveStudents from "./ListInactive-Students";
 import AllDepartments from "./AllDepartments";
 import AllCourse from "./AllCourse";
@@ -49,6 +50,7 @@ function Routers() {
 
         <Route path="/reports" element={<Report />} />
         <Route path="/listreport-student" element={<ListreportStudent />} />
+        <Route path="/listreport-faculty" element={<ListreportFaculty />} />
         <Route path="/listinactive-students" element={<ListInactiveStudents />} />
         <Route path="/settings" element={<Settings />} />
         <Route path="/all-departments" element={<AllDepartments />} />

@@ -10,7 +10,8 @@ use App\Http\Controllers\{
     ArchiveStudentController,
     FacultyController,
     ListreportStudentController,
-    ListInactiveController
+    ListInactiveController,
+    SystemSettingsController
 };
 
 // ✅ AUTHENTICATED USER INFO
@@ -98,3 +99,27 @@ Route::prefix('listinactive')->group(function () {
     Route::patch('/{id}/status', [ListInactiveController::class, 'updateStatus'])->name('listinactive.update');
     Route::delete('/{id}', [ListInactiveController::class, 'destroy'])->name('listinactive.destroy');
 });
+
+/*
+|--------------------------------------------------------------------------
+| ⚙️ SYSTEM SETTINGS (Departments, Courses, Academic Years)
+|--------------------------------------------------------------------------
+*/
+Route::prefix('all-departments')->group(function () {
+    Route::get('/', [SystemSettingsController::class, 'getDepartments']);
+    Route::post('/', [SystemSettingsController::class, 'storeDepartment']);
+});
+
+Route::prefix('all-courses')->group(function () {
+    Route::get('/', [SystemSettingsController::class, 'getCourses']);
+    Route::post('/', [SystemSettingsController::class, 'storeCourse']);
+});
+
+Route::prefix('all-academic-years')->group(function () {
+    Route::get('/', [SystemSettingsController::class, 'getAcademicYears']);
+    Route::post('/', [SystemSettingsController::class, 'storeAcademicYear']);
+});
+
+// Simplified endpoints for dropdown options
+Route::get('/courses', [SystemSettingsController::class, 'getCourses']);
+Route::get('/departments', [SystemSettingsController::class, 'getDepartments']);

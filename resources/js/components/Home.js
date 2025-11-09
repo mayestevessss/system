@@ -6,28 +6,36 @@ const Home = () => {
   const navigate = useNavigate();
 
   const [studentCount, setStudentCount] = useState(0);
-  const [facultyCount, setFacultyCount] = useState(20);
-  const [courseCount, setCourseCount] = useState(12);
-  const [departmentCount, setDepartmentCount] = useState(6);
+  const [facultyCount, setFacultyCount] = useState(0);
+  const [courseCount, setCourseCount] = useState(0);
+  const [departmentCount, setDepartmentCount] = useState(0);
   const [activeUsers, setActiveUsers] = useState(0);
 
   useEffect(() => {
-    const updateCounts = () => {
-      const students = JSON.parse(localStorage.getItem("students")) || [];
-      setStudentCount(students.length);
-      const active = students.filter((s) => s.status === "Active").length;
-      setActiveUsers(active);
+    const fetchCounts = async () => {
+      try {
+        // Fetch from dashboard API
+        const res = await fetch("http://127.0.0.1:8000/api/dashboard");
+        if (res.ok) {
+          const data = await res.json();
+          setStudentCount(data.summary?.students || 0);
+          setFacultyCount(data.summary?.faculty || 0);
+          setCourseCount(data.summary?.courses || 0);
+          setDepartmentCount(data.summary?.departments || 0);
+          setActiveUsers(data.summary?.students || 0); // Active students count
+        }
+      } catch (error) {
+        console.error("Error fetching dashboard counts:", error);
+      }
     };
 
-    updateCounts();
+    fetchCounts();
 
-    // ✅ listen to localStorage + refocus event
-    window.addEventListener("storage", updateCounts);
-    window.addEventListener("focus", updateCounts);
+    // Refetch on focus to keep data fresh
+    window.addEventListener("focus", fetchCounts);
 
     return () => {
-      window.removeEventListener("storage", updateCounts);
-      window.removeEventListener("focus", updateCounts);
+      window.removeEventListener("focus", fetchCounts);
     };
   }, []);
 

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../../sass/Report.scss";
 
@@ -6,6 +6,36 @@ const Report = () => {
   const navigate = useNavigate();
   const [selectedCourse, setSelectedCourse] = useState("");
   const [selectedDept, setSelectedDept] = useState("");
+  const [courses, setCourses] = useState([]);
+  const [departments, setDepartments] = useState([]);
+
+  // Fetch courses and departments from backend
+  useEffect(() => {
+    const fetchOptions = async () => {
+      try {
+        const [coursesRes, deptsRes] = await Promise.all([
+          fetch("http://127.0.0.1:8000/api/courses"),
+          fetch("http://127.0.0.1:8000/api/departments"),
+        ]);
+
+        if (coursesRes.ok) {
+          const coursesData = await coursesRes.json();
+          // Extract unique course names from students
+          const uniqueCourses = [...new Set(coursesData.map(c => c.name || c.title))];
+          setCourses(uniqueCourses);
+        }
+
+        if (deptsRes.ok) {
+          const deptsData = await deptsRes.json();
+          setDepartments(deptsData);
+        }
+      } catch (error) {
+        console.error("Error fetching dropdown options:", error);
+      }
+    };
+
+    fetchOptions();
+  }, []);
 
   const handleGenerateCourseReport = () => {
     if (!selectedCourse) return alert("Please select a course first.");
@@ -16,7 +46,7 @@ const Report = () => {
 
   const handleGenerateDeptReport = () => {
     if (!selectedDept) return alert("Please select a department first.");
-    navigate("/listreport-student", {
+    navigate("/listreport-faculty", {
       state: { type: "department", value: selectedDept },
     });
   };
@@ -59,26 +89,28 @@ const Report = () => {
               onChange={(e) => setSelectedCourse(e.target.value)}
             >
               <option value="">Select Course</option>
-              <option value="Information Technology">Information Technology</option>
-              <option value="BA">BA</option>
-              <option value="ED">ED</option>
-              <option value="ED">ED</option>
-              <option value="CS">CS</option>
+              {courses.map((course, index) => (
+                <option key={index} value={course}>
+                  {course}
+                </option>
+              ))}
             </select>
             <button onClick={handleGenerateCourseReport}>Generate Report</button>
           </div>
 
           <div className="report-box">
-            <h2>Student Report</h2>
+            <h2>Faculty Report</h2>
             <p>Generate report filtered by department</p>
             <select
               value={selectedDept}
               onChange={(e) => setSelectedDept(e.target.value)}
             >
               <option value="">Select Department</option>
-              <option value="College of IT">College of IT</option>
-              <option value="College of Education">College of Education</option>
-              <option value="College of Business">College of Business</option>
+              {departments.map((dept) => (
+                <option key={dept.id} value={dept.name}>
+                  {dept.name}
+                </option>
+              ))}
             </select>
             <button onClick={handleGenerateDeptReport}>Generate Report</button>
           </div>

@@ -25,7 +25,8 @@ class AuthController extends Controller
             'password'   => Hash::make($validated['password']),
         ]);
 
-        $token = $user->createToken('auth_token')->plainTextToken;
+        // Generate a simple token for frontend authentication
+        $token = base64_encode($user->id . ':' . time());
 
         return response()->json([
             'success' => true,
@@ -39,7 +40,7 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $validated = $request->validate([
-            'email'    => 'required|email',
+            'email'    => 'required|string',  // Accept any string, not just valid emails
             'password' => 'required',
         ]);
 
@@ -52,7 +53,8 @@ class AuthController extends Controller
             ], 401);
         }
 
-        $token = $user->createToken('auth_token')->plainTextToken;
+        // Generate a simple token for frontend authentication
+        $token = base64_encode($user->id . ':' . time());
 
         return response()->json([
             'success' => true,
@@ -65,8 +67,8 @@ class AuthController extends Controller
     // 🚪 LOGOUT
     public function logout(Request $request)
     {
-        $request->user()->currentAccessToken()->delete();
-
+        // For simple token-based auth, logout is handled on the frontend
+        // by removing the token from localStorage
         return response()->json([
             'success' => true,
             'message' => 'Logged out successfully.',

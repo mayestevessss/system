@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../../sass/Settings.scss";
 
@@ -7,47 +7,45 @@ const Settings = () => {
   const [activeTab, setActiveTab] = useState("departments");
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
-  // Sample data (you can replace this with data from your backend)
-  const departments = [
-    {
-      name: "Computer Science Department",
-      code: "CSD",
-      description: "Focuses on computer systems, software, and AI research.",
-    },
-    {
-      name: "Mathematics Department",
-      code: "MATH",
-      description: "Covers pure and applied mathematics studies.",
-    },
-  ];
+  // Dynamic data from backend
+  const [departments, setDepartments] = useState([]);
+  const [courses, setCourses] = useState([]);
+  const [academicYears, setAcademicYears] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  const courses = [
-    {
-      name: "BS Computer Science",
-      code: "BSCS",
-      department: "Computer Science Department",
-      description: "Covers programming, algorithms, and systems design.",
-    },
-    {
-      name: "BS Mathematics",
-      code: "BSMATH",
-      department: "Mathematics Department",
-      description: "Focuses on analytical and statistical computation.",
-    },
-  ];
+  // Fetch data from backend
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const [deptsRes, coursesRes, yearsRes] = await Promise.all([
+          fetch("http://127.0.0.1:8000/api/all-departments"),
+          fetch("http://127.0.0.1:8000/api/all-courses"),
+          fetch("http://127.0.0.1:8000/api/all-academic-years"),
+        ]);
 
-  const academicYears = [
-    {
-      yearName: "9 Year Monthsary / 2025",
-      startDate: "2025-02-01",
-      endDate: "2025-12-31",
-    },
-    {
-      yearName: "8 Year Monthsary / 2024",
-      startDate: "2024-02-01",
-      endDate: "2024-12-31",
-    },
-  ];
+        if (deptsRes.ok) {
+          const deptsData = await deptsRes.json();
+          setDepartments(deptsData);
+        }
+
+        if (coursesRes.ok) {
+          const coursesData = await coursesRes.json();
+          setCourses(coursesData);
+        }
+
+        if (yearsRes.ok) {
+          const yearsData = await yearsRes.json();
+          setAcademicYears(yearsData);
+        }
+      } catch (error) {
+        console.error("Error fetching settings data:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   const handleAddClick = () => {
     if (activeTab === "departments") navigate("/all-departments");
@@ -158,9 +156,13 @@ const Settings = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {departments.length > 0 ? (
+                    {loading ? (
+                      <tr>
+                        <td colSpan="3" style={{ textAlign: "center" }}>Loading...</td>
+                      </tr>
+                    ) : departments.length > 0 ? (
                       departments.map((dept, index) => (
-                        <tr key={index}>
+                        <tr key={dept.id || index}>
                           <td>{dept.name}</td>
                           <td>{dept.code}</td>
                           <td>{dept.description}</td>
@@ -189,12 +191,16 @@ const Settings = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {courses.length > 0 ? (
+                    {loading ? (
+                      <tr>
+                        <td colSpan="4" style={{ textAlign: "center" }}>Loading...</td>
+                      </tr>
+                    ) : courses.length > 0 ? (
                       courses.map((course, index) => (
-                        <tr key={index}>
+                        <tr key={course.id || index}>
                           <td>{course.name}</td>
                           <td>{course.code}</td>
-                          <td>{course.department}</td>
+                          <td>{course.department?.name || course.department || "N/A"}</td>
                           <td>{course.description}</td>
                         </tr>
                       ))
@@ -220,12 +226,16 @@ const Settings = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {academicYears.length > 0 ? (
+                    {loading ? (
+                      <tr>
+                        <td colSpan="3" style={{ textAlign: "center" }}>Loading...</td>
+                      </tr>
+                    ) : academicYears.length > 0 ? (
                       academicYears.map((year, index) => (
-                        <tr key={index}>
-                          <td>{year.yearName}</td>
-                          <td>{year.startDate}</td>
-                          <td>{year.endDate}</td>
+                        <tr key={year.id || index}>
+                          <td>{year.year_name}</td>
+                          <td>{year.start_date}</td>
+                          <td>{year.end_date}</td>
                         </tr>
                       ))
                     ) : (

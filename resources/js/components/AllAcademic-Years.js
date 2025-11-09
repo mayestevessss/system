@@ -17,11 +17,31 @@ const AllAcademicYears = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Academic Year Added:", formData);
-    alert("Academic Year Added Successfully!");
-    navigate("/settings");
+    
+    try {
+      const res = await fetch("http://127.0.0.1:8000/api/all-academic-years", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          year_name: formData.yearName,
+          start_date: formData.startDate,
+          end_date: formData.endDate,
+        }),
+      });
+
+      if (!res.ok) {
+        const errorData = await res.json();
+        throw new Error(errorData.message || "Failed to add academic year");
+      }
+
+      alert("✅ Academic Year Added Successfully!");
+      navigate("/settings");
+    } catch (error) {
+      console.error("Error adding academic year:", error);
+      alert("❌ Failed to add academic year: " + error.message);
+    }
   };
 
   return (

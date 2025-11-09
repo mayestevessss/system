@@ -2,57 +2,38 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ListInactive;
+use App\Models\Student;
 use Illuminate\Http\Request;
 
 class ListInactiveController extends Controller
 {
-    // ✅ Get all inactive students
+    /**
+     * Return all students currently marked as Inactive (and not archived).
+     */
     public function index()
     {
-        $inactiveStudents = \App\Models\Student::where('status', 'Inactive')
-            ->where('is_archived', false)
-            ->orderBy('id', 'asc')
-            ->get();
-            
-        return response()->json($inactiveStudents);
+        return response()->json(
+            Student::where('status', 'Inactive')
+                ->where('is_archived', false)
+                ->orderBy('id', 'asc')
+                ->get()
+        );
     }
 
-    // ✅ Add a student to inactive list
-    public function store(Request $request)
+    /**
+     * Toggle a student's status (default: set back to Active).
+     */
+    public function updateStatus(Request $request, $id)
     {
-        $data = $request->validate([
-            'student_id' => 'required|string|unique:list_inactive',
-            'fullname' => 'required|string',
-            'course' => 'required|string',
-            'year_level' => 'required|string',
-            'status' => 'nullable|string|in:Active,Inactive',
-        ]);
+        $student = Student::findOrFail($id);
 
-        $student = ListInactive::create($data);
-        return response()->json($student, 201);
-    }
-
-    // ✅ Change student status (Inactive ↔ Active)
-    public function updateStatus($id)
-    {
-        $student = ListInactive::findOrFail($id);
-
-        $student->status = $student->status === 'Inactive' ? 'Active' : 'Inactive';
+        $newStatus = $request->input('status', 'Active');
+        $student->status = $newStatus;
         $student->save();
 
         return response()->json([
             'message' => 'Status updated successfully',
-            'student' => $student
+            'student' => $student,
         ]);
-    }
-
-    // ✅ Delete from inactive list
-    public function destroy($id)
-    {
-        $student = ListInactive::findOrFail($id);
-        $student->delete();
-
-        return response()->json(['message' => 'Deleted successfully']);
     }
 }

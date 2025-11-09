@@ -40,8 +40,10 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function map()
     {
+        // Load API routes FIRST with higher priority
         $this->mapApiRoutes();
 
+        // Then load web routes
         $this->mapWebRoutes();
     }
 

@@ -1,9 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../../sass/AddStudents.scss";
 
 const AddStudents = () => {
   const navigate = useNavigate();
+  const isMountedRef = useRef(true);
+
+  useEffect(() => {
+    return () => {
+      isMountedRef.current = false;
+    };
+  }, []);
 
   const [formData, setFormData] = useState({
     fullname: "",
@@ -33,7 +40,7 @@ const AddStudents = () => {
       return;
     }
 
-    setLoading(true);
+    if (isMountedRef.current) setLoading(true);
 
     try {
       const res = await fetch("http://127.0.0.1:8000/api/students", {
@@ -54,7 +61,7 @@ const AddStudents = () => {
       console.error("⚠️ Error adding student:", error);
       alert("Cannot connect to backend. Make sure Laravel server is running.");
     } finally {
-      setLoading(false);
+      if (isMountedRef.current) setLoading(false);
     }
   };
 

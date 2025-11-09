@@ -18,28 +18,44 @@ const EditFaculties = () => {
 
   // ✅ Fetch single faculty data from backend
   useEffect(() => {
+    let isMounted = true; // Track if component is mounted
+    const controller = new AbortController(); // For cancelling fetch requests
+
     const fetchFaculty = async () => {
       try {
         // ✅ Get a single faculty (not all)
-        const res = await fetch(`http://127.0.0.1:8000/api/faculties/${id}`);
+        const res = await fetch(`http://127.0.0.1:8000/api/faculties/${id}`, {
+          signal: controller.signal
+        });
         if (!res.ok) throw new Error("Failed to load faculty data");
 
         const data = await res.json();
 
-        // ✅ Remove unwanted fields like department_id or timestamps
-        const { department_id, created_at, updated_at, ...cleanData } = data;
-
-        setFormData(cleanData);
+        if (isMounted) {
+          // ✅ Remove unwanted fields like department_id or timestamps
+          const { department_id, created_at, updated_at, ...cleanData } = data;
+          setFormData(cleanData);
+        }
       } catch (err) {
-        console.error("⚠️ Error fetching faculty:", err);
-        alert("Cannot load faculty data. Please check your backend.");
-        navigate("/faculty");
+        if (err.name !== 'AbortError' && isMounted) {
+          console.error("⚠️ Error fetching faculty:", err);
+          alert("Cannot load faculty data. Please check your backend.");
+          navigate("/faculty");
+        }
       } finally {
-        setLoading(false);
+        if (isMounted) {
+          setLoading(false);
+        }
       }
     };
 
     fetchFaculty();
+
+    // Cleanup function
+    return () => {
+      isMounted = false;
+      controller.abort();
+    };
   }, [id, navigate]);
 
   // ✅ Handle input changes
@@ -112,12 +128,14 @@ const EditFaculties = () => {
 
           <label>
             Department:
-            <input
-              type="text"
-              name="department"
-              value={formData.department}
-              onChange={handleChange}
-            />
+            <select name="department" value={formData.department} onChange={handleChange} required>
+              <option value="">Select Department</option>
+              <option value="Computer Science Department">Computer Science Department</option>
+              <option value="Accountancy Department">Accountancy Department</option>
+              <option value="Psychology Department">Psychology Department</option>
+              <option value="Engineering Department">Engineering Department</option>
+              <option value="Business Administration Department">Business Administration Department</option>
+            </select>
           </label>
 
           <label>
