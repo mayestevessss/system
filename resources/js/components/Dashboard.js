@@ -13,6 +13,7 @@ import {
   FaBook,
   FaBuilding,
 } from "react-icons/fa";
+import Sidebar from "./Sidebar";
 import "../../sass/Dashboard.scss";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
@@ -33,47 +34,24 @@ const Dashboard = () => {
   // ✅ Fetch counts from backend
   const fetchCounts = async () => {
     try {
-      // 🧑‍🎓 Fetch Students
-      const stuRes = await fetch("http://127.0.0.1:8000/api/students");
-      const stuData = stuRes.ok ? await stuRes.json() : [];
-      const activeStudents = stuData.filter((s) => !s.is_archived);
+      // Fetch dashboard data from the API
+      const res = await fetch("http://127.0.0.1:8000/api/dashboard");
+      
+      if (res.ok) {
+        const dashboardData = await res.json();
+        
+        // Set summary counts
+        setData({
+          students: dashboardData.summary?.students || 0,
+          faculty: dashboardData.summary?.faculty || 0,
+          courses: dashboardData.summary?.courses || 0,
+          departments: dashboardData.summary?.departments || 0,
+        });
 
-      // 👩‍🏫 Fetch Faculty (if API exists)
-      let facultyData = [];
-      try {
-        const facRes = await fetch("http://127.0.0.1:8000/api/faculty");
-        if (facRes.ok) facultyData = await facRes.json();
-      } catch {}
-
-      // 🧮 Count students per course & department
-      const courseCount = {};
-      const deptCountFromStudents = {};
-
-      activeStudents.forEach((s) => {
-        const course = s.course || "Unassigned";
-        const dept = s.department || "Unassigned";
-
-        courseCount[course] = (courseCount[course] || 0) + 1;
-        deptCountFromStudents[dept] = (deptCountFromStudents[dept] || 0) + 1;
-      });
-
-      // 🧮 Count faculty per department
-      const deptCountFromFaculty = {};
-      facultyData.forEach((f) => {
-        const dept = f.department || "Unassigned";
-        deptCountFromFaculty[dept] = (deptCountFromFaculty[dept] || 0) + 1;
-      });
-
-      // ✅ Update state (based on active students)
-      setData({
-        students: activeStudents.length,
-        faculty: facultyData.length,
-        courses: Object.keys(courseCount).length, // distinct courses used
-        departments: Object.keys(deptCountFromStudents).length, // distinct depts used
-      });
-
-      setStudentPerCourse(courseCount);
-      setFacultyPerDepartment(deptCountFromFaculty);
+        // Set chart data
+        setStudentPerCourse(dashboardData.studentsPerCourse || {});
+        setFacultyPerDepartment(dashboardData.facultyPerDepartment || {});
+      }
     } catch (err) {
       console.error("⚠️ Error fetching dashboard data:", err);
     }
@@ -124,31 +102,8 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard-page">
-      {/* SIDEBAR */}
-      <aside className="sidebar">
-        <img
-          src="/image/logo-removebg-preview.png"
-          alt="School Logo"
-          className="sidebar-logo"
-        />
-        <ul>
-          <li onClick={() => navigate("/home")}>Home</li>
-          <li className="active" onClick={() => navigate("/dashboard")}>
-            Dashboard
-          </li>
-          <li onClick={() => navigate("/profile-management")}>
-            My Profile
-          </li>
-          <li onClick={() => navigate("/students")}>Students</li>
-          <li onClick={() => navigate("/faculty")}>Faculty</li>
-          <li onClick={() => navigate("/reports")}>Reports</li>
-          <li onClick={() => navigate("/settings")}>Settings</li>
-          <li className="logout" onClick={() => navigate("/")}>
-            Logout
-          </li>
-        </ul>
-      </aside>
-
+      <Sidebar />
+      
       {/* MAIN CONTENT */}
       <main className="main-content">
         <header className="header">

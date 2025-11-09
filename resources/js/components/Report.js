@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import Sidebar from "./Sidebar";
 import "../../sass/Report.scss";
 
 const Report = () => {
@@ -53,20 +54,7 @@ const Report = () => {
 
   return (
     <div className="report-page">
-      {/* Sidebar */}
-      <aside className="sidebar">
-        <img src="/logo.png" alt="Logo" className="sidebar-logo" />
-        <ul>
-          <li onClick={() => navigate("/home")}>Home</li>
-          <li onClick={() => navigate("/dashboard")}>Dashboard</li>
-          <li onClick={() => navigate("/profile")}>My Profile</li>
-          <li onClick={() => navigate("/students")}>Students</li>
-          <li onClick={() => navigate("/faculty")}>Faculty</li>
-          <li className="active" onClick={() => navigate("/reports")}>Reports</li>
-          <li onClick={() => navigate("/settings")}>Settings</li>
-          <li className="logout" onClick={() => navigate("/")}>Logout</li>
-        </ul>
-      </aside>
+      <Sidebar />
 
       {/* Main Content */}
       <main className="report-main">

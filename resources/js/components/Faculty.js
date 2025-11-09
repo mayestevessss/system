@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Sidebar from "./Sidebar";
 import "../../sass/Faculty.scss";
 
 const Faculty = () => {
@@ -82,20 +83,7 @@ const Faculty = () => {
 
   return (
     <div className="faculty-page">
-      {/* ===== Sidebar ===== */}
-      <aside className="sidebar">
-        <img src="/image/fsuu logo.png" alt="FSUU Logo" className="sidebar-logo" />
-        <ul>
-          <li onClick={() => navigate("/home")}>Home</li>
-          <li onClick={() => navigate("/dashboard")}>Dashboard</li>
-          <li onClick={() => navigate("/profile")}>My Profile</li>
-          <li onClick={() => navigate("/students")}>Students</li>
-          <li className="active" onClick={() => navigate("/faculty")}>Faculty</li>
-          <li onClick={() => navigate("/reports")}>Reports</li>
-          <li onClick={() => navigate("/settings")}>Settings</li>
-          <li className="logout" onClick={() => navigate("/")}>Logout</li>
-        </ul>
-      </aside>
+      <Sidebar />
 
       {/* ===== Main Content ===== */}
       <main className="faculty-main">

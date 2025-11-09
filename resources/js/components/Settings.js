@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import Sidebar from "./Sidebar";
 import "../../sass/Settings.scss";
 
 const Settings = () => {
@@ -55,24 +56,7 @@ const Settings = () => {
 
   return (
     <div className="settings-wrapper">
-      {/* === MAIN SIDEBAR === */}
-      <aside className="main-sidebar">
-        <img src="/logo.png" alt="Logo" className="logo" />
-        <ul>
-          <li onClick={() => navigate("/home")}>Home</li>
-          <li onClick={() => navigate("/dashboard")}>Dashboard</li>
-          <li onClick={() => navigate("/profile-management")}>My Profile</li>
-          <li onClick={() => navigate("/students")}>Students</li>
-          <li onClick={() => navigate("/faculty")}>Faculty</li>
-          <li onClick={() => navigate("/reports")}>Reports</li>
-          <li className="active" onClick={() => navigate("/settings")}>
-            Settings
-          </li>
-          <li className="logout" onClick={() => navigate("/")}>
-            Logout
-          </li>
-        </ul>
-      </aside>
+      <Sidebar />
 
       {/* === SETTINGS MAIN === */}
       <main className="settings-main">

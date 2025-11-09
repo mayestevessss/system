@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import Sidebar from "./Sidebar";
 import "../../sass/Students.scss";
 
 const Students = () => {
@@ -84,22 +85,7 @@ const Students = () => {
 
   return (
     <div className="students-page">
-      {/* ✅ Sidebar */}
-      <aside className="sidebar">
-        <img src="/logo.png" alt="Logo" className="sidebar-logo" />
-        <ul>
-          <li onClick={() => navigate("/home")}>Home</li>
-          <li onClick={() => navigate("/dashboard")}>Dashboard</li>
-          <li onClick={() => navigate("/profile-management")}>My Profile</li>
-          <li className="active" onClick={() => navigate("/students")}>
-            Students
-          </li>
-          <li onClick={() => navigate("/faculty")}>Faculty</li>
-          <li onClick={() => navigate("/reports")}>Reports</li>
-          <li onClick={() => navigate("/settings")}>Settings</li>
-          <li className="logout" onClick={() => navigate("/")}>Logout</li>
-        </ul>
-      </aside>
+      <Sidebar />
 
       {/* ✅ Main Content */}
       <main className="students-main">

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import Sidebar from "./Sidebar";
 import "../../sass/ProfileManagement.scss";
 
 const ProfileManagement = () => {
@@ -75,25 +76,7 @@ const ProfileManagement = () => {
 
   return (
     <div className="profile-page">
-      {/* ✅ Sidebar */}
-      <aside className="sidebar">
-        <img src="/logo.png" alt="School Logo" className="sidebar-logo" />
-        <ul>
-          <li onClick={() => navigate("/home")}>Home</li>
-          <li onClick={() => navigate("/dashboard")}>Dashboard</li>
-            <li className="active" onClick={() => navigate("/profile-management")}>
-            My Profile
-          </li>
-          <li onClick={() => navigate("/students")}>Students</li>
-          <li onClick={() => navigate("/faculty")}>Faculty</li>
-          <li onClick={() => navigate("/course")}>Course</li>
-          <li onClick={() => navigate("/reports")}>Reports</li>
-          <li onClick={() => navigate("/settings")}>Settings</li>
-          <li className="logout" onClick={() => navigate("/")}>
-            Logout
-          </li>
-        </ul>
-      </aside>
+      <Sidebar />
 
       {/* ✅ Main Content */}
       <main className="main-content">
