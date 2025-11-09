@@ -82,7 +82,7 @@ const ProfileManagement = () => {
       <main className="main-content">
         <header className="header">
           <div className="header-left">
-            <img src="/logo.png" alt="logo" className="header-logo" />
+            <img src="/image/logo-removebg-preview.png" alt="logo" className="header-logo" />
             <div className="header-text">
               <h1>Profile Management</h1>
               <h3>

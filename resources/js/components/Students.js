@@ -91,7 +91,7 @@ const Students = () => {
       <main className="students-main">
         <header className="header">
           <div className="header-left">
-            <img src="/logo.png" alt="logo" className="header-logo" />
+            <img src="/image/logo-removebg-preview.png" alt="logo" className="header-logo" />
             <div className="header-text">
               <h1>Students</h1>
               <h3><em>Manage Student Information</em></h3>

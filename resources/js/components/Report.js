@@ -60,7 +60,7 @@ const Report = () => {
       <main className="report-main">
         <header className="header">
           <div className="header-left">
-            <img src="/logo.png" alt="logo" className="header-logo" />
+            <img src="/image/logo-removebg-preview.png" alt="logo" className="header-logo" />
             <div className="header-text">
               <h1>Reports</h1>
               <h3><em>Generate and Export Reports</em></h3>

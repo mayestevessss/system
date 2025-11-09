@@ -89,7 +89,7 @@ const Faculty = () => {
       <main className="faculty-main">
         <header className="header">
           <div className="header-left">
-            <img src="/image/fsuu logo.png" alt="logo" className="header-logo" />
+            <img src="/image/logo-removebg-preview.png" alt="logo" className="header-logo" />
             <div className="header-text">
               <h1>Faculty</h1>
               <h3><em>Manage Faculty Information</em></h3>

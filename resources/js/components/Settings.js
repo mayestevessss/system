@@ -62,7 +62,7 @@ const Settings = () => {
       <main className="settings-main">
         <header className="settings-header">
           <div className="header-left">
-            <img src="/logo.png" alt="Logo" className="header-logo" />
+            <img src="/image/logo-removebg-preview.png" alt="Logo" className="header-logo" />
             <div className="header-text">
               <h1>System Settings</h1>
               <h3>

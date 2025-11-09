@@ -88,7 +88,7 @@ const ArchiveFaculty = () => {
     <div className="archived-container">
       {/* Header Section */}
       <header className="archived-header">
-        <img src="/logo.png" alt="logo" className="header-logo" />
+        <img src="/image/logo-removebg-preview.png" alt="logo" className="header-logo" />
         <div className="header-text">
           <h1>Archived Faculty</h1>
           <h3>
