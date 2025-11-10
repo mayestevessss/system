@@ -20,6 +20,7 @@ import Settings from "./Settings";
 import ListreportStudent from "./Listreport-Student";
 import ListreportFaculty from "./ListreportFaculty";
 import ListInactiveStudents from "./ListInactive-Students";
+import ListInactiveFaculty from "./ListInactive-Faculty";
 import AllDepartments from "./AllDepartments";
 import AllCourse from "./AllCourse";
 import AllAcademicYears from "./AllAcademic-Years";
@@ -52,6 +53,7 @@ function Routers() {
         <Route path="/listreport-student" element={<ListreportStudent />} />
         <Route path="/listreport-faculty" element={<ListreportFaculty />} />
         <Route path="/listinactive-students" element={<ListInactiveStudents />} />
+        <Route path="/listinactive-faculty" element={<ListInactiveFaculty />} />
         <Route path="/settings" element={<Settings />} />
         <Route path="/all-departments" element={<AllDepartments />} />
         <Route path="/all-courses" element={<AllCourse />} />

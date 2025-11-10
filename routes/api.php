@@ -11,6 +11,7 @@ use App\Http\Controllers\{
     FacultyController,
     ListreportStudentController,
     ListInactiveController,
+    ListInactiveFacultyController,
     SystemSettingsController
 };
 
@@ -77,6 +78,8 @@ Route::prefix('archived-students')->group(function () {
 | 👨‍🏫 FACULTY MANAGEMENT
 |--------------------------------------------------------------------------
 */
+Route::patch('faculties/{faculty}/status', [FacultyController::class, 'updateStatus']);
+
 Route::prefix('faculties')->group(function () {
     Route::get('/', [FacultyController::class, 'index'])->name('faculties.index');
     Route::get('/archived', [FacultyController::class, 'getArchived'])->name('faculties.archived');
@@ -98,6 +101,16 @@ Route::prefix('listinactive')->group(function () {
     Route::post('/', [ListInactiveController::class, 'store'])->name('listinactive.store');
     Route::patch('/{id}/status', [ListInactiveController::class, 'updateStatus'])->name('listinactive.update');
     Route::delete('/{id}', [ListInactiveController::class, 'destroy'])->name('listinactive.destroy');
+});
+
+/*
+|--------------------------------------------------------------------------
+| 📝 LIST INACTIVE FACULTY
+|--------------------------------------------------------------------------
+*/
+Route::prefix('listinactive-faculty')->group(function () {
+    Route::get('/', [ListInactiveFacultyController::class, 'index'])->name('listinactive-faculty.index');
+    Route::patch('/{id}/status', [ListInactiveFacultyController::class, 'updateStatus'])->name('listinactive-faculty.update');
 });
 
 /*

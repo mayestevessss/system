@@ -121,6 +121,27 @@ class FacultyController extends Controller
     }
 
     /**
+     * 🔄 Update faculty status (Active/Inactive).
+     */
+    public function updateStatus(Request $request, $id)
+    {
+        $faculty = Faculty::findOrFail($id);
+        
+        $validated = $request->validate([
+            'status' => 'required|in:Active,Inactive',
+        ]);
+
+        $faculty->update([
+            'status' => $validated['status']
+        ]);
+
+        return response()->json([
+            'message' => '✅ Faculty status updated successfully.',
+            'faculty' => $faculty,
+        ], 200);
+    }
+
+    /**
      * 🗃️ Archive a faculty (soft delete).
      */
     public function archive($id)

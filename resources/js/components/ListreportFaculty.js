@@ -11,7 +11,9 @@ const ListreportFaculty = () => {
   
   const [faculties, setFaculties] = useState([]);
   const [deptFilter, setDeptFilter] = useState(initialDept);
+  const [statusFilter, setStatusFilter] = useState("All");
   const [departments, setDepartments] = useState([]);
+  const [confirmPopup, setConfirmPopup] = useState(null);
 
   // Fetch all faculties
   useEffect(() => {
@@ -29,12 +31,19 @@ const ListreportFaculty = () => {
         const data = await res.json();
         
         if (isMounted) {
-          // Filter out archived faculty
-          const activeFaculties = data.filter(f => !f.is_archived);
-          setFaculties(activeFaculties);
+          // Filter out archived faculty and add status
+          const withStatus = data
+            .filter(f => !f.is_archived)
+            .map(f => ({
+              ...f,
+              status: f.status || "Active",
+            }));
+          
+          setFaculties(withStatus);
+          localStorage.setItem("faculties", JSON.stringify(withStatus));
           
           // Extract unique departments
-          const uniqueDepts = ["All", ...new Set(activeFaculties.map(f => f.department))];
+          const uniqueDepts = ["All", ...new Set(withStatus.map(f => f.department))];
           setDepartments(uniqueDepts);
         }
       } catch (err) {
@@ -53,10 +62,52 @@ const ListreportFaculty = () => {
     };
   }, []);
 
-  // Filter faculties by selected department
-  const filteredFaculties = faculties.filter(f => 
-    deptFilter === "All" || f.department === deptFilter
-  );
+  // Filter faculties by selected department and status
+  const filteredFaculties = faculties.filter(f => {
+    const deptMatch = deptFilter === "All" || f.department === deptFilter;
+    const statusMatch = statusFilter === "All" || f.status === statusFilter;
+    return deptMatch && statusMatch;
+  });
+
+  // Handle status toggle
+  const handleToggleStatus = (id) => {
+    const faculty = faculties.find((f) => f.id === id);
+    setConfirmPopup({
+      id,
+      name: faculty.fullname,
+      newStatus: faculty.status === "Active" ? "Inactive" : "Active",
+    });
+  };
+
+  const confirmStatusChange = async (id, newStatus) => {
+    try {
+      const res = await fetch(`http://127.0.0.1:8000/api/faculties/${id}/status`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ status: newStatus }),
+      });
+
+      if (!res.ok) throw new Error("Failed to update status");
+
+      const data = await res.json();
+      console.log("✅ Status updated:", data);
+
+      const updated = faculties.map((f) =>
+        f.id === id ? { ...f, status: newStatus } : f
+      );
+      setFaculties(updated);
+      localStorage.setItem("faculties", JSON.stringify(updated));
+
+      if (newStatus === "Inactive") {
+        navigate("/listInactive-faculty", { state: { from: "report" } });
+      }
+
+      setConfirmPopup(null);
+    } catch (err) {
+      console.error("Error updating status:", err);
+      alert("Something went wrong while updating status!");
+    }
+  };
 
   return (
     <div className="listreport-page">
@@ -91,6 +142,24 @@ const ListreportFaculty = () => {
               ))}
             </select>
           </div>
+
+          <div>
+            <b>Status:</b>
+            <select
+              value={statusFilter}
+              onChange={(e) => setStatusFilter(e.target.value)}
+            >
+              <option value="All">All</option>
+              <option value="Active">Active</option>
+            </select>
+          </div>
+
+          <button
+            className="inactive-btn-top"
+            onClick={() => navigate("/listInactive-faculty")}
+          >
+            View Inactive Faculty
+          </button>
         </div>
 
         {/* TABLE */}
@@ -104,6 +173,8 @@ const ListreportFaculty = () => {
               <th>Position</th>
               <th>Gender</th>
               <th>Contact Number</th>
+              <th>Status</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
@@ -117,17 +188,54 @@ const ListreportFaculty = () => {
                   <td>{faculty.position}</td>
                   <td>{faculty.gender === 'M' ? 'Male' : 'Female'}</td>
                   <td>{faculty.contact_number}</td>
+                  <td>{faculty.status}</td>
+                  <td>
+                    <button
+                      className="edit-btn"
+                      onClick={() => handleToggleStatus(faculty.id)}
+                    >
+                      Set {faculty.status === "Active" ? "Inactive" : "Active"}
+                    </button>
+                  </td>
                 </tr>
               ))
             ) : (
               <tr>
-                <td colSpan="7" style={{ textAlign: "center" }}>
+                <td colSpan="9" style={{ textAlign: "center" }}>
                   No faculty members found.
                 </td>
               </tr>
             )}
           </tbody>
         </table>
+
+        {/* Confirmation Popup */}
+        {confirmPopup && (
+          <div className="confirm-popup">
+            <div className="popup-box">
+              <p>
+                Change status of <b>{confirmPopup.name}</b> to{" "}
+                <b>{confirmPopup.newStatus}</b>?
+              </p>
+              <div className="popup-buttons">
+                <button
+                  className="yes-btn"
+                  onClick={() =>
+                    confirmStatusChange(confirmPopup.id, confirmPopup.newStatus)
+                  }
+                >
+                  Yes
+                </button>
+                <button
+                  className="no-btn"
+                  onClick={() => setConfirmPopup(null)}
+                >
+                  No
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
