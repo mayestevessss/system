@@ -26,7 +26,7 @@ const AllDepartments = () => {
     }
 
     try {
-      await axios.post("http://127.0.0.1:8000/api/departments", department);
+      await axios.post("http://127.0.0.1:8000/api/all-departments", department);
       alert("✅ Department added successfully!");
 
       // ✅ Mark that we just added a department (for refresh trigger)

@@ -11,7 +11,7 @@ const ListreportFaculty = () => {
   
   const [faculties, setFaculties] = useState([]);
   const [deptFilter, setDeptFilter] = useState(initialDept);
-  const [statusFilter, setStatusFilter] = useState("All");
+  const [statusFilter, setStatusFilter] = useState("Active");
   const [departments, setDepartments] = useState([]);
   const [confirmPopup, setConfirmPopup] = useState(null);
 

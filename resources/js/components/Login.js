@@ -5,9 +5,7 @@ import "../../sass/Login.scss";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
-  const [isSignIn, setIsSignIn] = useState(true);
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
@@ -38,40 +36,6 @@ const Login = () => {
     }
   };
 
-  const handleSignUp = async (e) => {
-    e.preventDefault();
-    setError("");
-
-    if (password !== confirmPassword) {
-      setError("Passwords do not match");
-      return;
-    }
-
-    try {
-      const res = await fetch("http://127.0.0.1:8000/api/register", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          first_name: "User", // You may want to add these fields to the form
-          last_name: "Name",
-          email,
-          password,
-        }),
-      });
-
-      const data = await res.json();
-
-      if (!res.ok || !data.success) {
-        throw new Error(data.message || "Registration failed");
-      }
-
-      alert("✅ Sign Up Successful! Please login.");
-      setIsSignIn(true);
-    } catch (error) {
-      setError(error.message || "Registration failed. Please try again.");
-    }
-  };
-
   return (
     <div className="login-page">
       {/* ===== HEADER ===== */}
@@ -90,126 +54,37 @@ const Login = () => {
         </div>
       </header>
 
-      {/* ===== LOGIN / SIGNUP BOX ===== */}
+      {/* ===== LOGIN BOX ===== */}
       <main className="login-container">
         <div className="login-box">
-          <h2>{isSignIn ? "LOGIN" : "SIGN UP"}</h2>
-          <p className="subtitle">
-            {isSignIn
-              ? "Sign in to manage students and faculty"
-              : "Register to use the system"}
-          </p>
+          <h2>LOGIN</h2>
+          <p className="subtitle">Sign in to manage students and faculty</p>
 
-          <div className="switch-buttons">
-            <button
-              type="button"
-              className={isSignIn ? "active" : ""}
-              onClick={() => {
-                setIsSignIn(true);
-                setError("");
-              }}
-            >
+          <form onSubmit={handleLogin}>
+            <label>Email</label>
+            <input
+              type="text"
+              placeholder="Enter your email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+
+            <label>Password</label>
+            <input
+              type="password"
+              placeholder="Enter your password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+
+            {error && <p className="error">{error}</p>}
+
+            <button type="submit" className="login-btn">
               Sign in
             </button>
-            <button
-              type="button"
-              className={!isSignIn ? "active" : ""}
-              onClick={() => {
-                setIsSignIn(false);
-                setError("");
-              }}
-            >
-              Sign up
-            </button>
-          </div>
-
-          {/* === SIGN IN FORM === */}
-          {isSignIn && (
-            <form onSubmit={handleLogin}>
-              <label>Email</label>
-              <input
-                type="text"
-                placeholder="Enter your email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
-
-              <label>Password</label>
-              <input
-                type="password"
-                placeholder="Enter your password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
-
-              {error && <p className="error">{error}</p>}
-
-              {/* You don't have an account text ABOVE Sign In button */}
-              <p className="switch-top-text">
-                You don’t have an account?{" "}
-                <span onClick={() => setIsSignIn(false)}>Sign Up</span>
-              </p>
-
-              <button type="submit" className="login-btn">
-                Sign in
-              </button>
-            </form>
-          )}
-
-          {/* === SIGN UP FORM === */}
-          {!isSignIn && (
-            <form onSubmit={handleSignUp}>
-              {/* Already have an account text ABOVE all fields */}
-              <p className="switch-top-text">
-                Already have an account?{" "}
-                <span onClick={() => setIsSignIn(true)}>Sign In</span>
-              </p>
-
-              <div className="name-fields">
-                <input type="text" placeholder="First Name" required />
-                <input type="text" placeholder="Last Name" required />
-              </div>
-
-              <label>Birthday</label>
-              <div className="birthday-fields">
-                <input type="text" placeholder="Month" required />
-                <input type="text" placeholder="Day" required />
-                <input type="text" placeholder="Year" required />
-              </div>
-
-              <input
-                type="text"
-                placeholder="Mobile number or email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
-
-              <input
-                type="password"
-                placeholder="New password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
-
-              <input
-                type="password"
-                placeholder="Confirm password"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-                required
-              />
-
-              {error && <p className="error">{error}</p>}
-
-              <button type="submit" className="login-btn">
-                Sign Up
-              </button>
-            </form>
-          )}
+          </form>
         </div>
       </main>
     </div>
